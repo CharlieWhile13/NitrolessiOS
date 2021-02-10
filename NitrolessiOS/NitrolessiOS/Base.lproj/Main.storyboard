@@ -12,8 +12,7 @@
         <!--Nitroless-->
         <scene sceneID="lCs-mF-Ahw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iex-Jw-IMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="G5W-jw-lg9" customClass="ViewController" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="G5W-jw-lg9" customClass="HomeViewController" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KHw-Ts-aUN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,11 +38,22 @@
                             <constraint firstAttribute="bottom" secondItem="lGB-9c-Zod" secondAttribute="bottom" id="veW-5z-GEh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Nitroless" id="WyG-eV-eSR"/>
+                    <navigationItem key="navigationItem" title="Nitroless" id="WyG-eV-eSR">
+                        <barButtonItem key="leftBarButtonItem" image="arrow.counterclockwise.circle" catalog="system" id="7uS-Q6-A9K" userLabel="Refresh Button">
+                            <color key="tintColor" red="1" green="0.0" blue="0.99831159057333885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="refresh:" destination="G5W-jw-lg9" id="bdl-vG-RJU"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="info.circle" catalog="system" id="bWW-VN-B3x">
+                            <color key="tintColor" red="1" green="0.0" blue="0.99831159057333885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="emotesView" destination="lGB-9c-Zod" id="7PR-zg-2F7"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iex-Jw-IMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="873.91304347826099" y="-75"/>
         </scene>
@@ -67,6 +77,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.counterclockwise.circle" catalog="system" width="128" height="121"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

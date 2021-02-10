@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */; };
-		E1A8FA5525D42B1D00353A1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5425D42B1D00353A1E /* ViewController.swift */; };
+		E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */; };
 		E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5625D42B1D00353A1E /* Main.storyboard */; };
 		E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5925D42B1F00353A1E /* Assets.xcassets */; };
 		E1A8FA5D25D42B1F00353A1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */; };
@@ -49,7 +49,7 @@
 /* Begin PBXFileReference section */
 		E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NitrolessiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1A8FA5425D42B1D00353A1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E1A8FA5725D42B1D00353A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1A8FA5925D42B1F00353A1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A8FA5C25D42B1F00353A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */,
-				E1A8FA5425D42B1D00353A1E /* ViewController.swift */,
+				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
 				E1A8FA5625D42B1D00353A1E /* Main.storyboard */,
 				E1A8FA5925D42B1F00353A1E /* Assets.xcassets */,
 				E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */,
@@ -250,7 +250,7 @@
 				E1A8FA7025D4336500353A1E /* UIImage+gif.swift in Sources */,
 				E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */,
 				E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */,
-				E1A8FA5525D42B1D00353A1E /* ViewController.swift in Sources */,
+				E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */,
 				E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */,
 				E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */,
 			);

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     @IBOutlet weak var emotesView: UICollectionView!
     
@@ -45,9 +45,13 @@ class ViewController: UIViewController {
             self.updateFilter()
         })
     }
+    
+    @IBAction func refresh(_ sender: Any) {
+        NitrolessParser.shared.getEmotes()
+    }
 }
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let noOfCellsInRow = 5
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
@@ -59,7 +63,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension ViewController: UISearchBarDelegate, UISearchResultsUpdating {
+extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         self.updateFilter()
     }
@@ -77,7 +81,7 @@ extension ViewController: UISearchBarDelegate, UISearchResultsUpdating {
     }
 }
 
-extension ViewController: UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = self.shownEmotes[indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
@@ -85,7 +89,7 @@ extension ViewController: UICollectionViewDelegate {
     }
 }
 
-extension ViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.shownEmotes.count

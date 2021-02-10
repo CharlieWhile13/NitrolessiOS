@@ -30,41 +30,39 @@ class NitrolessParser {
                     var e = Emote()
                     e.name = emote["name"] ?? "Error"
                     switch emote["type"] {
-                    case ".png": e.type = .png
-                    case ".gif": e.type = .gif
-                    default: break
+                    case ".png": do {
+                        e.type = .png
+                        guard let url = URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/assets/\(e.name ?? "Error").png") else { return }
+                        e.url = url
                     }
-                    switch e.type {
-                    case .png: do {
-                        if let url = URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/assets/\(e.name ?? "Error").png") {
-                            NetworkManager.getData(url: url, completion: { (success, data) -> Void in
-                                if success {
-                                    if let image = UIImage(data: data!) {
-                                        e.image = image
-                                        e.url = url
-                                        self.emotes.append(e)
-                                    }
-                                }
-                                
-                            })
-                        }
-                    }
-                    case .gif: do {
-                        if let url = URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/assets/\(e.name ?? "Error").gif") {
-                            NetworkManager.getData(url: url, completion: { (success, data) -> Void in
-                                if success {
-                                    if let image = UIImage.gifImageWithData(data!) {
-                                        e.image = image
-                                        e.url = url
-                                        self.emotes.append(e)
-                                    }
-                                }
-                                
-                            })
-                        }
+                    case ".gif": do {
+                        e.type = .gif
+                        guard let url = URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/assets/\(e.name ?? "Error").gif") else { return }
+                        e.url = url
                     }
                     default: return
                     }
+                    NetworkManager.getData(url: e.url, completion: { (success, data) -> Void in
+                        if let data = data {
+                            if success {
+                                switch e.type {
+                                case.png: do {
+                                    if let image = UIImage(data: data) {
+                                        e.image = image
+                                        self.emotes.append(e)
+                                    }
+                                }
+                                case .gif: do {
+                                    if let gif = UIImage.gifImageWithData(data) {
+                                        e.image = gif
+                                        self.emotes.append(e)
+                                    }
+                                }
+                                default: return
+                                }
+                            }
+                        }
+                    })
                 }
             }
         })
@@ -77,8 +75,8 @@ enum EmoteType {
 }
 
 struct Emote {
-    var type: EmoteType?
+    var type: EmoteType!
     var name: String!
-    var url: URL?
+    var url: URL!
     var image: UIImage?
 }
