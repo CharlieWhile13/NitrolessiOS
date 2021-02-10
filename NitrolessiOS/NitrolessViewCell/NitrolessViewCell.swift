@@ -23,6 +23,6 @@ class NitrolessViewCell: UICollectionViewCell {
         // Initialization code
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 2.5
+        self.label.adjustsFontSizeToFitWidth = true
     }
-
 }

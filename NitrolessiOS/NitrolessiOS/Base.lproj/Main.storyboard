@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wjg-lr-CX0">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Nitroless-->
+        <scene sceneID="lCs-mF-Ahw">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iex-Jw-IMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="G5W-jw-lg9" customClass="ViewController" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KHw-Ts-aUN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lGB-9c-Zod">
+                                <rect key="frame" x="7.5" y="142.5" width="399" height="753.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SQv-w6-DIB">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="t4g-1A-zMR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lGB-9c-Zod" firstAttribute="top" secondItem="t4g-1A-zMR" secondAttribute="top" constant="2.5" id="9sZ-8u-cvs"/>
+                            <constraint firstItem="lGB-9c-Zod" firstAttribute="leading" secondItem="t4g-1A-zMR" secondAttribute="leading" constant="7.5" id="aIS-E5-dIE"/>
+                            <constraint firstItem="t4g-1A-zMR" firstAttribute="trailing" secondItem="lGB-9c-Zod" secondAttribute="trailing" constant="7.5" id="trz-Wf-Syk"/>
+                            <constraint firstAttribute="bottom" secondItem="lGB-9c-Zod" secondAttribute="bottom" id="veW-5z-GEh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nitroless" id="WyG-eV-eSR"/>
+                    <connections>
+                        <outlet property="emotesView" destination="lGB-9c-Zod" id="7PR-zg-2F7"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="873.91304347826099" y="-75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bDa-2l-it4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wjg-lr-CX0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="r6N-Eg-pDc">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="G5W-jw-lg9" kind="relationship" relationship="rootViewController" id="fzo-BB-ooZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7la-3K-fmn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-36.231884057971016" y="-75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
