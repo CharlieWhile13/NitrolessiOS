@@ -85,6 +85,7 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = self.shownEmotes[indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
         }
     }
 }
