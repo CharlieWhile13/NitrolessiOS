@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         _ = NitrolessParser.shared
-        
+        window?.tintColor = ThemeManager.tintColor
         return true
     }
 

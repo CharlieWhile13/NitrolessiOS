@@ -40,13 +40,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Nitroless" id="WyG-eV-eSR">
                         <barButtonItem key="leftBarButtonItem" image="arrow.counterclockwise.circle" catalog="system" id="7uS-Q6-A9K" userLabel="Refresh Button">
-                            <color key="tintColor" red="1" green="0.0" blue="0.99831159057333885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="refresh:" destination="G5W-jw-lg9" id="bdl-vG-RJU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="info.circle" catalog="system" id="bWW-VN-B3x">
-                            <color key="tintColor" red="1" green="0.0" blue="0.99831159057333885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="yNo-ZB-Ece" kind="popoverPresentation" popoverAnchorBarButtonItem="bWW-VN-B3x" id="3n5-ZM-XF3">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -57,6 +60,43 @@
             </objects>
             <point key="canvasLocation" x="873.91304347826099" y="-75"/>
         </scene>
+        <!--About-->
+        <scene sceneID="Nqx-II-qVL">
+            <objects>
+                <viewController id="Npw-j1-uoJ" customClass="SettingsViewController" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LK1-cX-LBG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aln-Y9-FQG">
+                                <rect key="frame" x="7.5" y="56" width="399" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FAL-uC-Frt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FAL-uC-Frt" firstAttribute="trailing" secondItem="aln-Y9-FQG" secondAttribute="trailing" constant="7.5" id="3Zb-tI-0yN"/>
+                            <constraint firstItem="FAL-uC-Frt" firstAttribute="bottom" secondItem="aln-Y9-FQG" secondAttribute="bottom" id="8B8-bX-mOY"/>
+                            <constraint firstItem="aln-Y9-FQG" firstAttribute="leading" secondItem="FAL-uC-Frt" secondAttribute="leading" constant="7.5" id="SNo-Vz-rcH"/>
+                            <constraint firstItem="aln-Y9-FQG" firstAttribute="top" secondItem="FAL-uC-Frt" secondAttribute="top" id="ctp-H4-oQy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" largeTitleDisplayMode="never" id="Cjg-rU-8Ag">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="MTn-4O-k9o">
+                            <connections>
+                                <action selector="pop:" destination="Npw-j1-uoJ" id="7eN-yK-VBX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="aln-Y9-FQG" id="yVX-Gy-8ST"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ER-AE-9si" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3272.4637681159425" y="-75"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="bDa-2l-it4">
             <objects>
@@ -65,6 +105,14 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="r6N-Eg-pDc">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -74,6 +122,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7la-3K-fmn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-36.231884057971016" y="-75"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7CJ-DA-gw1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yNo-ZB-Ece" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LIb-zJ-z05">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Npw-j1-uoJ" kind="relationship" relationship="rootViewController" id="zqX-Rw-mnQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eeq-8o-7vO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2360.8695652173915" y="-75"/>
         </scene>
     </scenes>
     <resources>

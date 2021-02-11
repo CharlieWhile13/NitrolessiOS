@@ -25,6 +25,9 @@ class HomeViewController: UIViewController {
     }
     
     private func meta() {
+        self.view.backgroundColor = ThemeManager.backgroundColour
+        self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
+        
         searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -53,7 +56,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let noOfCellsInRow = 5
+        let noOfCellsInRow = 4
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right

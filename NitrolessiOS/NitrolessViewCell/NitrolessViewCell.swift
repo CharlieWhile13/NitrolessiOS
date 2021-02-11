@@ -11,6 +11,8 @@ class NitrolessViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    
     var emote: Emote? {
         didSet {
             if let i = emote?.image { self.imageView.image = i }
@@ -21,8 +23,9 @@ class NitrolessViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = 2.5
+        self.containerView.backgroundColor = ThemeManager.imageBackground
+        self.containerView.layer.cornerRadius = 10
+        self.containerView.layer.masksToBounds = true
         self.label.adjustsFontSizeToFitWidth = true
     }
 }

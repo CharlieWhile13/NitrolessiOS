@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
+		E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */; };
 		E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */; };
 		E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5625D42B1D00353A1E /* Main.storyboard */; };
@@ -20,6 +22,14 @@
 		E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
 		E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA8225D43B8300353A1E /* KeyboardViewController.swift */; };
 		E1A8FA8725D43B8300353A1E /* NitrolessKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E1A8FA8025D43B8300353A1E /* NitrolessKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E1AD855625D5966E003DA2DC /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AD854E25D5966E003DA2DC /* ButtonCell.xib */; };
+		E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD854F25D5966E003DA2DC /* ButtonCell.swift */; };
+		E1AD855825D5966E003DA2DC /* SocialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AD855125D5966E003DA2DC /* SocialCell.xib */; };
+		E1AD855925D5966E003DA2DC /* SocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD855225D5966E003DA2DC /* SocialCell.swift */; };
+		E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD855425D5966E003DA2DC /* SettingsSwitchCell.swift */; };
+		E1AD855B25D5966E003DA2DC /* SettingsSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AD855525D5966E003DA2DC /* SettingsSwitchCell.xib */; };
+		E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */; };
+		E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD856325D5999E003DA2DC /* BridgingStubs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NitrolessiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +74,14 @@
 		E1A8FA8025D43B8300353A1E /* NitrolessKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NitrolessKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8FA8225D43B8300353A1E /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		E1A8FA8425D43B8300353A1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1AD854E25D5966E003DA2DC /* ButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonCell.xib; sourceTree = "<group>"; };
+		E1AD854F25D5966E003DA2DC /* ButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		E1AD855125D5966E003DA2DC /* SocialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SocialCell.xib; sourceTree = "<group>"; };
+		E1AD855225D5966E003DA2DC /* SocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocialCell.swift; sourceTree = "<group>"; };
+		E1AD855425D5966E003DA2DC /* SettingsSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSwitchCell.swift; sourceTree = "<group>"; };
+		E1AD855525D5966E003DA2DC /* SettingsSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSwitchCell.xib; sourceTree = "<group>"; };
+		E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E1AD856325D5999E003DA2DC /* BridgingStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingStubs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +105,7 @@
 		E1A8FA4425D42B1D00353A1E = {
 			isa = PBXGroup;
 			children = (
+				E1AD854C25D59644003DA2DC /* libAmy */,
 				E1A8FA7725D434A300353A1E /* NitrolessViewCell */,
 				E1A8FA6625D42C1D00353A1E /* Backend */,
 				E1A8FA4F25D42B1D00353A1E /* NitrolessiOS */,
@@ -106,8 +126,8 @@
 		E1A8FA4F25D42B1D00353A1E /* NitrolessiOS */ = {
 			isa = PBXGroup;
 			children = (
+				E1AD855E25D596CA003DA2DC /* View Controllers */,
 				E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */,
-				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
 				E1A8FA5625D42B1D00353A1E /* Main.storyboard */,
 				E1A8FA5925D42B1F00353A1E /* Assets.xcassets */,
 				E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */,
@@ -123,6 +143,7 @@
 				E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */,
 				E1A8FA6F25D4336500353A1E /* UIImage+gif.swift */,
 				E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */,
+				E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -143,6 +164,53 @@
 				E1A8FA8425D43B8300353A1E /* Info.plist */,
 			);
 			path = NitrolessKeyboard;
+			sourceTree = "<group>";
+		};
+		E1AD854C25D59644003DA2DC /* libAmy */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD854D25D5966E003DA2DC /* Button Cell */,
+				E1AD855325D5966E003DA2DC /* Settings Switch Cell */,
+				E1AD855025D5966E003DA2DC /* Social Cell */,
+				E1AD856325D5999E003DA2DC /* BridgingStubs.swift */,
+			);
+			path = libAmy;
+			sourceTree = "<group>";
+		};
+		E1AD854D25D5966E003DA2DC /* Button Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD854E25D5966E003DA2DC /* ButtonCell.xib */,
+				E1AD854F25D5966E003DA2DC /* ButtonCell.swift */,
+			);
+			path = "Button Cell";
+			sourceTree = "<group>";
+		};
+		E1AD855025D5966E003DA2DC /* Social Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD855125D5966E003DA2DC /* SocialCell.xib */,
+				E1AD855225D5966E003DA2DC /* SocialCell.swift */,
+			);
+			path = "Social Cell";
+			sourceTree = "<group>";
+		};
+		E1AD855325D5966E003DA2DC /* Settings Switch Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E1AD855425D5966E003DA2DC /* SettingsSwitchCell.swift */,
+				E1AD855525D5966E003DA2DC /* SettingsSwitchCell.xib */,
+			);
+			path = "Settings Switch Cell";
+			sourceTree = "<group>";
+		};
+		E1AD855E25D596CA003DA2DC /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
+				E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,7 +295,10 @@
 			files = (
 				E1A8FA7525D4348F00353A1E /* NitrolessViewCell.xib in Resources */,
 				E1A8FA5D25D42B1F00353A1E /* LaunchScreen.storyboard in Resources */,
+				E1AD855625D5966E003DA2DC /* ButtonCell.xib in Resources */,
+				E1AD855B25D5966E003DA2DC /* SettingsSwitchCell.xib in Resources */,
 				E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */,
+				E1AD855825D5966E003DA2DC /* SocialCell.xib in Resources */,
 				E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,11 +319,17 @@
 			files = (
 				E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */,
 				E1A8FA7025D4336500353A1E /* UIImage+gif.swift in Sources */,
+				E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */,
 				E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */,
 				E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */,
+				E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */,
+				E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
 				E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */,
 				E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */,
+				E1AD855925D5966E003DA2DC /* SocialCell.swift in Sources */,
 				E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */,
+				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
+				E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +338,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */,
+				E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
