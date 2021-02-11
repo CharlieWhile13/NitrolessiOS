@@ -1,2 +1,2 @@
 # NitrolessiOS
-A keyboard for custom emotes in Discord without Nitro
+A keyboard for custom emotes in Discord without Nitro.
