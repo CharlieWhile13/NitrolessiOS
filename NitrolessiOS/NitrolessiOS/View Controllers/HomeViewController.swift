@@ -24,15 +24,26 @@ class HomeViewController: UIViewController {
         self.searchController.searchBar.text?.isEmpty ?? true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
+    }
+    
     private func meta() {
         self.view.backgroundColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
-        
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+
         searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.enablesReturnKeyAutomatically = false
         searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        searchController.searchBar.barStyle = .black
         definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -103,5 +114,11 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NitrolessViewCell", for: indexPath) as! NitrolessViewCell
         cell.emote = self.shownEmotes[indexPath.row]
         return cell
+    }
+}
+	
+class NitrolessNC: UINavigationController {
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }

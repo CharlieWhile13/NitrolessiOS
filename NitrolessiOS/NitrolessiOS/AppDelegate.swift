@@ -19,6 +19,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = ThemeManager.tintColor
         return true
     }
-
 }
 

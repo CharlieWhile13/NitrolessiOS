@@ -97,10 +97,10 @@
             </objects>
             <point key="canvasLocation" x="3272.4637681159425" y="-75"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--NitrolessNC-->
         <scene sceneID="bDa-2l-it4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wjg-lr-CX0" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wjg-lr-CX0" customClass="NitrolessNC" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="r6N-Eg-pDc">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -123,10 +123,10 @@
             </objects>
             <point key="canvasLocation" x="-36.231884057971016" y="-75"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--NitrolessNC-->
         <scene sceneID="7CJ-DA-gw1">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yNo-ZB-Ece" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yNo-ZB-Ece" customClass="NitrolessNC" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LIb-zJ-z05">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
