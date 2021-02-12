@@ -16,11 +16,7 @@ class NitrolessParser {
             }
         }
     }
-    
-    init() {
-        self.getEmotes()
-    }
-    
+
     public func getEmotes() {
         self.emotes.removeAll()
         NetworkManager.request(url: URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/emotes.json")!, completion: { (success, array) -> Void in

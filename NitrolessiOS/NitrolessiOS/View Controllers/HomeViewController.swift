@@ -65,6 +65,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func refresh(_ sender: Any) {
+        NotificationCenter.default.post(name: .ReloadEmotes, object: nil)
         NitrolessParser.shared.getEmotes()
     }
 }
