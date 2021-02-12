@@ -57,10 +57,6 @@ class HomeViewController: UIViewController {
         self.emotesView.register(UINib(nibName: "NitrolessViewCell", bundle: nil), forCellWithReuseIdentifier: "NitrolessViewCell")
         NotificationCenter.default.addObserver(forName: .EmoteReload, object: nil, queue: nil, using: {_ in
             self.updateFilter()
-            
-            let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
         })
     }
     

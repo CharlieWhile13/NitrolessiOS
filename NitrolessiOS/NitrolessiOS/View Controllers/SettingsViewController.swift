@@ -22,6 +22,9 @@ class SettingsViewController: UIViewController {
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Amy", title: "Amy", link: URL(string: "https://twitter.com/elihweilrahc13")!)),
         ],
         [
+            AmyCellData(identifier: .Button, data: ButtonCellData(title: "How to enable keyboard", notificationName: "KeyboardHelp"))
+        ],
+        [
             AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "Black", isDefault: true, image: "Nitroless")),
             AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "White", isDefault: false, image: "White"))
         ]
@@ -39,7 +42,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.meta()
-        self.showAlert()
     }
     
     private func meta() {
@@ -57,13 +59,15 @@ class SettingsViewController: UIViewController {
         self.tableView.layer.masksToBounds = true
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showAlert), name: .KeyboardHelp, object: nil)
     }
 
     @IBAction func pop(_ sender: Any) {
         self.dismiss(animated: true)
     }
     
-    private func showAlert() {
+    @objc private func showAlert() {
         let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
@@ -145,4 +149,8 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = ThemeManager.imageBackground
         return cell
     }
+}
+
+extension NSNotification.Name {
+    static let KeyboardHelp = Notification.Name("KeyboardHelp")
 }
