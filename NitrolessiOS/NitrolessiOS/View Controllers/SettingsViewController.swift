@@ -19,6 +19,11 @@ class SettingsViewController: UIViewController {
         [
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Alpha", title: "Alpha_Stream", link: URL(string: "https://twitter.com/Kutarin_")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Paras", title: "ParasKCD", link: URL(string: "https://twitter.com/paraskcd")!)),
+            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Amy", title: "Amy", link: URL(string: "https://twitter.com/elihweilrahc13")!)),
+        ],
+        [
+            AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "Black", isDefault: true, image: "Nitroless")),
+            AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "White", isDefault: false, image: "White"))
         ]
     ]
     
@@ -34,28 +39,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.meta()
-        
-        let images = ["White"]
-        
-        for (index, image) in images.enumerated() {
-            let button = UIButton(frame: CGRect(x: 30, y: view.safeAreaInsets.top + 200 + (CGFloat(index * 130)), width: 120, height: 120))
-            button.setImage(UIImage(named: image), for: .normal)
-            button.tag = index * 1
-            button.addTarget(self, action: #selector(didTapAppIcon(_:)), for: .touchUpInside)
-            view.addSubview(button)
-        }
-    }
-    
-    @objc private func didTapAppIcon(_ sender: UIButton) {
-        if sender.tag == 1 {
-            UIApplication.shared.setAlternateIconName("White") { error in
-                guard error == nil else {
-                    print("something went wrong")
-                    return
-                }
-                print("icon updated")
-            }
-        }
     }
     
     private func meta() {
@@ -66,6 +49,7 @@ class SettingsViewController: UIViewController {
         self.tableView.register(UINib(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "libAmy.ButtonCell")
         self.tableView.register(UINib(nibName: "SettingsSwitchCell", bundle: nil), forCellReuseIdentifier: "libAmy.SettingsSwitchCell")
         self.tableView.register(UINib(nibName: "SocialCell", bundle: nil), forCellReuseIdentifier: "libAmy.SocialCell")
+        self.tableView.register(UINib(nibName: "AppIconCell", bundle: nil), forCellReuseIdentifier: "libAmy.AppIconCell")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.layer.cornerRadius = 10
@@ -140,6 +124,12 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
                 let b = tableView.dequeueReusableCell(withIdentifier: "libAmy.SocialCell", for: indexPath) as! SocialCell
                 b.data = id.data as? SocialCellData
                 b.label.textColor = .white
+                cell = b
+            }
+            case .AppIcon: do {
+                let b = tableView.dequeueReusableCell(withIdentifier: "libAmy.AppIconCell", for: indexPath) as! AppIconCell
+                b.data = id.data as? AppIconCellData
+                b.iconName.textColor = .white
                 cell = b
             }
             case .none: fatalError("Quite frankly how the fuck has this happened")

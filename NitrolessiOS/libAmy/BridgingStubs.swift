@@ -13,6 +13,7 @@ enum AmyCellType {
     case Button
     case Switch
     case Social
+    case AppIcon
 }
 
 protocol CellData {}
@@ -37,4 +38,10 @@ struct SocialCellData: CellData {
 struct ButtonCellData: CellData {
     var title: String!
     var notificationName: String!
+}
+
+struct AppIconCellData: CellData {
+    var title: String!
+    var isDefault: Bool!
+    var image: String!
 }

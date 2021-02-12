@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		89DDA44125D6A191000B7956 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DDA44025D6A191000B7956 /* White.png */; };
+		E134A98125D6AB8F003A01EA /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98025D6AB8F003A01EA /* White@2x.png */; };
+		E134A98525D6ABA1003A01EA /* White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98425D6ABA1003A01EA /* White@3x.png */; };
+		E134A98925D6ABC0003A01EA /* White~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98825D6ABC0003A01EA /* White~ipad@2x.png */; };
+		E134A98D25D6ABEF003A01EA /* White~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98C25D6ABEE003A01EA /* White~ipad@3x.png */; };
+		E134A99525D6AC93003A01EA /* AppIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E134A99325D6AC93003A01EA /* AppIconCell.xib */; };
+		E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A99425D6AC93003A01EA /* AppIconCell.swift */; };
 		E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */; };
@@ -58,7 +63,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		89DDA44025D6A191000B7956 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
+		E134A98025D6AB8F003A01EA /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
+		E134A98425D6ABA1003A01EA /* White@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@3x.png"; sourceTree = "<group>"; };
+		E134A98825D6ABC0003A01EA /* White~ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White~ipad@2x.png"; sourceTree = "<group>"; };
+		E134A98C25D6ABEE003A01EA /* White~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White~ipad@3x.png"; sourceTree = "<group>"; };
+		E134A99325D6AC93003A01EA /* AppIconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppIconCell.xib; sourceTree = "<group>"; };
+		E134A99425D6AC93003A01EA /* AppIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIconCell.swift; sourceTree = "<group>"; };
 		E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NitrolessiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +114,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E134A97E25D6AAF1003A01EA /* Alternative Icons */ = {
+			isa = PBXGroup;
+			children = (
+				E134A97F25D6AB00003A01EA /* White */,
+			);
+			path = "Alternative Icons";
+			sourceTree = "<group>";
+		};
+		E134A97F25D6AB00003A01EA /* White */ = {
+			isa = PBXGroup;
+			children = (
+				E134A98025D6AB8F003A01EA /* White@2x.png */,
+				E134A98425D6ABA1003A01EA /* White@3x.png */,
+				E134A98825D6ABC0003A01EA /* White~ipad@2x.png */,
+				E134A98C25D6ABEE003A01EA /* White~ipad@3x.png */,
+			);
+			path = White;
+			sourceTree = "<group>";
+		};
+		E134A99225D6AC93003A01EA /* App Icon Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E134A99325D6AC93003A01EA /* AppIconCell.xib */,
+				E134A99425D6AC93003A01EA /* AppIconCell.swift */,
+			);
+			path = "App Icon Cell";
+			sourceTree = "<group>";
+		};
 		E1A8FA4425D42B1D00353A1E = {
 			isa = PBXGroup;
 			children = (
@@ -128,11 +166,11 @@
 		E1A8FA4F25D42B1D00353A1E /* NitrolessiOS */ = {
 			isa = PBXGroup;
 			children = (
+				E134A97E25D6AAF1003A01EA /* Alternative Icons */,
 				E1AD855E25D596CA003DA2DC /* View Controllers */,
 				E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */,
 				E1A8FA5625D42B1D00353A1E /* Main.storyboard */,
 				E1A8FA5925D42B1F00353A1E /* Assets.xcassets */,
-				89DDA44025D6A191000B7956 /* White.png */,
 				E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */,
 				E1A8FA5E25D42B1F00353A1E /* Info.plist */,
 			);
@@ -172,6 +210,7 @@
 		E1AD854C25D59644003DA2DC /* libAmy */ = {
 			isa = PBXGroup;
 			children = (
+				E134A99225D6AC93003A01EA /* App Icon Cell */,
 				E1AD854D25D5966E003DA2DC /* Button Cell */,
 				E1AD855325D5966E003DA2DC /* Settings Switch Cell */,
 				E1AD855025D5966E003DA2DC /* Social Cell */,
@@ -296,13 +335,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E134A98D25D6ABEF003A01EA /* White~ipad@3x.png in Resources */,
 				E1A8FA7525D4348F00353A1E /* NitrolessViewCell.xib in Resources */,
 				E1A8FA5D25D42B1F00353A1E /* LaunchScreen.storyboard in Resources */,
 				E1AD855625D5966E003DA2DC /* ButtonCell.xib in Resources */,
 				E1AD855B25D5966E003DA2DC /* SettingsSwitchCell.xib in Resources */,
+				E134A98125D6AB8F003A01EA /* White@2x.png in Resources */,
+				E134A99525D6AC93003A01EA /* AppIconCell.xib in Resources */,
 				E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */,
-				89DDA44125D6A191000B7956 /* White.png in Resources */,
+				E134A98925D6ABC0003A01EA /* White~ipad@2x.png in Resources */,
 				E1AD855825D5966E003DA2DC /* SocialCell.xib in Resources */,
+				E134A98525D6ABA1003A01EA /* White@3x.png in Resources */,
 				E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +370,7 @@
 				E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */,
 				E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */,
 				E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */,
+				E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */,
 				E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
 				E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */,
 				E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */,
