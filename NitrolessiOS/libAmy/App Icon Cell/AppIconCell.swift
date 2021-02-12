@@ -13,6 +13,7 @@ class AppIconCell: AmyCell {
         didSet {
             self.iconImage.image = UIImage(named: data.image)
             self.iconName.text = data.title
+            self.refreshView()
         }
     }
    
@@ -39,15 +40,27 @@ class AppIconCell: AmyCell {
         return CGSize(width: size.width, height: max(size.height, (minHeight as! CGFloat)))
     }
     
+    @objc private func refreshView() {
+        if data.isDefault && UIApplication.shared.alternateIconName == nil || data.image == UIApplication.shared.alternateIconName {
+            self.isCurrentIcon.backgroundColor = ThemeManager.tintColor
+        } else {
+            self.isCurrentIcon.backgroundColor = .clear
+        }
+    }
+    
     private func meta() {
         self.iconImage.layer.cornerRadius = self.iconImage.frame.height / 2
         self.iconImage.layer.masksToBounds = true
+        self.isCurrentIcon.layer.masksToBounds = true
+        self.isCurrentIcon.layer.cornerRadius = self.isCurrentIcon.frame.height / 2
         self.control.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshView), name: .AppIconChanged, object: nil)
     }
     
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var iconName: UILabel!
     @IBOutlet weak var control: UIControl!
+    @IBOutlet weak var isCurrentIcon: UIView!
 }
 
 fileprivate extension NSNotification.Name {
