@@ -11,7 +11,6 @@ class NitrolessParser {
     static let shared = NitrolessParser()
     var emotes = [Emote]() {
         didSet {
-            emotes = emotes.sorted(by: {$0.name < $1.name })
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .EmoteReload, object: nil)
             }
@@ -49,13 +48,17 @@ class NitrolessParser {
                                 case.png: do {
                                     if let image = UIImage(data: data) {
                                         e.image = image
-                                        self.emotes.append(e)
+                                        if !self.emotes.contains(where: {$0.name == e.name}) {
+                                            self.emotes.append(e)
+                                        }
                                     }
                                 }
                                 case .gif: do {
                                     if let gif = UIImage.gifImageWithData(data) {
                                         e.image = gif
-                                        self.emotes.append(e)
+                                        if !self.emotes.contains(where: {$0.name == e.name}) {
+                                            self.emotes.append(e)
+                                        }
                                     }
                                 }
                                 default: return

@@ -91,6 +91,7 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
                 emote.name.lowercased().contains(self.searchController.searchBar.text?.lowercased() ?? "")
             }
         }
+        self.shownEmotes = self.shownEmotes.sorted(by: {$0.name < $1.name} )
         self.emotesView.reloadData()
     }
 }
@@ -100,9 +101,7 @@ extension HomeViewController: UICollectionViewDelegate {
         if let url = self.shownEmotes[indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
             let alert = UIAlertController(title: "Copied!", message: "Successfully copied emote link", preferredStyle: .alert)
-            
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            
             self.present(alert, animated: true)
         }
     }
