@@ -31,6 +31,9 @@ internal class NetworkManager {
                 }
             } else { completion(false, [[String : String]]()) }
         }
+        NotificationCenter.default.addObserver(forName: .ReloadEmotes, object: nil, queue: nil) {_ in
+            task.cancel()
+        }
         task.resume()
     }
     
@@ -44,7 +47,9 @@ internal class NetworkManager {
                 completion(true, nil)
             }
         }
+        NotificationCenter.default.addObserver(forName: .ReloadEmotes, object: nil, queue: nil) {_ in
+            task.cancel()
+        }
         task.resume()
     }
 }
-
