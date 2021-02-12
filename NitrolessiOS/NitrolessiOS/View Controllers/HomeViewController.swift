@@ -33,6 +33,15 @@ class HomeViewController: UIViewController {
         .lightContent
     }
     
+    private func onBoarding() {
+        if !UserDefaults.standard.bool(forKey: "Onboarding") {
+            let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            UserDefaults.standard.setValue(true, forKey: "Onboarding")
+        }
+    }
+    
     private func meta() {
         self.view.backgroundColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
@@ -58,6 +67,7 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(forName: .EmoteReload, object: nil, queue: nil, using: {_ in
             self.updateFilter()
         })
+        self.onBoarding()
     }
     
     @IBAction func refresh(_ sender: Any) {
@@ -68,7 +78,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let noOfCellsInRow = 4
+        var noOfCellsInRow = 0
+        if UIDevice.current.orientation.isLandscape {
+            noOfCellsInRow = 8
+        } else {
+            noOfCellsInRow = 4
+        }
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right

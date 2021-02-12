@@ -44,7 +44,12 @@ class KeyboardView: UIView {
 
 extension KeyboardView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let noOfCellsInRow = 5
+        var noOfCellsInRow = 0
+        if UIDevice.current.orientation.isLandscape {
+            noOfCellsInRow = 10
+        } else {
+            noOfCellsInRow = 5
+        }
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
