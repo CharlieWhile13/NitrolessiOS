@@ -15,7 +15,7 @@ public typealias completionHandler = (_ success: Bool, _ error: String?) -> ()
 
 internal class NetworkManager {
 
-    internal typealias rdc = (_ success: Bool, _ array: [[String : String]]) -> ()
+    internal typealias rdc = (_ success: Bool, _ array: [[String : String]], _ data: Data?) -> ()
     internal typealias dcr = (_ success: Bool, _ data: Data?) -> ()
 
     class internal func request(url: URL, completion: @escaping rdc) {
@@ -25,11 +25,11 @@ internal class NetworkManager {
             if let data = data {
                 do {
                     let arr = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String : String]] ?? [[String : String]]()
-                    completion(true, arr)
+                    completion(true, arr, data)
                 } catch {
-                    completion(false, [[String : String]]())
+                    completion(false, [[String : String]](), nil)
                 }
-            } else { completion(false, [[String : String]]()) }
+            } else { completion(false, [[String : String]](), nil)}
         }
         NotificationCenter.default.addObserver(forName: .ReloadEmotes, object: nil, queue: nil) {_ in
             task.cancel()
