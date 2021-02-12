@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        NitrolessParser.shared.getEmotes()
+        NitrolessParser.shared.getEmotes(sender: .app)
         window?.tintColor = ThemeManager.tintColor
         return true
     }

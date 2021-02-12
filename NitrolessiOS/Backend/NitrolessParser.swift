@@ -128,9 +128,9 @@ class NitrolessParser {
         }
     }
 	
-    public func getEmotes() {
+    public func getEmotes(sender: Sender) {
         if let cachedData = self.attemptRetrieve(fileName: "emotes.json") {
-            if cachedData != self.lastUsed {
+            if cachedData != self.lastUsed || sender == .keyboard {
                 do {
                     let arr = try JSONSerialization.jsonObject(with: cachedData, options: .mutableContainers) as? [[String : String]] ?? [[String : String]]()
                     self.generateFromArray(array: arr)
@@ -165,6 +165,11 @@ class NitrolessParser {
 enum EmoteType {
     case png
     case gif
+}
+
+enum Sender {
+    case app
+    case keyboard
 }
 
 struct Emote {

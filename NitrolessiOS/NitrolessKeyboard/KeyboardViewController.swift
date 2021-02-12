@@ -14,7 +14,7 @@ class KeyboardViewController: UIInputViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NitrolessParser.shared.getEmotes()
+        NitrolessParser.shared.getEmotes(sender: .keyboard)
         self.meta()
     }
     
