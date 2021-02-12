@@ -34,6 +34,28 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.meta()
+        
+        let images = ["White"]
+        
+        for (index, image) in images.enumerated() {
+            let button = UIButton(frame: CGRect(x: 30, y: view.safeAreaInsets.top + 200 + (CGFloat(index * 130)), width: 120, height: 120))
+            button.setImage(UIImage(named: image), for: .normal)
+            button.tag = index * 1
+            button.addTarget(self, action: #selector(didTapAppIcon(_:)), for: .touchUpInside)
+            view.addSubview(button)
+        }
+    }
+    
+    @objc private func didTapAppIcon(_ sender: UIButton) {
+        if sender.tag == 1 {
+            UIApplication.shared.setAlternateIconName("White") { error in
+                guard error == nil else {
+                    print("something went wrong")
+                    return
+                }
+                print("icon updated")
+            }
+        }
     }
     
     private func meta() {

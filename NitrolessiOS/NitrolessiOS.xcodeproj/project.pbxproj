@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89DDA44125D6A191000B7956 /* White.png in Resources */ = {isa = PBXBuildFile; fileRef = 89DDA44025D6A191000B7956 /* White.png */; };
 		E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		89DDA44025D6A191000B7956 /* White.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = White.png; sourceTree = "<group>"; };
 		E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NitrolessiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */,
 				E1A8FA5625D42B1D00353A1E /* Main.storyboard */,
 				E1A8FA5925D42B1F00353A1E /* Assets.xcassets */,
+				89DDA44025D6A191000B7956 /* White.png */,
 				E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */,
 				E1A8FA5E25D42B1F00353A1E /* Info.plist */,
 			);
@@ -298,6 +301,7 @@
 				E1AD855625D5966E003DA2DC /* ButtonCell.xib in Resources */,
 				E1AD855B25D5966E003DA2DC /* SettingsSwitchCell.xib in Resources */,
 				E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */,
+				89DDA44125D6A191000B7956 /* White.png in Resources */,
 				E1AD855825D5966E003DA2DC /* SocialCell.xib in Resources */,
 				E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */,
 			);
