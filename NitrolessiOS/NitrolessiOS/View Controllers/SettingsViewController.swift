@@ -39,6 +39,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.meta()
+        self.showAlert()
     }
     
     private func meta() {
@@ -61,8 +62,15 @@ class SettingsViewController: UIViewController {
     @IBAction func pop(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
+    
 }
-
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
