@@ -28,8 +28,8 @@ class KeyboardView: UIView {
         self.backgroundColor = .clear
         self.searchBar.barStyle = .black
         self.nextKeyboard.tintColor = ThemeManager.tintColor
-        self.searchBar.tintColor = ThemeManager.tintColor
-        self.searchBar.backgroundColor = ThemeManager.backgroundColour
+        //self.searchBar.tintColor = ThemeManager.tintColor
+        //self.searchBar.backgroundColor = ThemeManager.backgroundColour
         self.collectionView.backgroundColor = .clear
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

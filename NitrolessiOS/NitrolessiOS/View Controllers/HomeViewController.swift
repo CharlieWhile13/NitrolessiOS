@@ -53,6 +53,7 @@ class HomeViewController: UIViewController {
         searchController.searchBar.enablesReturnKeyAutomatically = false
         searchController.searchBar.returnKeyType = UIReturnKeyType.done
         searchController.searchBar.barStyle = .black
+        self.searchController.searchBar.placeholder = "Emote Name"
         definesPresentationContext = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
