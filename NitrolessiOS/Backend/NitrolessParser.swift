@@ -141,7 +141,6 @@ class NitrolessParser {
     }
 	
     public func getEmotes(sender: Sender) {
-        print("This is happenign so lets have fun")
         if let cachedData = self.attemptRetrieve(fileName: "emotes.json") {
             if cachedData != self.lastUsed || sender == .keyboard {
                 do {
