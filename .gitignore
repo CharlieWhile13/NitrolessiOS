@@ -161,7 +161,6 @@ xcuserdata
 *.moved-aside
 DerivedData
 *.hmap
-*.ipa
 *.xcuserstate
 .swiftpm/
 
