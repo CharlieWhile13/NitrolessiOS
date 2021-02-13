@@ -11,6 +11,10 @@ class NitrolessParser {
     static let shared = NitrolessParser()
     var lastUsed: Data?
     
+    var defaults: UserDefaults {
+        UserDefaults.init(suiteName: "group.amywhile.nitroless") ?? UserDefaults.standard
+    }
+    
     var emotes = [Emote]() {
         didSet {
             DispatchQueue.main.async {
@@ -19,6 +23,12 @@ class NitrolessParser {
         }
     }
     
+    public func add(_ emote: Emote) {
+        var e = defaults.dictionary(forKey: "RecentlyUsed") as? [String : Int] ?? [String : Int]()
+        e[emote.name] = (e[emote.name] ?? 0) + 1
+        defaults.setValue(e, forKey: "RecentlyUsed")
+    }
+        
     private func saveToCache(data: Data, fileName: String) {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsDirectory.appendingPathComponent(fileName)

@@ -12,12 +12,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var emotesView: UICollectionView!
     
     let searchController = UISearchController()
-    var shownEmotes = [Emote]()
+    var shownEmotes: [[Emote]] = [[], []]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.meta()
+    }
+    
+    private var irue: Int {
+        if self.shownEmotes[0].isEmpty {
+            return 1
+        } else {
+            return 0
+        }
     }
     
     private var isbe: Bool {
@@ -100,39 +108,52 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
     }
     
     private func updateFilter() {
-        self.shownEmotes.removeAll()
+        self.shownEmotes = [[], []]
         if self.isbe {
-            self.shownEmotes = NitrolessParser.shared.emotes
+            self.shownEmotes[1] = NitrolessParser.shared.emotes
         } else {
-            self.shownEmotes = NitrolessParser.shared.emotes.filter { (emote: Emote) -> Bool in
+            self.shownEmotes[1] = NitrolessParser.shared.emotes.filter { (emote: Emote) -> Bool in
                 emote.name.lowercased().contains(self.searchController.searchBar.text?.lowercased() ?? "")
             }
         }
-        self.shownEmotes = self.shownEmotes.sorted(by: {$0.name < $1.name} )
+        self.shownEmotes[1] = self.shownEmotes[1].sorted(by: {$0.name < $1.name} )
+        
+        let recentlyUsed = NitrolessParser.shared.defaults.dictionary(forKey: "RecentlyUsed") as? [String : Int] ?? [String : Int]()
+        for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {
+            for (index, emote) in self.shownEmotes[1].enumerated() where emote.name == k {
+                self.shownEmotes[1].remove(at: index)
+                self.shownEmotes[0].append(emote)
+            }
+        }
         self.emotesView.reloadData()
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let url = self.shownEmotes[indexPath.row].url {
+        if let url = self.shownEmotes[indexPath.section + self.irue][indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
             let alert = UIAlertController(title: "Copied!", message: "Successfully copied emote link", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
+            NitrolessParser.shared.add(self.shownEmotes[indexPath.section + self.irue][indexPath.row])
         }
     }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if self.shownEmotes[0].isEmpty { return 1 } else { return 2 }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.shownEmotes.count
+        self.shownEmotes[section].count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NitrolessViewCell", for: indexPath) as! NitrolessViewCell
-        cell.emote = self.shownEmotes[indexPath.row]
+        cell.emote = self.shownEmotes[indexPath.section + self.irue][indexPath.row]
         return cell
     }
 }

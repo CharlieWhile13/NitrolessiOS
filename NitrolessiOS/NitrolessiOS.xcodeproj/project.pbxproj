@@ -83,6 +83,8 @@
 		E134A9AA25D6DF08003A01EA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		E1967FCC25D8746B00561922 /* NitrolessiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NitrolessiOS.entitlements; sourceTree = "<group>"; };
+		E1967FD325D874FF00561922 /* NitrolessKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NitrolessKeyboard.entitlements; sourceTree = "<group>"; };
 		E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NitrolessiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDelegate.swift; sourceTree = "<group>"; };
 		E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		E1A8FA4F25D42B1D00353A1E /* NitrolessiOS */ = {
 			isa = PBXGroup;
 			children = (
+				E1967FCC25D8746B00561922 /* NitrolessiOS.entitlements */,
 				E1967FBF25D8329300561922 /* Resources */,
 				E1967FBC25D8327700561922 /* Delegates */,
 				E134A97E25D6AAF1003A01EA /* Alternative Icons */,
@@ -231,6 +234,7 @@
 		E1A8FA8125D43B8300353A1E /* NitrolessKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				E1967FD325D874FF00561922 /* NitrolessKeyboard.entitlements */,
 				E1A8FA8225D43B8300353A1E /* KeyboardViewController.swift */,
 				E1A8FA8425D43B8300353A1E /* Info.plist */,
 				E134A9A625D6D8BC003A01EA /* KeyboardView.xib */,
@@ -584,6 +588,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
@@ -592,7 +597,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.NitrolessiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.Nitroless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -605,6 +610,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
@@ -613,7 +619,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.NitrolessiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.Nitroless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -623,6 +629,7 @@
 		E1A8FA8925D43B8300353A1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NitrolessKeyboard/NitrolessKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
@@ -632,7 +639,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.NitrolessiOS.NitrolessKeyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.Nitroless.NitrolessKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -643,6 +650,7 @@
 		E1A8FA8A25D43B8300353A1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NitrolessKeyboard/NitrolessKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
@@ -652,7 +660,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.NitrolessiOS.NitrolessKeyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.Nitroless.NitrolessKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
