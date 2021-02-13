@@ -97,7 +97,7 @@ extension KeyboardView: UISearchBarDelegate, UISearchResultsUpdating {
 extension KeyboardView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = self.shownEmotes[indexPath.section + self.irue][indexPath.row].url {
-            self.proxy.insertText(url.absoluteString)
+            self.proxy.insertText(url.absoluteString + " ")
             UINotificationFeedbackGenerator().notificationOccurred(.success)
             NitrolessParser.shared.add(self.shownEmotes[indexPath.section + self.irue][indexPath.row])
         }
