@@ -25,7 +25,7 @@
 		E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
 		E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
-		E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */; };
+		E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */; };
 		E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */; };
 		E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5625D42B1D00353A1E /* Main.storyboard */; };
 		E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5925D42B1F00353A1E /* Assets.xcassets */; };
@@ -84,7 +84,7 @@
 		E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NitrolessiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDelegate.swift; sourceTree = "<group>"; };
 		E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E1A8FA5725D42B1D00353A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1A8FA5925D42B1F00353A1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,6 +155,25 @@
 			path = "App Icon Cell";
 			sourceTree = "<group>";
 		};
+		E1967FBC25D8327700561922 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		E1967FBF25D8329300561922 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8FA5E25D42B1F00353A1E /* Info.plist */,
+				E1A8FA5625D42B1D00353A1E /* Main.storyboard */,
+				E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */,
+				E1A8FA5925D42B1F00353A1E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E1A8FA4425D42B1D00353A1E = {
 			isa = PBXGroup;
 			children = (
@@ -179,13 +198,10 @@
 		E1A8FA4F25D42B1D00353A1E /* NitrolessiOS */ = {
 			isa = PBXGroup;
 			children = (
+				E1967FBF25D8329300561922 /* Resources */,
+				E1967FBC25D8327700561922 /* Delegates */,
 				E134A97E25D6AAF1003A01EA /* Alternative Icons */,
 				E1AD855E25D596CA003DA2DC /* View Controllers */,
-				E1A8FA5025D42B1D00353A1E /* AppDelegate.swift */,
-				E1A8FA5625D42B1D00353A1E /* Main.storyboard */,
-				E1A8FA5925D42B1F00353A1E /* Assets.xcassets */,
-				E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */,
-				E1A8FA5E25D42B1F00353A1E /* Info.plist */,
 			);
 			path = NitrolessiOS;
 			sourceTree = "<group>";
@@ -394,7 +410,7 @@
 				E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */,
 				E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */,
 				E1AD855925D5966E003DA2DC /* SocialCell.swift in Sources */,
-				E1A8FA5125D42B1D00353A1E /* AppDelegate.swift in Sources */,
+				E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */,
 				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
 				E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */,
 			);
@@ -570,7 +586,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
-				INFOPLIST_FILE = NitrolessiOS/Info.plist;
+				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -591,7 +607,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
-				INFOPLIST_FILE = NitrolessiOS/Info.plist;
+				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
