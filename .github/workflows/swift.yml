@@ -16,10 +16,6 @@ jobs:
     - name: Add & Commit
       uses: EndBug/add-and-commit@v7.0.0
       with:
-        # The arguments for the `git add` command (see the paragraph below for more info)
-        # Default: '.'
-        add: 'NitrolessiOS.ipa'
-
         # The message for the commit
         # Default: 'Commit from GitHub Actions (name of the workflow)'
         message: 'Add updated IPA'
