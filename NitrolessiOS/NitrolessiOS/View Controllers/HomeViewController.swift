@@ -143,13 +143,9 @@ extension HomeViewController: UICollectionViewDelegate {
 
 extension HomeViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if self.shownEmotes[0].isEmpty { return 1 } else { return 2 }
-    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int { if self.shownEmotes[0].isEmpty { return 1 } else { return 2 } }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.shownEmotes[section].count
-    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { self.shownEmotes[section + self.irue].count }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NitrolessViewCell", for: indexPath) as! NitrolessViewCell

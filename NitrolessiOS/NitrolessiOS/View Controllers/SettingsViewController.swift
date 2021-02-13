@@ -78,17 +78,11 @@ class SettingsViewController: UIViewController {
 }
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.toShow.count
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { self.toShow.count }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.toShow[section].count
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { self.toShow[section].count }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
-    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 30 }
         
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()

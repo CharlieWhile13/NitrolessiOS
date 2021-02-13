@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -15,8 +16,12 @@
             <rect key="frame" x="0.0" y="0.0" width="488" height="383"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfO-Ol-e8v" userLabel="Cum">
+                    <rect key="frame" x="0.0" y="0.0" width="488" height="349"/>
+                    <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                </view>
                 <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="BpB-1A-X8I">
-                    <rect key="frame" x="0.0" y="0.0" width="488" height="26"/>
+                    <rect key="frame" x="0.0" y="0.0" width="488" height="25.5"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XsW-I2-kmc">
@@ -50,9 +55,12 @@ CQ
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="BpB-1A-X8I" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="25f-b9-v2G"/>
+                <constraint firstItem="pfO-Ol-e8v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MK7-A8-cbp"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="pfO-Ol-e8v" secondAttribute="bottom" id="UgE-zH-lPX"/>
                 <constraint firstItem="XsW-I2-kmc" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="XAn-uR-3bh"/>
                 <constraint firstAttribute="trailing" secondItem="BpB-1A-X8I" secondAttribute="trailing" id="a6u-i7-Kf5"/>
                 <constraint firstItem="XsW-I2-kmc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="g47-su-HVw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="pfO-Ol-e8v" secondAttribute="trailing" id="gBe-WZ-xzo"/>
                 <constraint firstItem="9Oj-wv-747" firstAttribute="top" secondItem="XsW-I2-kmc" secondAttribute="bottom" constant="2.5" id="gvp-r5-WUl"/>
                 <constraint firstItem="9Oj-wv-747" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="2.5" id="j7q-rl-5a0"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XsW-I2-kmc" secondAttribute="trailing" id="jr3-ej-aJm"/>
@@ -60,10 +68,12 @@ CQ
                 <constraint firstItem="BpB-1A-X8I" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ohK-fG-2YB"/>
                 <constraint firstAttribute="bottom" secondItem="9Oj-wv-747" secondAttribute="bottom" constant="2.5" id="u7J-nX-Siy"/>
                 <constraint firstItem="XsW-I2-kmc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="vGG-pL-rSG"/>
+                <constraint firstItem="pfO-Ol-e8v" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xmj-55-C7v"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="collectionView" destination="XsW-I2-kmc" id="HnX-1w-uy7"/>
+                <outlet property="cum" destination="pfO-Ol-e8v" id="lV4-Xa-B7Y"/>
                 <outlet property="nextKeyboard" destination="9Oj-wv-747" id="4ib-F2-dPz"/>
                 <outlet property="searchBar" destination="BpB-1A-X8I" id="Bz3-Qq-hmU"/>
             </connections>
@@ -74,6 +84,9 @@ CQ
         <image name="globe" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

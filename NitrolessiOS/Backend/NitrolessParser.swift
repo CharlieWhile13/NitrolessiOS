@@ -15,6 +15,10 @@ class NitrolessParser {
         UserDefaults.init(suiteName: "group.amywhile.nitroless") ?? UserDefaults.standard
     }
     
+    var documentsDirectory: URL {
+        return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.amywhile.nitroless") ?? FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    }
+    
     var emotes = [Emote]() {
         didSet {
             DispatchQueue.main.async {
@@ -30,7 +34,6 @@ class NitrolessParser {
     }
         
     private func saveToCache(data: Data, fileName: String) {
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         if !FileManager.default.fileExists(atPath: fileURL.path) {
             do {
@@ -42,7 +45,6 @@ class NitrolessParser {
     }
     
     private func attemptRetrieve(fileName: String) -> Data? {
-        let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
         do {
             return try Data(contentsOf: fileURL)
@@ -139,6 +141,7 @@ class NitrolessParser {
     }
 	
     public func getEmotes(sender: Sender) {
+        print("This is happenign so lets have fun")
         if let cachedData = self.attemptRetrieve(fileName: "emotes.json") {
             if cachedData != self.lastUsed || sender == .keyboard {
                 do {

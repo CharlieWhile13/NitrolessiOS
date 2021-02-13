@@ -12,6 +12,7 @@ class KeyboardView: UIView {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var nextKeyboard: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var cum: UIView!
     var shownEmotes: [[Emote]] = [[], []]
     var proxy: UITextDocumentProxy!
     
@@ -33,11 +34,10 @@ class KeyboardView: UIView {
     }
     
     private func meta() {
+        self.cum.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.01)
         self.backgroundColor = .clear
         self.searchBar.barStyle = .black
         self.nextKeyboard.tintColor = ThemeManager.tintColor
-        //self.searchBar.tintColor = ThemeManager.tintColor
-        //self.searchBar.backgroundColor = ThemeManager.backgroundColour
         self.collectionView.backgroundColor = .clear
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
@@ -106,13 +106,9 @@ extension KeyboardView: UICollectionViewDelegate {
 
 extension KeyboardView: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if self.shownEmotes[0].isEmpty { return 1 } else { return 2 }
-    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int { if self.shownEmotes[0].isEmpty { return 1 } else { return 2 } }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.shownEmotes[section].count
-    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { self.shownEmotes[section + self.irue].count }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NitrolessViewCell", for: indexPath) as! NitrolessViewCell
