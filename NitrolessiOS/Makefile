@@ -9,4 +9,4 @@ all: clean
 	zip -r9 NitrolessiOS.ipa Payload/NitrolessiOS.app
 
 clean:
-	rm -rf build Payload Odyssey.ipa
+	rm -rf build Payload NitrolessiOS.ipa
