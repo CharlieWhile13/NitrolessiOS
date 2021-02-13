@@ -12,17 +12,14 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var toShow: [[AmyCellData]] = [
         [
-            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Nitroless", title: "Visit the website", link: URL(string: "https://nitroless.github.io/web")!)),
+            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Nitroless", title: "Visit the website", link: URL(string: "https://thealphastream.github.io/nitroless/")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Discord", title: "Join the Discord", link: URL(string: "https://discord.gg/4UMZcspzBy")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Github", title: "View on Github", link: URL(string: "https://github.com/CharlieWhile13/NitrolessiOS")!)),
-            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Nitroless", title: "Folllow our Twitter", link: URL(string: "https://twitter.com/Nitroless_")!))
         ],
         [
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Alpha", title: "Alpha_Stream", link: URL(string: "https://twitter.com/Kutarin_")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Paras", title: "ParasKCD", link: URL(string: "https://twitter.com/paraskcd")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Amy", title: "Amy", link: URL(string: "https://twitter.com/elihweilrahc13")!)),
-            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Superbro", title: "Superbro", link: URL(string: "https://twitter.com/suuperbro")!)),
-            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Althio", title: "Althio", link: URL(string: "https://twitter.com/a1thio")!))
         ],
         [
             AmyCellData(identifier: .Button, data: ButtonCellData(title: "How to enable keyboard", notificationName: "KeyboardHelp"))
@@ -71,14 +68,7 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func showAlert() {
-        let alert = UIAlertController(title: "Add keyboard to settings", message:
-                                        """
-1∙ Go to Settings > General then Keyboard
-2∙ Go to Keyboards then Add New Keyboard then tap NitrolessKeyboard
-3∙ Tap on NitrolessKeyboard and tap Allow Full Access
-   Please return here to see these instructions again in the future
-"""
-                                      , preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }

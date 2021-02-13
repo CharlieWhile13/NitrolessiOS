@@ -35,14 +35,7 @@ class HomeViewController: UIViewController {
     
     private func onBoarding() {
         if !UserDefaults.standard.bool(forKey: "Onboarding") {
-            let alert = UIAlertController(title: "Add keyboard to settings", message:
-                                            """
-1∙ Go to Settings > General then Keyboard
-2∙ Go to Keyboards then Add New Keyboard then tap NitrolessKeyboard
-3∙ Tap on NitrolessKeyboard and tap Allow Full Access
-   Please look at the info page to see these instructions again in the future
-"""
-                                          , preferredStyle: .alert)
+            let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
             UserDefaults.standard.setValue(true, forKey: "Onboarding")
