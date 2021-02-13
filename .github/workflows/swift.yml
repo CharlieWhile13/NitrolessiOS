@@ -10,4 +10,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build
-      run: /usr/bin/xcodebuild clean analyze CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=NO PRODUCT_BUNDLE_IDENTIFIER="$(BUNDLE)" -sdk iphoneos -scheme NitrolessiOS -configuration Release -derivedDataPath build
+      run: |
+        cd NitrolessiOS
+        /usr/bin/xcodebuild clean analyze CODE_SIGNING_ALLOWED=NO ONLY_ACTIVE_ARCH=NO PRODUCT_BUNDLE_IDENTIFIER="$(BUNDLE)" -sdk iphoneos -scheme NitrolessiOS -configuration Release -derivedDataPath build
