@@ -35,9 +35,16 @@ jobs:
         NITROLESS_DISTRIBUTION: ${{ secrets.NITROLESS_DISTRIBUTION }}
         NITROLESS_KEYBOARD_DISTRIBUTION: ${{ secrets.NITROLESS_KEYBOARD_DISTRIBUTION }}
       run: |
+        mkdir tempCertificates
+        cd tempCertificates
+        echo "$NITROLESS_DISTRIBUTION" | base64 --decode > NitrolessDistribution.mobileprovision
+        echo "$NITROLESS_KEYBOARD_DISTRIBUTION" | base64 --decode > NitrolessKeyboardDistribution.mobileprovision
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-        echo "$NITROLESS_DISTRIBUTION" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/NitrolessDistribution.mobileprovision
-        echo "$NITROLESS_KEYBOARD_DISTRIBUTION" | base64 --decode > ~/Library/MobileDevice/Provisioning\ Profiles/NitrolessKeyboardDistribution.mobileprovision
+        for PROVISION in `ls ./*.mobileprovision`
+        do
+          UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./$PROVISION)`
+          cp "./$PROVISION" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
+        done
     - uses: actions/checkout@v2
     - name: Build
       run: |
