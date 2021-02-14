@@ -34,17 +34,22 @@ jobs:
       env: 
         NITROLESS_DISTRIBUTION: ${{ secrets.NITROLESS_DISTRIBUTION }}
         NITROLESS_KEYBOARD_DISTRIBUTION: ${{ secrets.NITROLESS_KEYBOARD_DISTRIBUTION }}
+        NITROLESS_DEVELOPMENT: ${{ secrets.NITROLESS_DEVELOPMENT }}
+        NITROLESS_KEYBOARD_DEVELOPMENT: ${{ secrets.NITROLESS_KEYBOARD_DEVELOPMENT }}
       run: |
         mkdir tempCertificates
         cd tempCertificates
         echo "$NITROLESS_DISTRIBUTION" | base64 --decode > NitrolessDistribution.mobileprovision
         echo "$NITROLESS_KEYBOARD_DISTRIBUTION" | base64 --decode > NitrolessKeyboardDistribution.mobileprovision
+        echo "$NITROLESS_DEVELOPMENT" | base64 --decode > NitrolessDevelopment.mobileprovision
+        echo "$NITROLESS_KEYBOARD_DEVELOPMENT" | base64 --decode > NitrolessKeyboardDevelopment.mobileprovision
         mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
         for PROVISION in `ls ./*.mobileprovision`
         do
           UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./$PROVISION)`
           cp "./$PROVISION" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
         done
+        ls ~/Library/MobileDevice/Provisioning\ Profiles
     - uses: actions/checkout@v2
     - name: Build
       run: |
