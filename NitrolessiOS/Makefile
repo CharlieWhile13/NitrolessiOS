@@ -4,7 +4,7 @@ BUNDLE := com.amywhile.Nitroless
 
 all: clean
 	xcodebuild clean build ONLY_ACTIVE_ARCH=NO -sdk iphoneos -scheme NitrolessiOS -configuration Automation -derivedDataPath build 
-	ln -sf build/Build/Products/Release-iphoneos Payload
+	ln -sf build/Build/Products/Automation-iphoneos Payload
 	rm -rf Payload/NitrolessiOS.app/Frameworks
 	zip -r9 NitrolessiOS.ipa Payload/NitrolessiOS.app
 
