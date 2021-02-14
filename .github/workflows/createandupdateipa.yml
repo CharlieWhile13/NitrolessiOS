@@ -9,7 +9,7 @@ jobs:
       BUNDLE: ${{ 'com.amywhile.Nitroless' }}
     steps:
     - name: Import all certificates
-      env: |
+      env: 
         SIGNING_CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATES_P12_PASSWORD }}
         DEVELOPMENT_CERTIFICATE: ${{ secrets.CERTIFICATES_P12 }}
         DISTRIBUTION_CERTIFICATE: ${{ secrets.DISTRIBUTION_P12 }}
@@ -31,7 +31,7 @@ jobs:
                         -T /usr/bin/codesign
         security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
     - name: Import Provisoning Profiles
-      env: |
+      env: 
         NITROLESS_DISTRIBUTION: ${{ secrets.NITROLESS_DISTRIBUTION }}
         NITROLESS_KEYBOARD_DISTRIBUTION: ${{ secrets.NITROLESS_KEYBOARD_DISTRIBUTION }}
       run: |
