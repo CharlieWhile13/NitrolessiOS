@@ -35,13 +35,7 @@ class NitrolessParser {
         
     private func saveToCache(data: Data, fileName: String) {
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        if !FileManager.default.fileExists(atPath: fileURL.path) {
-            do {
-                try data.write(to: fileURL)
-            } catch {
-                fatalError("Well this is dumb")
-            }
-        }
+        do { try data.write(to: fileURL) } catch { fatalError("Well this is dumb") }
     }
     
     private func attemptRetrieve(fileName: String) -> Data? {
@@ -60,13 +54,13 @@ class NitrolessParser {
             case ".png": do {
                 e.type = .png
                 e.fullPath = e.name + ".png"
-                guard let url = URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/assets/\(e.name ?? "Error").png") else { fatalError("Fucking Alpha") }
+                guard let url = URL(string: "https://nitroless.quiprr.dev/\(e.name ?? "Error").png") else { fatalError("Fucking Alpha") }
                 e.url = url
             }
             case ".gif": do {
                 e.type = .gif
                 e.fullPath = e.name + ".gif"
-                guard let url = URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/assets/\(e.name ?? "Error").gif") else { fatalError("Fucking Alpha") }
+                guard let url = URL(string: "https://nitroless.quiprr.dev/\(e.name ?? "Error").gif") else { fatalError("Fucking Alpha") }
                 e.url = url
             }
             default: break
@@ -83,7 +77,7 @@ class NitrolessParser {
                 }
             }
             case .gif: do {
-                if let gif = UIImage.gifImageWithData(data) {
+                if let gif = GifManager.generateGif(data) {
                     e.image = gif
                 }
             }
@@ -124,7 +118,7 @@ class NitrolessParser {
                             }
                         }
                         case .gif: do {
-                            if let gif = UIImage.gifImageWithData(data) {
+                            if let gif = GifManager.generateGif(data) {
                                 e.image = gif
                                 if !self.emotes.contains(where: {$0.name == e.name}) {
                                     self.saveToCache(data: data, fileName: e.fullPath)
@@ -150,7 +144,7 @@ class NitrolessParser {
                 } catch {}
             }
         }
-        NetworkManager.request(url: URL(string: "https://raw.githubusercontent.com/TheAlphaStream/nitroless-assets/main/emotes.json")!, completion: { (success, array, data) -> Void in
+        NetworkManager.request(url: URL(string: "https://api.quiprr.dev/v1/nitroless/emotes")!, completion: { (success, array, data) -> Void in
             if success {
                 if let cachedData = self.attemptRetrieve(fileName: "emotes.json") {
                     if cachedData == data {

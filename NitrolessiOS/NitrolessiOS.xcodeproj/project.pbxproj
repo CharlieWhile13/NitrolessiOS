@@ -15,7 +15,6 @@
 		E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A99425D6AC93003A01EA /* AppIconCell.swift */; };
 		E134A99925D6D876003A01EA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6825D42C5800353A1E /* NetworkManager.swift */; };
 		E134A99C25D6D878003A01EA /* NitrolessParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */; };
-		E134A99D25D6D87B003A01EA /* UIImage+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6F25D4336500353A1E /* UIImage+gif.swift */; };
 		E134A9A025D6D87F003A01EA /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
 		E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */; };
 		E134A9A725D6D8BC003A01EA /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E134A9A625D6D8BC003A01EA /* KeyboardView.xib */; };
@@ -32,7 +31,6 @@
 		E1A8FA5D25D42B1F00353A1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */; };
 		E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6825D42C5800353A1E /* NetworkManager.swift */; };
 		E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */; };
-		E1A8FA7025D4336500353A1E /* UIImage+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6F25D4336500353A1E /* UIImage+gif.swift */; };
 		E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */; };
 		E1A8FA7525D4348F00353A1E /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
 		E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
@@ -46,6 +44,9 @@
 		E1AD855B25D5966E003DA2DC /* SettingsSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AD855525D5966E003DA2DC /* SettingsSwitchCell.xib */; };
 		E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */; };
 		E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD856325D5999E003DA2DC /* BridgingStubs.swift */; };
+		E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */; };
+		E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */; };
+		E1AFD86425DC2E6E00C1DDAE /* GifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +95,6 @@
 		E1A8FA5E25D42B1F00353A1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A8FA6825D42C5800353A1E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessParser.swift; sourceTree = "<group>"; };
-		E1A8FA6F25D4336500353A1E /* UIImage+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+gif.swift"; sourceTree = "<group>"; };
 		E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessViewCell.swift; sourceTree = "<group>"; };
 		E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NitrolessViewCell.xib; sourceTree = "<group>"; };
 		E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
@@ -109,6 +109,8 @@
 		E1AD855525D5966E003DA2DC /* SettingsSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSwitchCell.xib; sourceTree = "<group>"; };
 		E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1AD856325D5999E003DA2DC /* BridgingStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingStubs.swift; sourceTree = "<group>"; };
+		E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessNavigationController.swift; sourceTree = "<group>"; };
+		E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,9 +181,7 @@
 		E1A8FA4425D42B1D00353A1E = {
 			isa = PBXGroup;
 			children = (
-				E1AD854C25D59644003DA2DC /* libAmy */,
-				E1A8FA7725D434A300353A1E /* NitrolessViewCell */,
-				E1A8FA6625D42C1D00353A1E /* Backend */,
+				E1AFD85925DC2B8100C1DDAE /* Shared */,
 				E1A8FA4F25D42B1D00353A1E /* NitrolessiOS */,
 				E1A8FA8125D43B8300353A1E /* NitrolessKeyboard */,
 				E1A8FA4E25D42B1D00353A1E /* Products */,
@@ -214,10 +214,10 @@
 			children = (
 				E1A8FA6825D42C5800353A1E /* NetworkManager.swift */,
 				E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */,
-				E1A8FA6F25D4336500353A1E /* UIImage+gif.swift */,
 				E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */,
 				E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */,
 				E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */,
+				E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -287,8 +287,19 @@
 			children = (
 				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
 				E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */,
+				E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		E1AFD85925DC2B8100C1DDAE /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8FA7725D434A300353A1E /* NitrolessViewCell */,
+				E1AD854C25D59644003DA2DC /* libAmy */,
+				E1A8FA6625D42C1D00353A1E /* Backend */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,9 +352,11 @@
 				TargetAttributes = {
 					E1A8FA4C25D42B1D00353A1E = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					E1A8FA7F25D43B8300353A1E = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -403,11 +416,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */,
-				E1A8FA7025D4336500353A1E /* UIImage+gif.swift in Sources */,
 				E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */,
 				E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */,
 				E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */,
+				E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */,
 				E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */,
 				E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
@@ -415,6 +428,7 @@
 				E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */,
 				E1AD855925D5966E003DA2DC /* SocialCell.swift in Sources */,
 				E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */,
+				E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */,
 				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
 				E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */,
 			);
@@ -424,7 +438,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E134A99D25D6D87B003A01EA /* UIImage+gif.swift in Sources */,
 				E134A9AB25D6DF08003A01EA /* KeyboardView.swift in Sources */,
 				E134A99C25D6D878003A01EA /* NitrolessParser.swift in Sources */,
 				E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
@@ -432,6 +445,7 @@
 				E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */,
 				E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */,
 				E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
+				E1AFD86425DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E134A9A025D6D87F003A01EA /* NSNotification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,6 +602,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
@@ -599,6 +614,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.Nitroless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -610,6 +627,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
@@ -621,6 +639,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.Nitroless;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -629,6 +648,7 @@
 		E1A8FA8925D43B8300353A1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessKeyboard/NitrolessKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
@@ -642,6 +662,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.amywhile.Nitroless.NitrolessKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -650,6 +671,7 @@
 		E1A8FA8A25D43B8300353A1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessKeyboard/NitrolessKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;

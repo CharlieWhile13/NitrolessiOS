@@ -15,7 +15,22 @@ class NitrolessViewCell: UICollectionViewCell {
     
     var emote: Emote? {
         didSet {
-            if let i = emote?.image { self.imageView.image = i }
+            self.imageView.animationImages = nil
+            self.imageView.stopAnimating()
+            if let i = emote?.image {
+                switch emote?.type {
+                    case .png: self.imageView.image = i
+                    case .gif: do {
+                        if let ag = i as? AmyGif {
+                            self.imageView.animationImages = ag.image
+                            self.imageView.animationDuration = ag.calculatedDuration
+                            self.imageView.startAnimating()
+                        }
+                    }
+                    default: return
+                }
+                self.imageView.image = i
+            }
             if let t = emote?.name { self.label.text = t }
         }
     }

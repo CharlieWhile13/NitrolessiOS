@@ -88,7 +88,7 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var noOfCellsInRow = 0
-        if UIDevice.current.orientation.isLandscape {
+        if UIDevice.current.orientation.isLandscape || UIDevice.current.userInterfaceIdiom == .pad {
             noOfCellsInRow = 8
         } else {
             noOfCellsInRow = 4
@@ -153,9 +153,4 @@ extension HomeViewController: UICollectionViewDataSource {
         return cell
     }
 }
-	
-class NitrolessNC: UINavigationController {
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
-    }
-}
+

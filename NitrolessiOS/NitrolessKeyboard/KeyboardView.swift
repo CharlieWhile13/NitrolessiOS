@@ -53,7 +53,7 @@ class KeyboardView: UIView {
 extension KeyboardView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var noOfCellsInRow = 0
-        if UIDevice.current.orientation.isLandscape {
+        if UIDevice.current.orientation.isLandscape || UIDevice.current.userInterfaceIdiom == .pad {
             noOfCellsInRow = 10
         } else {
             noOfCellsInRow = 5
