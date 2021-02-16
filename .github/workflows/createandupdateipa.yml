@@ -58,3 +58,4 @@ jobs:
       uses: EndBug/add-and-commit@v7.0.0
       with:
         message: 'Add updated IPA'
+        signoff: true
