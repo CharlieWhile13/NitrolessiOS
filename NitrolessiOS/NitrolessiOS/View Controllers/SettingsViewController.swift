@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController {
         [
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Alpha", title: "Alpha_Stream ~ Site and Assets", link: URL(string: "https://twitter.com/Kutarin_")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Paras", title: "ParasKCD ~ Site and Assets", link: URL(string: "https://twitter.com/paraskcd")!)),
-            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Amy", title: "Amy ~ iOS App", link: URL(string: "https://twitter.com/elihweilrahc13")!)),
+            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Amy", title: "Amy ~ iOS App", link: URL(string: "https://twitter.com/elihwyma")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Althio", title: "Althio ~ Mac App", link: URL(string: "https://twitter.com/a1thio")!)),
         ],
         [
