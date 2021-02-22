@@ -23,6 +23,7 @@ class NitrolessViewCell: UICollectionViewCell {
                     case .gif: do {
                         if let ag = i as? AmyGif {
                             self.imageView.animationImages = ag.image
+                            self.imageView.animationRepeatCount = .max
                             self.imageView.animationDuration = ag.calculatedDuration
                             self.imageView.startAnimating()
                         }

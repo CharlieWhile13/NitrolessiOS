@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     let searchController = UISearchController()
     var shownEmotes: [[Emote]] = [[], []]
     var toastView: ToastView = .fromNib()
+    var amyCount = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +45,13 @@ class HomeViewController: UIViewController {
     
     private func onBoarding() {
         if !UserDefaults.standard.bool(forKey: "Onboarding") {
-            let alert = UIAlertController(title: "Add keyboard in settings", message: """
-1 • Go to Settings
-2 • Go to General then Keyboard then go to Keyboards then Add New Keyboard
-3 • Tap on NitrolessKeyboard and tap it again then tap Allow Full Access
-""", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Add keyboard in settings", message:
+            """
+            1 • Go to Settings
+            2 • Go to General then Keyboard then go to Keyboards then Add New Keyboard
+            3 • Tap on NitrolessKeyboard and tap it again then tap Allow Full Access
+            """
+                                          , preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
             UserDefaults.standard.setValue(true, forKey: "Onboarding")
@@ -59,6 +62,8 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        
 
         searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
@@ -77,6 +82,9 @@ class HomeViewController: UIViewController {
         self.emotesView.showsVerticalScrollIndicator = false
         self.emotesView.showsHorizontalScrollIndicator = false
         self.emotesView.backgroundColor = .none
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(HomeViewController.amyEasterEgg))
+        longPress.minimumPressDuration = 1
+        self.emotesView.addGestureRecognizer(longPress)
         self.emotesView.register(UINib(nibName: "NitrolessViewCell", bundle: nil), forCellWithReuseIdentifier: "NitrolessViewCell")
         NotificationCenter.default.addObserver(forName: .EmoteReload, object: nil, queue: nil, using: {_ in
             self.updateFilter()
@@ -87,25 +95,6 @@ class HomeViewController: UIViewController {
     @IBAction func refresh(_ sender: Any) {
         NotificationCenter.default.post(name: .ReloadEmotes, object: nil)
         NitrolessParser.shared.getEmotes(sender: .app)
-    }
-    
-    func toastView() {
-        let toastLabel = UILabel(frame: CGRect(x: view.frame.size.width/2 - 74, y: view.frame.size.height-539, width: 150,  height : 35))
-        if #available(iOS 13.0, *) {
-            toastLabel.backgroundColor = .systemBackground
-        } else {
-            // Fallback on earlier versions
-            toastLabel.backgroundColor = .white
-        }
-        toastLabel.textAlignment = .center
-                view.addSubview(toastLabel)
-                toastLabel.text = "Copied"
-                toastLabel.alpha = 1.5
-                toastLabel.layer.cornerRadius = 10;
-                toastLabel.clipsToBounds  =  true
-        UIView.animate(withDuration: 2.0, delay: 0.1, options: UIView.AnimationOptions.curveEaseOut, animations: {
-                    toastLabel.alpha = 0.0
-        })
     }
 }
 
@@ -157,14 +146,10 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = self.shownEmotes[indexPath.section + self.irue][indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
-<<<<<<< HEAD
-            toastView()
             NitrolessParser.shared.add(self.shownEmotes[indexPath.section + self.irue][indexPath.row])
-=======
             if let nc = self.navigationController {
                 self.toastView.showText(nc, "Copied \(self.shownEmotes[indexPath.section + self.irue][indexPath.row].name ?? "Error")")
             }
->>>>>>> f4781838d4aaeb8728315715f4bb5dfba97fcb25
         }
     }
 }
@@ -180,4 +165,32 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.emote = self.shownEmotes[indexPath.section + self.irue][indexPath.row]
         return cell
     }
+}
+
+//MARK: - Amy Easter Egg
+extension HomeViewController {
+    @objc func amyEasterEgg(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
+            let touchPoint = longPressGestureRecognizer.location(in: self.emotesView)
+            if let indexPath = self.emotesView.indexPathForItem(at: touchPoint) {
+                let emote = self.shownEmotes[indexPath.section + self.irue][indexPath.row]
+                if emote.name == "Amy" {
+                    if self.amyCount != 4 {
+                        if let nc = self.navigationController {
+                            self.toastView.showText(nc, ThemeManager.amyEasterEgg[self.amyCount])
+                            self.amyCount += 1
+                        }
+                    } else {
+                        if let nc = self.navigationController {
+                            self.toastView.showText(nc, ThemeManager.amyEasterEgg[self.amyCount])
+                            for (index, emote) in NitrolessParser.shared.emotes.enumerated() where emote.name == "Amy" {
+                                NitrolessParser.shared.emotes.remove(at: index)
+                            }
+                            self.amyCount = 0
+                        }
+                    }
+                }
+           }
+       }
+   }
 }

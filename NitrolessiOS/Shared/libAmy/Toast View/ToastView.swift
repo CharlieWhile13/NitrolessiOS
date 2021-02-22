@@ -12,6 +12,7 @@ class ToastView: UIView {
     @IBOutlet weak var text: UILabel!
     @IBOutlet weak var popup: UIView!
     var heartbeat: Timer?
+    var isPresenting = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,35 +26,38 @@ class ToastView: UIView {
     
     public func showText(_ sender: UIViewController, _ text: String) {
         self.heartbeat?.invalidate()
+        if self.isPresenting {
+            self.removeFromSuperview()
+        }
         self.removeFromSuperview()
         self.text.text = text
-        self.frame = sender.view.frame
-        let mFrame = self.popup.frame
-        let deadframe = CGRect(x: 0, y: 0 - mFrame.width, width: mFrame.width, height: mFrame.height)
-        self.popup.frame = deadframe
+        self.frame = CGRect(x: 0, y: 25, width: sender.view.frame.width, height: self.popup.frame.height)
+        let mFrame = self.frame
+        let deadframe = CGRect(x: 0, y: 0 - self.frame.height, width: self.frame.width, height: self.frame.height)
+        self.frame = deadframe
         sender.view.addSubview(self)
-        UIView.animate(withDuration: 0.5,
-                         delay: 0, usingSpringWithDamping: 1.0,
-                         initialSpringVelocity: 1.0,
+        UIView.animate(withDuration: 0.15,
+                         delay: 0,
                          options: .curveEaseInOut, animations: {
-                            self.popup.frame = mFrame
+                            self.frame = mFrame
+                            self.isPresenting = true
                          }, completion: { (value: Bool) in
-                            self.heartbeat = Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
+                            self.heartbeat = Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
                                 self.hide()
                             }
                          })
     }
     
     public func hide() {
-        let mFrame = self.popup.frame
-        let deadframe = CGRect(x: 0, y: 0 - mFrame.width, width: mFrame.width, height: mFrame.height)
-        UIView.animate(withDuration: 0.5,
-                         delay: 0, usingSpringWithDamping: 1.0,
-                         initialSpringVelocity: 1.0,
+        let mFrame = self.frame
+        let deadframe = CGRect(x: 0, y: 0 - mFrame.height, width: mFrame.width, height: mFrame.height)
+        UIView.animate(withDuration: 0.15,
+                         delay: 0,
                          options: .curveEaseInOut, animations: {
-                            self.popup.frame = deadframe
+                            self.frame = deadframe
                          }, completion: { (value: Bool) in
                             self.removeFromSuperview()
+                            self.isPresenting = false
                          })
     }
 }

@@ -24,7 +24,8 @@ class SettingsViewController: UIViewController {
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Superbro", title: "Superbro ~ iOS App", link: URL(string: "https://twitter.com/suuperbro")!))
         ],
         [
-            AmyCellData(identifier: .Button, data: ButtonCellData(title: "How to enable keyboard", notificationName: "KeyboardHelp"))
+            AmyCellData(identifier: .Button, data: ButtonCellData(title: "How to enable keyboard", notificationName: "KeyboardHelp")),
+            AmyCellData(identifier: .Button, data: ButtonCellData(title: "Reset Recently Used", notificationName: "ResetRecentlyUsed"))
         ],
         [
             AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "Black", isDefault: true, image: "Nitroless")),
@@ -63,6 +64,10 @@ class SettingsViewController: UIViewController {
         self.tableView.backgroundColor = .clear
         
         NotificationCenter.default.addObserver(self, selector: #selector(showAlert), name: .KeyboardHelp, object: nil)
+        NotificationCenter.default.addObserver(forName: .ResetRecentlyUsed, object: nil, queue: nil) { notification in
+            NitrolessParser.shared.defaults.removeObject(forKey: "RecentlyUsed")
+            NotificationCenter.default.post(name: .EmoteReload, object: nil)
+        }
     }
 
     @IBAction func pop(_ sender: Any) {
@@ -70,16 +75,16 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func showAlert() {
-        let alert = UIAlertController(title: "Add keyboard to settings", message: """
-1 • Go to Settings
-2 • Go to General then Keyboard then go to Keyboards then Add New Keyboard
-3 • Tap on NitrolessKeyboard and tap it again then tap Allow Full Access
-""", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add keyboard to settings", message:
+                                        """
+                                            1 • Go to Settings
+                                            2 • Go to General then Keyboard then go to Keyboards then Add New Keyboard
+                                            3 • Tap on NitrolessKeyboard and tap it again then tap Allow Full Access
+                                            """
+                                      , preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
-    
-    
 }
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -153,4 +158,5 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension NSNotification.Name {
     static let KeyboardHelp = Notification.Name("KeyboardHelp")
+    static let ResetRecentlyUsed = Notification.Name("ResetRecentlyUsed")
 }
