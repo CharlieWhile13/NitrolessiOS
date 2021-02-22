@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     let searchController = UISearchController()
     var shownEmotes: [[Emote]] = [[], []]
+    var toastView: ToastView = .fromNib()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,8 +157,14 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = self.shownEmotes[indexPath.section + self.irue][indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
+<<<<<<< HEAD
             toastView()
             NitrolessParser.shared.add(self.shownEmotes[indexPath.section + self.irue][indexPath.row])
+=======
+            if let nc = self.navigationController {
+                self.toastView.showText(nc, "Copied \(self.shownEmotes[indexPath.section + self.irue][indexPath.row].name ?? "Error")")
+            }
+>>>>>>> f4781838d4aaeb8728315715f4bb5dfba97fcb25
         }
     }
 }
