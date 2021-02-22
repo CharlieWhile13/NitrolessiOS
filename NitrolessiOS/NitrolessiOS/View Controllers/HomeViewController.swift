@@ -43,7 +43,11 @@ class HomeViewController: UIViewController {
     
     private func onBoarding() {
         if !UserDefaults.standard.bool(forKey: "Onboarding") {
-            let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Add keyboard in settings", message: """
+1 • Go to Settings
+2 • Go to General then Keyboard then go to Keyboards then Add New Keyboard
+3 • Tap on NitrolessKeyboard and tap it again then tap Allow Full Access
+""", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true)
             UserDefaults.standard.setValue(true, forKey: "Onboarding")
@@ -82,6 +86,25 @@ class HomeViewController: UIViewController {
     @IBAction func refresh(_ sender: Any) {
         NotificationCenter.default.post(name: .ReloadEmotes, object: nil)
         NitrolessParser.shared.getEmotes(sender: .app)
+    }
+    
+    func toastView() {
+        let toastLabel = UILabel(frame: CGRect(x: view.frame.size.width/2 - 74, y: view.frame.size.height-539, width: 150,  height : 35))
+        if #available(iOS 13.0, *) {
+            toastLabel.backgroundColor = .systemBackground
+        } else {
+            // Fallback on earlier versions
+            toastLabel.backgroundColor = .white
+        }
+        toastLabel.textAlignment = .center
+                view.addSubview(toastLabel)
+                toastLabel.text = "Copied"
+                toastLabel.alpha = 1.5
+                toastLabel.layer.cornerRadius = 10;
+                toastLabel.clipsToBounds  =  true
+        UIView.animate(withDuration: 2.0, delay: 0.1, options: UIView.AnimationOptions.curveEaseOut, animations: {
+                    toastLabel.alpha = 0.0
+        })
     }
 }
 
@@ -127,15 +150,13 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
         }
         self.emotesView.reloadData()
     }
-}
+    }
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = self.shownEmotes[indexPath.section + self.irue][indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
-            let alert = UIAlertController(title: "Copied!", message: "Successfully copied emote link", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
+            toastView()
             NitrolessParser.shared.add(self.shownEmotes[indexPath.section + self.irue][indexPath.row])
         }
     }
@@ -153,4 +174,3 @@ extension HomeViewController: UICollectionViewDataSource {
         return cell
     }
 }
-

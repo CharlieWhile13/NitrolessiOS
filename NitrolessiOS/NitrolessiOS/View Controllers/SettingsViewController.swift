@@ -21,6 +21,7 @@ class SettingsViewController: UIViewController {
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Paras", title: "ParasKCD ~ Site and Assets", link: URL(string: "https://twitter.com/paraskcd")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Amy", title: "Amy ~ iOS App", link: URL(string: "https://twitter.com/elihwyma")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Althio", title: "Althio ~ Mac App", link: URL(string: "https://twitter.com/a1thio")!)),
+            AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Superbro", title: "Superbro ~ iOS App", link: URL(string: "https://twitter.com/suuperbro")!))
         ],
         [
             AmyCellData(identifier: .Button, data: ButtonCellData(title: "How to enable keyboard", notificationName: "KeyboardHelp"))
@@ -69,7 +70,11 @@ class SettingsViewController: UIViewController {
     }
     
     @objc private func showAlert() {
-        let alert = UIAlertController(title: "Add keyboard to settings", message: "Go to Settings > General > Keyboard > Keyboards > Add New Keyboard > Tap NitrolessKeyboard > Tap Allow Full Access", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add keyboard to settings", message: """
+1 • Go to Settings
+2 • Go to General then Keyboard then go to Keyboards then Add New Keyboard
+3 • Tap on NitrolessKeyboard and tap it again then tap Allow Full Access
+""", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
