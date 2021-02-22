@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     let searchController = UISearchController()
     var shownEmotes: [[Emote]] = [[], []]
+    var toastView: ToastView = .fromNib()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,10 +134,9 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let url = self.shownEmotes[indexPath.section + self.irue][indexPath.row].url {
             UIPasteboard.general.string = url.absoluteString
-            let alert = UIAlertController(title: "Copied!", message: "Successfully copied emote link", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
-            NitrolessParser.shared.add(self.shownEmotes[indexPath.section + self.irue][indexPath.row])
+            if let nc = self.navigationController {
+                self.toastView.showText(nc, "Copied \(self.shownEmotes[indexPath.section + self.irue][indexPath.row].name ?? "Error")")
+            }
         }
     }
 }

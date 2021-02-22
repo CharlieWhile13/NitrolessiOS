@@ -47,6 +47,8 @@
 		E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */; };
 		E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */; };
 		E1AFD86425DC2E6E00C1DDAE /* GifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */; };
+		E1C655CD25E425220032C4E1 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C655CB25E425220032C4E1 /* ToastView.xib */; };
+		E1C655CE25E425220032C4E1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C655CC25E425220032C4E1 /* ToastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +113,8 @@
 		E1AD856325D5999E003DA2DC /* BridgingStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingStubs.swift; sourceTree = "<group>"; };
 		E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessNavigationController.swift; sourceTree = "<group>"; };
 		E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManager.swift; sourceTree = "<group>"; };
+		E1C655CB25E425220032C4E1 /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
+		E1C655CC25E425220032C4E1 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +250,7 @@
 		E1AD854C25D59644003DA2DC /* libAmy */ = {
 			isa = PBXGroup;
 			children = (
+				E1C655CA25E425220032C4E1 /* Toast View */,
 				E134A99225D6AC93003A01EA /* App Icon Cell */,
 				E1AD854D25D5966E003DA2DC /* Button Cell */,
 				E1AD855325D5966E003DA2DC /* Settings Switch Cell */,
@@ -300,6 +305,15 @@
 				E1A8FA6625D42C1D00353A1E /* Backend */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		E1C655CA25E425220032C4E1 /* Toast View */ = {
+			isa = PBXGroup;
+			children = (
+				E1C655CB25E425220032C4E1 /* ToastView.xib */,
+				E1C655CC25E425220032C4E1 /* ToastView.swift */,
+			);
+			path = "Toast View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,6 +406,7 @@
 				E134A98125D6AB8F003A01EA /* White@2x.png in Resources */,
 				E134A99525D6AC93003A01EA /* AppIconCell.xib in Resources */,
 				E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */,
+				E1C655CD25E425220032C4E1 /* ToastView.xib in Resources */,
 				E134A98925D6ABC0003A01EA /* White~ipad@2x.png in Resources */,
 				E1AD855825D5966E003DA2DC /* SocialCell.xib in Resources */,
 				E134A98525D6ABA1003A01EA /* White@3x.png in Resources */,
@@ -419,6 +434,7 @@
 				E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */,
 				E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */,
+				E1C655CE25E425220032C4E1 /* ToastView.swift in Sources */,
 				E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */,
 				E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */,
