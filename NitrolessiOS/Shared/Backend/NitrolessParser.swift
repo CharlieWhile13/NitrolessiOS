@@ -17,7 +17,22 @@ class NitrolessParser {
         "pogu",
         "pogyou",
         "okaychamp",
-        "pausechamp"
+        "pausechamp",
+        "monkaS",
+        "monkaShake",
+        "monkaW",
+        "monkafroW",
+        "hyperpogger",
+        "peepoBrokenHeart",
+        "peepoThis",
+        "peepobabybottle",
+        "peepocringe",
+        "peepocry",
+        "peepoleave",
+        "peeporun",
+        "pepebritish",
+        "pepehands",
+        "xmas_pepega"
     ]
     
     var defaults: UserDefaults {

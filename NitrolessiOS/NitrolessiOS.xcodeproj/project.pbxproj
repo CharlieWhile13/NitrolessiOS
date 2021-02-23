@@ -560,7 +560,7 @@
 				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -582,7 +582,7 @@
 				CODE_SIGN_ENTITLEMENTS = NitrolessKeyboard/NitrolessKeyboard.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -725,7 +725,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -751,7 +751,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -773,7 +773,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessKeyboard/NitrolessKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -797,7 +797,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = NitrolessKeyboard/NitrolessKeyboard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 72;
+				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
