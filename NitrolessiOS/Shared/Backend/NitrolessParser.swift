@@ -11,6 +11,15 @@ class NitrolessParser {
     static let shared = NitrolessParser()
     var lastUsed: Data?
     
+    let fuckingAppleStrings: [String] = [
+        "pog",
+        "pogey",
+        "pogu",
+        "pogyou",
+        "okaychamp",
+        "pausechamp"
+    ]
+    
     var defaults: UserDefaults {
         UserDefaults.init(suiteName: "group.amywhile.nitroless") ?? UserDefaults.standard
     }
@@ -97,7 +106,9 @@ class NitrolessParser {
                 arrayICanUse.remove(at: index - buffer)
                 buffer += 1
                 if !localArray.contains(where: {$0.name == e.name}) {
-                    localArray.append(e)
+                    if !self.fuckingAppleStrings.contains(e.name) {
+                        localArray.append(e)
+                    }
                 }
             }
         }
@@ -112,8 +123,10 @@ class NitrolessParser {
                             if let image = UIImage(data: data) {
                                 e.image = image
                                 if !self.emotes.contains(where: {$0.name == e.name}) {
+                                    if !self.fuckingAppleStrings.contains(e.name) {
+                                        self.emotes.append(e)
+                                    }
                                     self.saveToCache(data: data, fileName: e.fullPath)
-                                    self.emotes.append(e)
                                 }
                             }
                         }
@@ -121,8 +134,10 @@ class NitrolessParser {
                             if let gif = GifManager.generateGif(data) {
                                 e.image = gif
                                 if !self.emotes.contains(where: {$0.name == e.name}) {
+                                    if !self.fuckingAppleStrings.contains(e.name) {
+                                        self.emotes.append(e)
+                                    }
                                     self.saveToCache(data: data, fileName: e.fullPath)
-                                    self.emotes.append(e)
                                 }
                             }
                         }

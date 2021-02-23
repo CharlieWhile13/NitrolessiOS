@@ -14,8 +14,8 @@
             filePath = "Shared/Backend/NitrolessParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "getEmotes(sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -31,8 +31,8 @@
             filePath = "Shared/Backend/NitrolessParser.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "imageGenerate(emote:data:)"
             landmarkType = "7">
          </BreakpointContent>
