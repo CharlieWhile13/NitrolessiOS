@@ -31,7 +31,7 @@ class ToastView: UIView {
         }
         self.removeFromSuperview()
         self.text.text = text
-        self.frame = CGRect(x: 0, y: 25, width: sender.view.frame.width, height: self.popup.frame.height)
+        self.frame = CGRect(x: 0, y: 35, width: sender.view.frame.width, height: self.popup.frame.height)
         let mFrame = self.frame
         let deadframe = CGRect(x: 0, y: 0 - self.frame.height, width: self.frame.width, height: self.frame.height)
         self.frame = deadframe

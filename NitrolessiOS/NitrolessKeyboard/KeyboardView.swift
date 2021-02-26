@@ -81,7 +81,7 @@ extension KeyboardView: UISearchBarDelegate, UISearchResultsUpdating {
                 emote.name.lowercased().contains(self.searchBar.text?.lowercased() ?? "")
             }
         }
-        self.shownEmotes[1] = self.shownEmotes[1].sorted(by: {$0.name < $1.name} )
+        self.shownEmotes[1] = self.shownEmotes[1].sorted(by: {$0.name.lowercased() < $1.name.lowercased()} )
         
         let recentlyUsed = NitrolessParser.shared.defaults.dictionary(forKey: "RecentlyUsed") as? [String : Int] ?? [String : Int]()
         for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {

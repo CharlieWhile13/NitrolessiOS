@@ -59,7 +59,12 @@ class NitrolessParser {
         
     private func saveToCache(data: Data, fileName: String) {
         let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        do { try data.write(to: fileURL) } catch { fatalError("Well this is dumb") }
+        do {
+            try data.write(to: fileURL)
+            
+        } catch {
+            print("erm wtf")
+        }
     }
     
     private func attemptRetrieve(fileName: String) -> Data? {
