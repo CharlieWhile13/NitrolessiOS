@@ -12,7 +12,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var emotesView: UICollectionView!
     
     let searchController = UISearchController()
-    var shownEmotes: [[Emote]] = [[], []]
+    var recentlyUsed = [Emote]()
+    var repos = [Repo]()
     var toastView: ToastView = .fromNib()
     var amyCount = 0
 
@@ -20,14 +21,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.meta()
-    }
-    
-    private var irue: Int {
-        if self.shownEmotes[0].isEmpty {
-            return 1
-        } else {
-            return 0
-        }
     }
     
     private var isbe: Bool {
@@ -63,8 +56,6 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         
-        
-
         searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -82,9 +73,6 @@ class HomeViewController: UIViewController {
         self.emotesView.showsVerticalScrollIndicator = false
         self.emotesView.showsHorizontalScrollIndicator = false
         self.emotesView.backgroundColor = .none
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(HomeViewController.amyEasterEgg))
-        longPress.minimumPressDuration = 1
-        self.emotesView.addGestureRecognizer(longPress)
         self.emotesView.register(UINib(nibName: "NitrolessViewCell", bundle: nil), forCellWithReuseIdentifier: "NitrolessViewCell")
         NotificationCenter.default.addObserver(forName: .EmoteReload, object: nil, queue: nil, using: {_ in
             self.updateFilter()
@@ -93,8 +81,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func refresh(_ sender: Any) {
-        NotificationCenter.default.post(name: .ReloadEmotes, object: nil)
-        NitrolessParser.shared.getEmotes(sender: .app)
+        RepoManager.shared.update()
     }
 }
 
@@ -121,76 +108,82 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
     }
     
     private func updateFilter() {
-        self.shownEmotes = [[], []]
-        if self.isbe {
-            self.shownEmotes[1] = NitrolessParser.shared.emotes
-        } else {
-            self.shownEmotes[1] = NitrolessParser.shared.emotes.filter { (emote: Emote) -> Bool in
-                emote.name.lowercased().contains(self.searchController.searchBar.text?.lowercased() ?? "")
+        self.recentlyUsed.removeAll()
+        var repos = RepoManager.shared.repos.sorted(by: { $0.displayName < $1.displayName })
+        
+        if let recentlyUsed = RepoManager.shared.defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] {
+            let allEmotes = RepoManager.shared.allEmotes
+            for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {
+                for emote in allEmotes where emote.url.absoluteString == k {
+                    self.recentlyUsed.append(emote)
+                }
             }
         }
-        self.shownEmotes[1] = self.shownEmotes[1].sorted(by: {$0.name.lowercased() < $1.name.lowercased()} )
         
-        let recentlyUsed = NitrolessParser.shared.defaults.dictionary(forKey: "RecentlyUsed") as? [String : Int] ?? [String : Int]()
-        for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {
-            for (index, emote) in self.shownEmotes[1].enumerated() where emote.name == k {
-                self.shownEmotes[1].remove(at: index)
-                self.shownEmotes[0].append(emote)
+        if let search = self.searchController.searchBar.text?.lowercased(),
+           !search.isEmpty {
+            for (index, repo) in repos.enumerated() {
+                let emotes = repo.emotes.filter({ search.contains($0.name.lowercased()) })
+                repos[index].emotes = emotes
             }
         }
         self.emotesView.reloadData()
     }
-    }
+}
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let url = self.shownEmotes[indexPath.section + self.irue][indexPath.row].url {
-            UIPasteboard.general.string = url.absoluteString
-            NitrolessParser.shared.add(self.shownEmotes[indexPath.section + self.irue][indexPath.row])
-            if let nc = self.navigationController {
-                self.toastView.showText(nc, "Copied \(self.shownEmotes[indexPath.section + self.irue][indexPath.row].name ?? "Error")")
+        let emote: Emote = { () -> Emote in
+            switch section(indexPath.section) {
+            case .recentlyUsed: return recentlyUsed[indexPath.row]
+            case .repo: return repos[indexPath.section].emotes[indexPath.row]
             }
+        }()
+        UIPasteboard.general.string = emote.url.absoluteString
+        RepoManager.shared.use(emote)
+        if let nc = self.navigationController {
+            self.toastView.showText(nc, "Copied \(emote.name)")
         }
     }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int { if self.shownEmotes[0].isEmpty { return 1 } else { return 2 } }
+    enum Section {
+        case recentlyUsed
+        case repo
+    }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { self.shownEmotes[section + self.irue].count }
+    func section(_ section: Int) -> Section {
+        if recentlyUsed.isEmpty {
+            return .repo
+        } else if section == 0 {
+            return .recentlyUsed
+        } else {
+            return .repo
+        }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        repos.count + (recentlyUsed.isEmpty ? 0 : 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch self.section(section) {
+        case .recentlyUsed: return recentlyUsed.count
+        case .repo: return repos[section].emotes.count
+        }
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let emote: Emote = { () -> Emote in
+            switch section(indexPath.section) {
+            case .recentlyUsed: return recentlyUsed[indexPath.row]
+            case .repo: return repos[indexPath.section].emotes[indexPath.row]
+            }
+        }()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NitrolessViewCell", for: indexPath) as! NitrolessViewCell
-        cell.emote = self.shownEmotes[indexPath.section + self.irue][indexPath.row]
+        cell.emote = emote
         return cell
     }
-}
-
-//MARK: - Amy Easter Egg
-extension HomeViewController {
-    @objc func amyEasterEgg(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        if longPressGestureRecognizer.state == UIGestureRecognizer.State.began {
-            let touchPoint = longPressGestureRecognizer.location(in: self.emotesView)
-            if let indexPath = self.emotesView.indexPathForItem(at: touchPoint) {
-                let emote = self.shownEmotes[indexPath.section + self.irue][indexPath.row]
-                if emote.name == "Amy" {
-                    if self.amyCount != 4 {
-                        if let nc = self.navigationController {
-                            self.toastView.showText(nc, ThemeManager.amyEasterEgg[self.amyCount])
-                            self.amyCount += 1
-                        }
-                    } else {
-                        if let nc = self.navigationController {
-                            self.toastView.showText(nc, ThemeManager.amyEasterEgg[self.amyCount])
-                            for (index, emote) in NitrolessParser.shared.emotes.enumerated() where emote.name == "Amy" {
-                                NitrolessParser.shared.emotes.remove(at: index)
-                            }
-                            self.amyCount = 0
-                        }
-                    }
-                }
-           }
-       }
-   }
 }

@@ -7,11 +7,14 @@
 
 import UIKit
 
-class GifManager {
- 
-    public class func generateGif(_ data: Data) -> AmyGif? {
+final class Gif: UIImage {
+    var calculatedDuration: Double?
+    var image: [UIImage]?
+    
+    override convenience init?(data: Data) {
+        self.init()
         guard let source = CGImageSourceCreateWithData(data as CFData, nil),
-        let metadata = CGImageSourceCopyPropertiesAtIndex(source, 0, nil), 
+        let metadata = CGImageSourceCopyPropertiesAtIndex(source, 0, nil),
         let delayTime = ((metadata as NSDictionary)["{GIF}"] as? NSMutableDictionary)?["DelayTime"] as? Double else { return nil }
         var images = [UIImage]()
         let imageCount = CGImageSourceGetCount(source)
@@ -21,18 +24,7 @@ class GifManager {
             }
         }
         let calculatedDuration = Double(imageCount) * delayTime
-        return AmyGif(image: images, duration: calculatedDuration)
-    }
-    
-}
-
-class AmyGif: UIImage {
-    var calculatedDuration: Double!
-    var image: [UIImage]!
-    
-    convenience init(image: [UIImage], duration: Double) {
-        self.init()
-        self.image = image
-        self.calculatedDuration = duration
+        self.image = images
+        self.calculatedDuration = calculatedDuration
     }
 }

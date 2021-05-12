@@ -13,8 +13,6 @@
 		E134A98D25D6ABEF003A01EA /* White~ipad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98C25D6ABEE003A01EA /* White~ipad@3x.png */; };
 		E134A99525D6AC93003A01EA /* AppIconCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E134A99325D6AC93003A01EA /* AppIconCell.xib */; };
 		E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A99425D6AC93003A01EA /* AppIconCell.swift */; };
-		E134A99925D6D876003A01EA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6825D42C5800353A1E /* NetworkManager.swift */; };
-		E134A99C25D6D878003A01EA /* NitrolessParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */; };
 		E134A9A025D6D87F003A01EA /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
 		E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */; };
 		E134A9A725D6D8BC003A01EA /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E134A9A625D6D8BC003A01EA /* KeyboardView.xib */; };
@@ -22,6 +20,14 @@
 		E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
 		E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
 		E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
+		E146AB7A264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
+		E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
+		E146AB7F264C36440007BFD0 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB7E264C36440007BFD0 /* SourcesViewController.swift */; };
+		E146AB83264C366A0007BFD0 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */; };
+		E146AB8D264C3B630007BFD0 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB8C264C3B630007BFD0 /* Objects.swift */; };
+		E146AB8E264C3B630007BFD0 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB8C264C3B630007BFD0 /* Objects.swift */; };
+		E146AB94264C4FA80007BFD0 /* RepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB93264C4FA80007BFD0 /* RepoManager.swift */; };
+		E146AB95264C4FA80007BFD0 /* RepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB93264C4FA80007BFD0 /* RepoManager.swift */; };
 		E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */; };
@@ -29,8 +35,6 @@
 		E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5625D42B1D00353A1E /* Main.storyboard */; };
 		E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5925D42B1F00353A1E /* Assets.xcassets */; };
 		E1A8FA5D25D42B1F00353A1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */; };
-		E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6825D42C5800353A1E /* NetworkManager.swift */; };
-		E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */; };
 		E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */; };
 		E1A8FA7525D4348F00353A1E /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
 		E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
@@ -85,6 +89,11 @@
 		E134A9A625D6D8BC003A01EA /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		E134A9AA25D6DF08003A01EA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
+		E146AB7E264C36440007BFD0 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
+		E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		E146AB8C264C3B630007BFD0 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		E146AB93264C4FA80007BFD0 /* RepoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoManager.swift; sourceTree = "<group>"; };
 		E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		E1967FCC25D8746B00561922 /* NitrolessiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NitrolessiOS.entitlements; sourceTree = "<group>"; };
 		E1967FD325D874FF00561922 /* NitrolessKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NitrolessKeyboard.entitlements; sourceTree = "<group>"; };
@@ -95,8 +104,6 @@
 		E1A8FA5925D42B1F00353A1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A8FA5C25D42B1F00353A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A8FA5E25D42B1F00353A1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1A8FA6825D42C5800353A1E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessParser.swift; sourceTree = "<group>"; };
 		E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessViewCell.swift; sourceTree = "<group>"; };
 		E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NitrolessViewCell.xib; sourceTree = "<group>"; };
 		E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+Extension.swift"; sourceTree = "<group>"; };
@@ -163,6 +170,23 @@
 			path = "App Icon Cell";
 			sourceTree = "<group>";
 		};
+		E146AB78264C330C0007BFD0 /* AmyCommon */ = {
+			isa = PBXGroup;
+			children = (
+				E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */,
+			);
+			path = AmyCommon;
+			sourceTree = "<group>";
+		};
+		E146AB86264C36AB0007BFD0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */,
+				E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E1967FBC25D8327700561922 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,12 +240,11 @@
 		E1A8FA6625D42C1D00353A1E /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				E1A8FA6825D42C5800353A1E /* NetworkManager.swift */,
-				E1A8FA6B25D42E1B00353A1E /* NitrolessParser.swift */,
-				E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */,
+				E146AB86264C36AB0007BFD0 /* Extensions */,
 				E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */,
-				E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */,
 				E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */,
+				E146AB8C264C3B630007BFD0 /* Objects.swift */,
+				E146AB93264C4FA80007BFD0 /* RepoManager.swift */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -250,6 +273,7 @@
 		E1AD854C25D59644003DA2DC /* libAmy */ = {
 			isa = PBXGroup;
 			children = (
+				E146AB78264C330C0007BFD0 /* AmyCommon */,
 				E1C655CA25E425220032C4E1 /* Toast View */,
 				E134A99225D6AC93003A01EA /* App Icon Cell */,
 				E1AD854D25D5966E003DA2DC /* Button Cell */,
@@ -290,9 +314,11 @@
 		E1AD855E25D596CA003DA2DC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */,
 				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
 				E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */,
 				E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */,
+				E146AB7E264C36440007BFD0 /* SourcesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -430,12 +456,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E146AB8D264C3B630007BFD0 /* Objects.swift in Sources */,
+				E146AB94264C4FA80007BFD0 /* RepoManager.swift in Sources */,
 				E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */,
 				E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */,
+				E146AB83264C366A0007BFD0 /* BaseTableViewController.swift in Sources */,
 				E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
-				E1A8FA6C25D42E1B00353A1E /* NitrolessParser.swift in Sources */,
 				E1C655CE25E425220032C4E1 /* ToastView.swift in Sources */,
-				E1A8FA6925D42C5800353A1E /* NetworkManager.swift in Sources */,
 				E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */,
 				E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */,
@@ -446,7 +473,9 @@
 				E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */,
 				E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */,
 				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
+				E146AB7A264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
 				E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */,
+				E146AB7F264C36440007BFD0 /* SourcesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,13 +483,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E146AB8E264C3B630007BFD0 /* Objects.swift in Sources */,
 				E134A9AB25D6DF08003A01EA /* KeyboardView.swift in Sources */,
-				E134A99C25D6D878003A01EA /* NitrolessParser.swift in Sources */,
+				E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
 				E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
-				E134A99925D6D876003A01EA /* NetworkManager.swift in Sources */,
 				E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */,
 				E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */,
 				E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
+				E146AB95264C4FA80007BFD0 /* RepoManager.swift in Sources */,
 				E1AFD86425DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E134A9A025D6D87F003A01EA /* NSNotification+Extension.swift in Sources */,
 			);

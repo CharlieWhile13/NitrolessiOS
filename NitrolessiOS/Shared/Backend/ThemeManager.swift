@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThemeManager {
+final class ThemeManager {
     static var backgroundColour: UIColor {
         UIColor(red: 0.17, green: 0.18, blue: 0.20, alpha: 1.00)
     }
@@ -19,12 +19,4 @@ class ThemeManager {
     static var tintColor: UIColor {
         UIColor(red: 0.45, green: 0.54, blue: 0.85, alpha: 1.00)
     }
-    
-    static var amyEasterEgg: [String] = [
-        "Stop touching me",
-        "Please stop touching me!",
-        "Stop.... Please :(",
-        "Ssttttoooooppppppp!",
-        "FINE!"
-    ]
 }

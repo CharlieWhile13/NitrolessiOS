@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lGB-9c-Zod">
-                                <rect key="frame" x="8" y="140" width="399" height="722"/>
+                                <rect key="frame" x="7.5" y="140" width="399" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SQv-w6-DIB">
                                     <size key="itemSize" width="128" height="128"/>
@@ -58,7 +58,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iex-Jw-IMP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="873.91304347826099" y="-75"/>
+            <point key="canvasLocation" x="-36" y="739"/>
+        </scene>
+        <!--Sources View Controller-->
+        <scene sceneID="FF4-KC-9QC">
+            <objects>
+                <tableViewController id="FGQ-iG-p3B" customClass="SourcesViewController" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2ll-Ox-Mt1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <connections>
+                            <outlet property="dataSource" destination="FGQ-iG-p3B" id="sTd-v9-uPi"/>
+                            <outlet property="delegate" destination="FGQ-iG-p3B" id="gXO-r3-eru"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="dcA-MJ-AAw"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qws-Jc-tYn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1091" y="739"/>
         </scene>
         <!--About-->
         <scene sceneID="Nqx-II-qVL">
@@ -95,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ER-AE-9si" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3272.4637681159425" y="-75"/>
+            <point key="canvasLocation" x="-36" y="2496"/>
         </scene>
         <!--NitrolessNC-->
         <scene sceneID="bDa-2l-it4">
@@ -139,7 +158,25 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeq-8o-7vO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360.8695652173915" y="-75"/>
+            <point key="canvasLocation" x="-36" y="1593"/>
+        </scene>
+        <!--NitrolessNC-->
+        <scene sceneID="nuc-Lx-Yjm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bci-m8-3oJ" customClass="NitrolessNC" customModule="NitrolessiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="gkS-Y8-3Ox">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FGQ-iG-p3B" kind="relationship" relationship="rootViewController" id="Pr9-EC-WzG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GaM-DS-NvZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1090" y="-75"/>
         </scene>
     </scenes>
     <resources>
