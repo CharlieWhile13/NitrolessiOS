@@ -109,8 +109,8 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     private func updateFilter() {
         self.recentlyUsed.removeAll()
-        var repos = RepoManager.shared.repos.sorted(by: { $0.displayName < $1.displayName })
-        
+        var repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
+         
         if let recentlyUsed = RepoManager.shared.defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] {
             let allEmotes = RepoManager.shared.allEmotes
             for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {

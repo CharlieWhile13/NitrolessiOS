@@ -63,9 +63,9 @@ final class RepoManager {
         var array = [[String: String]]()
         for repo in repos {
             let dict: [String: String] = [
-                "name": repo.displayName,
+                "name": repo.displayName ?? "",
                 "url": repo.url.absoluteString,
-                "path": repo.path
+                "path": repo.path ?? ""
             ]
             array.append(dict)
         }
@@ -112,7 +112,7 @@ final class RepoManager {
                    let path = dict["path"] as? String {
                     new.displayName = name
                     new.path = path
-                    new.emotes = self.emotes(emotes, new.url, new.path)
+                    new.emotes = self.emotes(emotes, new.url, new.path ?? "")
                     self.update(tmp, new)
                 }
             }

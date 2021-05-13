@@ -37,12 +37,12 @@ struct Emote {
 }
 
 struct Repo {
-    var displayName: String
+    var displayName: String?
     var url: URL
     var emotes = [Emote]()
-    var path: String
+    var path: String?
     
-    init(url: URL, displayName: String, path: String) {
+    init(url: URL, displayName: String? = nil, path: String? = nil) {
         self.url = url
         self.displayName = displayName
         self.path = path

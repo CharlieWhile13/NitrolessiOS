@@ -26,7 +26,7 @@ class SourcesViewController: BaseTableViewController {
     }
     
     public func update() {
-        self.repos = RepoManager.shared.repos.sorted(by: { $0.displayName < $1.displayName })
+        self.repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
         tableView.reloadData()
     }
 
