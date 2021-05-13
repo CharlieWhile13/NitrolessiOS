@@ -32,7 +32,7 @@ struct Emote {
             self.type = .gif
         default: return nil
         }
-        self.url = repoURL.appendingPathComponent(repoPath).appendingPathExtension(type.rawValue)
+        self.url = repoURL.appendingPathComponent(repoPath).appendingPathComponent(name).appendingPathExtension(type.rawValue)
     }
 }
 

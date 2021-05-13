@@ -8,9 +8,10 @@
 import Foundation
 
 final class RepoManager {
-    static let shared = RepoManager()
     
+    static let shared = RepoManager()
     let queue = DispatchQueue(label: "group.amywhile.nitroless.repoQueue", attributes: .concurrent)
+    
     var repos = [Repo]() {
         didSet {
             DispatchQueue.main.async {
@@ -32,24 +33,26 @@ final class RepoManager {
     }
     
     public func append(_ repo: Repo) {
-        if repos.contains(where: { $0.url != repo.url }) {
-            queue.async(flags: .barrier) {
+        if !repos.contains(where: { $0.url == repo.url }) {
+            //queue.async(flags: .barrier) {
                 self.repos.append(repo)
-            }
+                self.save()
+            //}
         }
     }
     
     private func update(_ old: Repo, _ new: Repo) {
-        guard let index = repos.firstIndex(where: { $0.url == old.url }) else { return append(new) }
         queue.async(flags: .barrier) {
-            self.repos.remove(at: index)
-            self.repos.append(new)
+            guard let index = self.repos.firstIndex(where: { $0.url == old.url }) else { return self.append(new) }
+            self.repos[index] = new
+            self.save()
         }
     }
     
     public func remove(_ repo: Repo) {
         queue.async(flags: .barrier) {
             self.repos.removeAll(where: { $0.url == repo.url })
+            self.save()
         }
     }
     
@@ -73,15 +76,18 @@ final class RepoManager {
     }
     
     init() {
-        guard let customRepos = defaults.array(forKey: "NitrolessRepos") as? [[String: String]] else { return }
-        for repo in customRepos {
-            guard let name = repo["name"],
-                  let tmpUrl = repo["url"],
-                  let url = URL(string: tmpUrl),
-                  let path = repo["path"] else { continue }
-            self.append(Repo(url: url, displayName: name, path: path))
+        if let customRepos = defaults.array(forKey: "NitrolessRepos") as? [[String: String]] {
+            for repo in customRepos {
+                guard let name = repo["name"],
+                      let tmpUrl = repo["url"],
+                      let url = URL(string: tmpUrl),
+                      let path = repo["path"] else { continue }
+                self.append(Repo(url: url, displayName: name, path: path))
+            }
         }
-        self.update()
+        let repo = Repo(url: URL(string: "https://nitroless.github.io/ExampleNitrolessRepo/")!)
+        self.append(repo)
+        self.refresh()
     }
     
     private func emotes(_ tmp: [[String: String]], _ repoURL: URL, _ path: String) -> [Emote] {
@@ -94,22 +100,20 @@ final class RepoManager {
         return emotes
     }
         
-    public func update(repos: [Repo]? = nil) {
-        if Thread.isMainThread {
-            DispatchQueue.global(qos: .userInitiated).async {
-                return self.update(repos: repos)
-            }
-        }
+    public func refresh(repos: [Repo]? = nil) {
         let list = repos ?? self.repos
+        NSLog("[Nitroless] List = \(list)")
         for tmp in list {
             let index = tmp.url.appendingPathComponent("index").appendingPathExtension("json")
             var new = tmp
+            NSLog("[Nitroless] Index = \(index)")
             AmyNetworkResolver.dict(url: index, cache: true) { success, dict in
                 if success,
                    let dict = dict,
                    let name = dict["name"] as? String,
                    let emotes = dict["emotes"] as? [[String: String]],
                    let path = dict["path"] as? String {
+                    NSLog("[Nitroless] Emotes = \(emotes)")
                     new.displayName = name
                     new.path = path
                     new.emotes = self.emotes(emotes, new.url, new.path ?? "")

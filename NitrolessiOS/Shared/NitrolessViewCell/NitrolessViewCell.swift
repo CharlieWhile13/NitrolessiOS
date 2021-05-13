@@ -20,8 +20,8 @@ class NitrolessViewCell: UICollectionViewCell {
             let url = emote.url
             switch emote.type {
             case .png:
-                if let image = AmyNetworkResolver.shared.image(url, cache: true, type: .png, { (success, image) in
-                    if success,
+                if let image = AmyNetworkResolver.shared.image(url, cache: true, type: .png, { (refresh, image) in
+                    if refresh,
                           let image = image,
                           self.emote?.url == url {
                         DispatchQueue.main.async {
@@ -32,13 +32,14 @@ class NitrolessViewCell: UICollectionViewCell {
                     imageView?.image = image
                 }
             case .gif:
-                if let gif = AmyNetworkResolver.shared.image(url, cache: true, type: .gif, { (success, image) in
-                    if success,
+                NSLog("[Nitroless] URL = \(url)")
+                if let gif = AmyNetworkResolver.shared.image(url, cache: true, type: .gif, { (refresh, image) in
+                    if refresh,
                           let image = image,
                           let amyGif = image as? Gif,
                           self.emote?.url == url {
                         DispatchQueue.main.async {
-                            self.imageView?.animationImages = amyGif.images
+                            self.imageView?.animationImages = amyGif.animatedImages ?? [UIImage]()
                             self.imageView.animationRepeatCount = .max
                             self.imageView.animationDuration = amyGif.calculatedDuration ?? 0
                             self.imageView.startAnimating()
@@ -47,7 +48,7 @@ class NitrolessViewCell: UICollectionViewCell {
                 }) {
                     if let amyGif = gif as? Gif {
                         DispatchQueue.main.async {
-                            self.imageView?.animationImages = amyGif.images
+                            self.imageView?.animationImages = amyGif.animatedImages ?? [UIImage]()
                             self.imageView.animationRepeatCount = .max
                             self.imageView.animationDuration = amyGif.calculatedDuration ?? 0
                             self.imageView.startAnimating()

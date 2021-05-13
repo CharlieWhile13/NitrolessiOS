@@ -81,18 +81,13 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func refresh(_ sender: Any) {
-        RepoManager.shared.update()
+        RepoManager.shared.refresh()
     }
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var noOfCellsInRow = 0
-        if UIDevice.current.orientation.isLandscape || UIDevice.current.userInterfaceIdiom == .pad {
-            noOfCellsInRow = 8
-        } else {
-            noOfCellsInRow = 4
-        }
+        let noOfCellsInRow = Int(self.view.frame.width / 50)
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
@@ -129,9 +124,10 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
                     repos.remove(at: index - buffer)
                     buffer += 1
                 }
-                repos[index].emotes = emotes
+                //repos[index - buffer].emotes = emotes
             }
         }
+        self.repos = repos
         self.emotesView.reloadData()
     }
 }

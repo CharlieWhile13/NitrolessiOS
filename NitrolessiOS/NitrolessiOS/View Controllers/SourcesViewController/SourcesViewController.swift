@@ -23,6 +23,7 @@ class SourcesViewController: BaseTableViewController {
         tableView.backgroundColor = ThemeManager.backgroundColour
         
         self.title = "Sources"
+        self.update()
     }
     
     public func update() {

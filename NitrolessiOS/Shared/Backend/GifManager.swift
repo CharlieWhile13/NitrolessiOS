@@ -9,8 +9,8 @@ import UIKit
 
 final class Gif: UIImage {
     var calculatedDuration: Double?
-    var image: [UIImage]?
-    
+    var animatedImages: [UIImage]?
+
     override convenience init?(data: Data) {
         self.init()
         guard let source = CGImageSourceCreateWithData(data as CFData, nil),
@@ -24,7 +24,7 @@ final class Gif: UIImage {
             }
         }
         let calculatedDuration = Double(imageCount) * delayTime
-        self.image = images
+        self.animatedImages = images
         self.calculatedDuration = calculatedDuration
     }
 }

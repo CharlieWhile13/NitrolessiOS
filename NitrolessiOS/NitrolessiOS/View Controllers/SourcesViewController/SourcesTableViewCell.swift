@@ -17,16 +17,24 @@ class SourcesTableViewCell: UITableViewCell {
         
         textLabel?.text = repo.displayName
         let repoURL = repo.url
-        let imageURL = repoURL.appendingPathComponent("RepoImage")
+        let imageURL = repoURL.appendingPathComponent("RepoImage").appendingPathExtension("png")
+        
+
         if let image = AmyNetworkResolver.shared.image(imageURL, cache: true, type: .png, { (success, image) in
             if success,
                   let image = image,
                   self.repo.url == repoURL {
-                self.imageView?.image = image
+                DispatchQueue.main.async {
+                    self.imageView?.image = image
+                }
             }
         }) {
             imageView?.image = image
         }
+        self.backgroundColor = ThemeManager.imageBackground
+        self.imageView?.layer.masksToBounds = true
+        self.imageView?.layer.cornerRadius = 7.5
+        self.selectionStyle = .none
     }
     
     required init?(coder: NSCoder) {

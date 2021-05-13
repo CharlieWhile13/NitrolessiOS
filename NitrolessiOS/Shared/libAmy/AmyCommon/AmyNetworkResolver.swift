@@ -107,12 +107,8 @@ final class AmyNetworkResolver {
                 let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
                 if let data = try? Data(contentsOf: path),
                    let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                    if skipNetwork(path) {
-                        return completion(true, dict)
-                    } else {
-                        pastData = data
-                        completion(true, dict)
-                    }
+                    pastData = data
+                    completion(true, dict)
                 }
             }
         }
@@ -150,12 +146,8 @@ final class AmyNetworkResolver {
             let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
             if let data = try? Data(contentsOf: path),
                let dict = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                if skipNetwork(path) {
-                    return completion(true, dict)
-                } else {
-                    pastData = data
-                    completion(true, dict)
-                }
+                pastData = data
+                completion(true, dict)
             }
         }
 
@@ -184,12 +176,8 @@ final class AmyNetworkResolver {
                 let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
                 if let data = try? Data(contentsOf: path),
                    let arr = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] {
-                    if skipNetwork(path) {
-                        return completion(true, arr)
-                    } else {
-                        pastData = data
-                        completion(true, arr)
-                    }
+                    pastData = data
+                    completion(true, arr)
                 }
             }
         }
@@ -227,12 +215,8 @@ final class AmyNetworkResolver {
             let path = AmyNetworkResolver.shared.cacheDirectory.appendingPathComponent("\(encoded).json")
             if let data = try? Data(contentsOf: path),
                let arr = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] {
-                if skipNetwork(path) {
-                    return completion(true, arr)
-                } else {
-                    pastData = data
-                    completion(true, arr)
-                }
+                pastData = data
+                completion(true, arr)
             }
         }
         AmyNetworkResolver.request(url: url, method: method, headers: headers, json: json) { success, data in
