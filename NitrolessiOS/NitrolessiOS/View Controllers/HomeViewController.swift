@@ -118,7 +118,6 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
         if let search = self.searchController.searchBar.text?.lowercased(),
            !search.isEmpty {
             var buffer = 0
-            NSLog("[Nitroless] Search = \(search)")
             for (index, repo) in repos.enumerated() {
                 let emotes = repo.emotes.filter({ $0.name.lowercased().contains(search) })
                 if emotes.isEmpty {

@@ -34,10 +34,8 @@ final class RepoManager {
     
     public func append(_ repo: Repo) {
         if !repos.contains(where: { $0.url == repo.url }) {
-            //queue.async(flags: .barrier) {
-                self.repos.append(repo)
-                self.save()
-            //}
+            self.repos.append(repo)
+            self.save()
         }
     }
     
@@ -102,18 +100,15 @@ final class RepoManager {
         
     public func refresh(repos: [Repo]? = nil) {
         let list = repos ?? self.repos
-        NSLog("[Nitroless] List = \(list)")
         for tmp in list {
             let index = tmp.url.appendingPathComponent("index").appendingPathExtension("json")
             var new = tmp
-            NSLog("[Nitroless] Index = \(index)")
             AmyNetworkResolver.dict(url: index, cache: true) { success, dict in
                 if success,
                    let dict = dict,
                    let name = dict["name"] as? String,
                    let emotes = dict["emotes"] as? [[String: String]],
                    let path = dict["path"] as? String {
-                    NSLog("[Nitroless] Emotes = \(emotes)")
                     new.displayName = name
                     new.path = path
                     new.emotes = self.emotes(emotes, new.url, new.path ?? "")
