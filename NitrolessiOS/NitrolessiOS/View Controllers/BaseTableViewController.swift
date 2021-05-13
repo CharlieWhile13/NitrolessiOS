@@ -23,3 +23,4 @@ public class BaseTableViewController: UITableViewController {
         return cell ?? UITableViewCell()
     }
 }
+

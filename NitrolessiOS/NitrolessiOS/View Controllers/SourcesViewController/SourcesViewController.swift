@@ -14,11 +14,15 @@ class SourcesViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.view.backgroundColor = ThemeManager.backgroundColour
+        self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        tableView.showsVerticalScrollIndicator = false
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = ThemeManager.backgroundColour
+        
+        self.title = "Sources"
     }
     
     public func update() {
@@ -36,8 +40,9 @@ class SourcesViewController: BaseTableViewController {
         repos.count
     }
 
-    
-    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        SourcesTableViewCell(repo: repos[indexPath.row])
+    }
 
     /*
     // Override to support conditional editing of the table view.

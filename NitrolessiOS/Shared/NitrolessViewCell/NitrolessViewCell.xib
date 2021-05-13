@@ -11,23 +11,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="NitrolessViewCell" id="gTV-IL-0wX" customClass="NitrolessViewCell" customModule="NitrolessKeyboard" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="325" height="298"/>
+            <rect key="frame" x="0.0" y="0.0" width="517" height="423"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="325" height="298"/>
+                <rect key="frame" x="0.0" y="0.0" width="517" height="423"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHj-sg-VZ9">
-                        <rect key="frame" x="2.5" y="241" width="320" height="54.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGc-fg-oVa">
-                        <rect key="frame" x="44.5" y="2.5" width="236" height="236"/>
+                        <rect key="frame" x="49.5" y="2.5" width="418" height="418"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rm1-3j-E3D">
-                                <rect key="frame" x="7.5" y="7.5" width="221" height="221"/>
+                                <rect key="frame" x="7.5" y="7.5" width="403" height="403"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -45,20 +39,15 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="lGc-fg-oVa" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="7nr-2G-cxG"/>
-                <constraint firstAttribute="trailing" secondItem="XHj-sg-VZ9" secondAttribute="trailing" constant="2.5" id="JHU-gr-7Lo"/>
-                <constraint firstAttribute="bottom" secondItem="XHj-sg-VZ9" secondAttribute="bottom" constant="2.5" id="Lac-tP-fVK"/>
                 <constraint firstItem="lGc-fg-oVa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2.5" id="LbD-Xi-0TZ"/>
-                <constraint firstItem="XHj-sg-VZ9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2.5" id="ctS-bC-w2a"/>
-                <constraint firstAttribute="bottom" secondItem="lGc-fg-oVa" secondAttribute="bottom" multiplier="1.25" id="d35-ok-BdB"/>
-                <constraint firstItem="XHj-sg-VZ9" firstAttribute="top" secondItem="lGc-fg-oVa" secondAttribute="bottom" constant="2.5" id="f2v-fm-l0e"/>
+                <constraint firstAttribute="bottom" secondItem="lGc-fg-oVa" secondAttribute="bottom" constant="2.5" id="d35-ok-BdB"/>
             </constraints>
-            <size key="customSize" width="349" height="309"/>
+            <size key="customSize" width="541" height="434"/>
             <connections>
                 <outlet property="containerView" destination="lGc-fg-oVa" id="5D6-cd-7cZ"/>
                 <outlet property="imageView" destination="Rm1-3j-E3D" id="6xn-yl-xtL"/>
-                <outlet property="label" destination="XHj-sg-VZ9" id="Nbr-cY-33p"/>
             </connections>
-            <point key="canvasLocation" x="-258.69565217391306" y="218.30357142857142"/>
+            <point key="canvasLocation" x="-119.56521739130436" y="218.63839285714286"/>
         </collectionViewCell>
     </objects>
 </document>

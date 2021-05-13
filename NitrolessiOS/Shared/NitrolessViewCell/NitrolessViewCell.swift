@@ -10,29 +10,51 @@ import UIKit
 class NitrolessViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var containerView: UIView!
     
     var emote: Emote? {
         didSet {
             self.imageView.animationImages = nil
             self.imageView.stopAnimating()
-            if let i = emote?.image {
-                switch emote?.type {
-                    case .png: self.imageView.image = i
-                    case .gif: do {
-                        if let ag = i as? AmyGif {
-                            self.imageView.animationImages = ag.image
+            guard let emote = emote else { return }
+            let url = emote.url
+            switch emote.type {
+            case .png:
+                if let image = AmyNetworkResolver.shared.image(url, cache: true, type: .png, { (success, image) in
+                    if success,
+                          let image = image,
+                          self.emote?.url == url {
+                        DispatchQueue.main.async {
+                            self.imageView?.image = image
+                        }
+                    }
+                }) {
+                    imageView?.image = image
+                }
+            case .gif:
+                if let gif = AmyNetworkResolver.shared.image(url, cache: true, type: .gif, { (success, image) in
+                    if success,
+                          let image = image,
+                          let amyGif = image as? Gif,
+                          self.emote?.url == url {
+                        DispatchQueue.main.async {
+                            self.imageView?.animationImages = amyGif.images
                             self.imageView.animationRepeatCount = .max
-                            self.imageView.animationDuration = ag.calculatedDuration
+                            self.imageView.animationDuration = amyGif.calculatedDuration ?? 0
                             self.imageView.startAnimating()
                         }
                     }
-                    default: return
+                }) {
+                    if let amyGif = gif as? Gif {
+                        DispatchQueue.main.async {
+                            self.imageView?.animationImages = amyGif.images
+                            self.imageView.animationRepeatCount = .max
+                            self.imageView.animationDuration = amyGif.calculatedDuration ?? 0
+                            self.imageView.startAnimating()
+                        }
+                    }
                 }
-                self.imageView.image = i
             }
-            if let t = emote?.name { self.label.text = t }
         }
     }
 
@@ -42,6 +64,5 @@ class NitrolessViewCell: UICollectionViewCell {
         self.containerView.backgroundColor = ThemeManager.imageBackground
         self.containerView.layer.cornerRadius = 10
         self.containerView.layer.masksToBounds = true
-        self.label.adjustsFontSizeToFitWidth = true
     }
 }

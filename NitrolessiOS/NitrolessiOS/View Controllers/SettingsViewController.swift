@@ -65,7 +65,7 @@ class SettingsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(showAlert), name: .KeyboardHelp, object: nil)
         NotificationCenter.default.addObserver(forName: .ResetRecentlyUsed, object: nil, queue: nil) { notification in
-            NitrolessParser.shared.defaults.removeObject(forKey: "RecentlyUsed")
+            RepoManager.shared.defaults.removeObject(forKey: "Nitroless.RecentlyUsed")
             NotificationCenter.default.post(name: .EmoteReload, object: nil)
         }
     }

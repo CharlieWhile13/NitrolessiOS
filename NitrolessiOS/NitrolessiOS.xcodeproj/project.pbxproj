@@ -39,7 +39,6 @@
 		E1A8FA7525D4348F00353A1E /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
 		E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
 		E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA8225D43B8300353A1E /* KeyboardViewController.swift */; };
-		E1A8FA8725D43B8300353A1E /* NitrolessKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E1A8FA8025D43B8300353A1E /* NitrolessKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E1AD855625D5966E003DA2DC /* ButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AD854E25D5966E003DA2DC /* ButtonCell.xib */; };
 		E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD854F25D5966E003DA2DC /* ButtonCell.swift */; };
 		E1AD855825D5966E003DA2DC /* SocialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1AD855125D5966E003DA2DC /* SocialCell.xib */; };
@@ -53,31 +52,8 @@
 		E1AFD86425DC2E6E00C1DDAE /* GifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */; };
 		E1C655CD25E425220032C4E1 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C655CB25E425220032C4E1 /* ToastView.xib */; };
 		E1C655CE25E425220032C4E1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C655CC25E425220032C4E1 /* ToastView.swift */; };
+		E1D9CF41264D974400200DF1 /* SourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9CF40264D974400200DF1 /* SourcesTableViewCell.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E1A8FA8525D43B8300353A1E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E1A8FA4525D42B1D00353A1E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E1A8FA7F25D43B8300353A1E;
-			remoteInfo = NitrolessKeyboard;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		E1A8FA8B25D43B8300353A1E /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				E1A8FA8725D43B8300353A1E /* NitrolessKeyboard.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E134A98025D6AB8F003A01EA /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
@@ -122,6 +98,7 @@
 		E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManager.swift; sourceTree = "<group>"; };
 		E1C655CB25E425220032C4E1 /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		E1C655CC25E425220032C4E1 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		E1D9CF40264D974400200DF1 /* SourcesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +162,15 @@
 				E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E146AB9A264D95AE0007BFD0 /* SourcesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E146AB7E264C36440007BFD0 /* SourcesViewController.swift */,
+				E1D9CF40264D974400200DF1 /* SourcesTableViewCell.swift */,
+			);
+			path = SourcesViewController;
 			sourceTree = "<group>";
 		};
 		E1967FBC25D8327700561922 /* Delegates */ = {
@@ -314,11 +300,11 @@
 		E1AD855E25D596CA003DA2DC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E146AB9A264D95AE0007BFD0 /* SourcesViewController */,
 				E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */,
 				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
 				E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */,
 				E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */,
-				E146AB7E264C36440007BFD0 /* SourcesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -352,12 +338,10 @@
 				E1A8FA4925D42B1D00353A1E /* Sources */,
 				E1A8FA4A25D42B1D00353A1E /* Frameworks */,
 				E1A8FA4B25D42B1D00353A1E /* Resources */,
-				E1A8FA8B25D43B8300353A1E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E1A8FA8625D43B8300353A1E /* PBXTargetDependency */,
 			);
 			name = NitrolessiOS;
 			productName = NitrolessiOS;
@@ -473,6 +457,7 @@
 				E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */,
 				E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */,
 				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
+				E1D9CF41264D974400200DF1 /* SourcesTableViewCell.swift in Sources */,
 				E146AB7A264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
 				E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */,
 				E146AB7F264C36440007BFD0 /* SourcesViewController.swift in Sources */,
@@ -497,14 +482,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E1A8FA8625D43B8300353A1E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E1A8FA7F25D43B8300353A1E /* NitrolessKeyboard */;
-			targetProxy = E1A8FA8525D43B8300353A1E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E1A8FA5625D42B1D00353A1E /* Main.storyboard */ = {
@@ -584,7 +561,6 @@
 		E1257DBC25D8CB870099318D /* Automation */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NitrolessiOS/NitrolessiOS.entitlements;
@@ -749,7 +725,6 @@
 		E1A8FA6225D42B1F00353A1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -775,7 +750,6 @@
 		E1A8FA6325D42B1F00353A1E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;

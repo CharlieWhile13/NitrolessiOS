@@ -22,7 +22,7 @@ struct Emote {
     var name: String
     var url: URL
     
-    init?(emote: [String: String], repoURL: URL) {
+    init?(emote: [String: String], repoURL: URL, repoPath: String) {
         guard let name = emote["name"] else { return nil }
         self.name = name
         switch emote["type"] {
@@ -32,7 +32,7 @@ struct Emote {
             self.type = .gif
         default: return nil
         }
-        self.url = repoURL.appendingPathComponent("emotes").appendingPathExtension(type.rawValue)
+        self.url = repoURL.appendingPathComponent(repoPath).appendingPathExtension(type.rawValue)
     }
 }
 
@@ -40,10 +40,12 @@ struct Repo {
     var displayName: String
     var url: URL
     var emotes = [Emote]()
+    var path: String
     
-    init(url: URL, displayName: String) {
+    init(url: URL, displayName: String, path: String) {
         self.url = url
         self.displayName = displayName
+        self.path = path
     }
 }
 
