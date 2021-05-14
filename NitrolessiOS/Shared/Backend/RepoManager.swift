@@ -104,12 +104,12 @@ final class RepoManager {
         return emotes
     }
         
-    public func refresh(repos: [Repo]? = nil) {
+    public func refresh(repos: [Repo]? = nil, force: Bool = false) {
         let list = repos ?? self.repos
         for tmp in list {
             let index = tmp.url.appendingPathComponent("index").appendingPathExtension("json")
             var new = tmp
-            AmyNetworkResolver.dict(url: index, cache: true) { success, dict in
+            AmyNetworkResolver.dict(url: index, cache: !force) { success, dict in
                 if success,
                    let dict = dict,
                    let name = dict["name"] as? String,

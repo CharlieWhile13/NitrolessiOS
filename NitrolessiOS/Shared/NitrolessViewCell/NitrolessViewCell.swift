@@ -14,6 +14,7 @@ class NitrolessViewCell: UICollectionViewCell {
     
     var emote: Emote? {
         didSet {
+            self.imageView.image = nil
             self.imageView.animationImages = nil
             self.imageView.stopAnimating()
             guard let emote = emote else { return }
@@ -32,7 +33,6 @@ class NitrolessViewCell: UICollectionViewCell {
                     imageView?.image = image
                 }
             case .gif:
-                NSLog("[Nitroless] URL = \(url)")
                 if let gif = AmyNetworkResolver.shared.image(url, cache: true, type: .gif, { (refresh, image) in
                     if refresh,
                           let image = image,

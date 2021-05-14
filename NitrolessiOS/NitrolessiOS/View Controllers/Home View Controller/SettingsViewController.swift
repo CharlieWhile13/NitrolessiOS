@@ -9,7 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    let tableView = UITableView()
+    
     var toShow: [[AmyCellData]] = [
         [
             AmyCellData(identifier: .Social, data: SocialCellData(imageName: "Nitroless", title: "Visit the website", link: URL(string: "https://thealphastream.github.io/nitroless/")!)),
@@ -51,7 +52,16 @@ class SettingsViewController: UIViewController {
         self.view.backgroundColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.barTintColor = ThemeManager.imageBackground
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-
+        
+        view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pop))
+        
         self.tableView.register(UINib(nibName: "ButtonCell", bundle: nil), forCellReuseIdentifier: "libAmy.ButtonCell")
         self.tableView.register(UINib(nibName: "SettingsSwitchCell", bundle: nil), forCellReuseIdentifier: "libAmy.SettingsSwitchCell")
         self.tableView.register(UINib(nibName: "SocialCell", bundle: nil), forCellReuseIdentifier: "libAmy.SocialCell")
@@ -70,7 +80,7 @@ class SettingsViewController: UIViewController {
         }
     }
 
-    @IBAction func pop(_ sender: Any) {
+    @objc private func pop() {
         self.dismiss(animated: true)
     }
     

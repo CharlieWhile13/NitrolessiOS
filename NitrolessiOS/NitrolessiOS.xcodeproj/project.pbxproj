@@ -32,7 +32,6 @@
 		E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */; };
 		E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */; };
-		E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5625D42B1D00353A1E /* Main.storyboard */; };
 		E1A8FA5A25D42B1F00353A1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5925D42B1F00353A1E /* Assets.xcassets */; };
 		E1A8FA5D25D42B1F00353A1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */; };
 		E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */; };
@@ -76,7 +75,6 @@
 		E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NitrolessiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchDelegate.swift; sourceTree = "<group>"; };
 		E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E1A8FA5725D42B1D00353A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1A8FA5925D42B1F00353A1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A8FA5C25D42B1F00353A1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A8FA5E25D42B1F00353A1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 			isa = PBXGroup;
 			children = (
 				E1A8FA5E25D42B1F00353A1E /* Info.plist */,
-				E1A8FA5625D42B1D00353A1E /* Main.storyboard */,
 				E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */,
 				E1A8FA5925D42B1F00353A1E /* Assets.xcassets */,
 			);
@@ -300,11 +297,9 @@
 		E1AD855E25D596CA003DA2DC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E1D9CF4D264F26FD00200DF1 /* Base Views */,
+				E1D9CF4C264F26F100200DF1 /* Home View Controller */,
 				E146AB9A264D95AE0007BFD0 /* SourcesViewController */,
-				E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */,
-				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
-				E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */,
-				E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -326,6 +321,24 @@
 				E1C655CC25E425220032C4E1 /* ToastView.swift */,
 			);
 			path = "Toast View";
+			sourceTree = "<group>";
+		};
+		E1D9CF4C264F26F100200DF1 /* Home View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1A8FA5425D42B1D00353A1E /* HomeViewController.swift */,
+				E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */,
+			);
+			path = "Home View Controller";
+			sourceTree = "<group>";
+		};
+		E1D9CF4D264F26FD00200DF1 /* Base Views */ = {
+			isa = PBXGroup;
+			children = (
+				E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */,
+				E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */,
+			);
+			path = "Base Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,7 +433,6 @@
 				E134A98925D6ABC0003A01EA /* White~ipad@2x.png in Resources */,
 				E1AD855825D5966E003DA2DC /* SocialCell.xib in Resources */,
 				E134A98525D6ABA1003A01EA /* White@3x.png in Resources */,
-				E1A8FA5825D42B1D00353A1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,14 +496,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1A8FA5625D42B1D00353A1E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1A8FA5725D42B1D00353A1E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

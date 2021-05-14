@@ -58,10 +58,10 @@ class SourcesTableViewCell: UITableViewCell {
         repoImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
         contentView.bottomAnchor.constraint(equalTo: repoLink.bottomAnchor, constant: 5).isActive = true
         contentView.trailingAnchor.constraint(equalTo: repoLink.trailingAnchor, constant: 2.5).isActive = true
-        repoName.leadingAnchor.constraint(equalTo: repoImage.trailingAnchor, constant: 2.5).isActive = true
+        repoName.leadingAnchor.constraint(equalTo: repoImage.trailingAnchor, constant: 5).isActive = true
         repoName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2.5).isActive = true
         contentView.trailingAnchor.constraint(equalTo: repoName.trailingAnchor, constant: 2.5).isActive = true
-        repoLink.leadingAnchor.constraint(equalTo: repoImage.trailingAnchor, constant: 2.5).isActive = true
+        repoLink.leadingAnchor.constraint(equalTo: repoImage.trailingAnchor, constant: 5).isActive = true
         repoLink.topAnchor.constraint(equalTo: repoName.bottomAnchor, constant: 0.5).isActive = true
         
         repoImage.layer.masksToBounds = true
@@ -69,7 +69,7 @@ class SourcesTableViewCell: UITableViewCell {
         repoName.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         repoLink.font = UIFont.systemFont(ofSize: 13, weight: .thin)
         backgroundColor = ThemeManager.imageBackground
-        selectionStyle = .none
+        accessoryType = .disclosureIndicator
     }
     
     required init?(coder: NSCoder) {

@@ -9,13 +9,13 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var emotesView: UICollectionView!
-    
+    var emotesView: UICollectionView?
     let searchController = UISearchController()
+    
     var recentlyUsed = [Emote]()
     var repos = [Repo]()
     var toastView: ToastView = .fromNib()
-    var amyCount = 0
+    var repoContext: Repo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,10 +51,42 @@ class HomeViewController: UIViewController {
         }
     }
     
+    init(repoContext: Repo) {
+        self.repoContext = repoContext
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    public init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func meta() {
         self.view.backgroundColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        self.emotesView = collectionView
+        view.addSubview(emotesView!)
+        emotesView?.translatesAutoresizingMaskIntoConstraints = false
+        emotesView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        emotesView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        emotesView?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17.5).isActive = true
+        emotesView?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17.5).isActive = true
+        emotesView?.isPrefetchingEnabled = true
+    
+        if repoContext == nil {
+            self.title = "Nitroless"
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemNameOrNil: "info.circle"), style: .done, target: self, action: #selector(settings))
+        } else {
+            self.title = repoContext?.displayName
+            self.updateFilter()
+        }
         
         searchController.loadViewIfNeeded()
         searchController.searchResultsUpdater = self
@@ -68,20 +100,22 @@ class HomeViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
         
-        self.emotesView.delegate = self
-        self.emotesView.dataSource = self
-        self.emotesView.showsVerticalScrollIndicator = false
-        self.emotesView.showsHorizontalScrollIndicator = false
-        self.emotesView.backgroundColor = .none
-        self.emotesView.register(UINib(nibName: "NitrolessViewCell", bundle: nil), forCellWithReuseIdentifier: "NitrolessViewCell")
+        emotesView?.delegate = self
+        emotesView?.dataSource = self
+        emotesView?.showsVerticalScrollIndicator = false
+        emotesView?.showsHorizontalScrollIndicator = false
+        emotesView?.backgroundColor = .none
+        emotesView?.register(UINib(nibName: "NitrolessViewCell", bundle: nil), forCellWithReuseIdentifier: "NitrolessViewCell")
         NotificationCenter.default.addObserver(forName: .EmoteReload, object: nil, queue: nil, using: {_ in
             self.updateFilter()
         })
         self.onBoarding()
     }
     
-    @IBAction func refresh(_ sender: Any) {
-        RepoManager.shared.refresh()
+    @objc private func settings() {
+        let settingsVC = SettingsViewController()
+        let navController = NitrolessNC(rootViewController: settingsVC)
+        self.present(navController, animated: true)
     }
 }
 
@@ -103,6 +137,10 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
     }
     
     private func updateFilter() {
+        if let repoContext = self.repoContext {
+            self.repos = [repoContext]
+            return
+        }
         self.recentlyUsed.removeAll()
         var repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
          
@@ -129,7 +167,7 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
             }
         }
         self.repos = repos
-        self.emotesView.reloadData()
+        self.emotesView?.reloadData()
     }
 }
 
@@ -146,6 +184,7 @@ extension HomeViewController: UICollectionViewDelegate {
         if let nc = self.navigationController {
             self.toastView.showText(nc, "Copied \(emote.name)")
         }
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 

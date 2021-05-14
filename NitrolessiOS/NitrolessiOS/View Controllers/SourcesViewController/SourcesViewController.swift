@@ -23,9 +23,14 @@ class SourcesViewController: BaseTableViewController {
         tableView.backgroundColor = ThemeManager.backgroundColour
         NotificationCenter.default.addObserver(self, selector: #selector(updateRepo(_:)), name: .RepoLoad, object: nil)
         
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRepo))
         self.title = "Sources"
         self.update()
+    }
+    
+    @objc private func refresh() {
+        RepoManager.shared.refresh(force: true)
     }
     
     @objc private func addRepo() {
@@ -149,5 +154,11 @@ class SourcesViewController: BaseTableViewController {
         let configuration = UISwipeActionsConfiguration(actions: [trash])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = HomeViewController(repoContext: repos[indexPath.row])
+        self.navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

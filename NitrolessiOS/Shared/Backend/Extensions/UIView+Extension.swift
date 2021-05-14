@@ -17,3 +17,15 @@ extension UIView {
         return NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: ratio, constant: 0)
     }
 }
+
+extension UIImage {
+    
+    public convenience init?(systemNameOrNil name: String) {
+        if #available(iOS 13.0, *) {
+            self.init(systemName: name)
+        } else {
+            return nil
+        }
+    }
+    
+}
