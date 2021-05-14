@@ -32,25 +32,31 @@ final class RepoManager {
         return emotes
     }
     
-    public func append(_ repo: Repo) {
+    @discardableResult public func append(_ repo: Repo) -> Bool {
         if !repos.contains(where: { $0.url == repo.url }) {
             self.repos.append(repo)
             self.save()
+            return true
         }
+        return false
     }
     
     private func update(_ old: Repo, _ new: Repo) {
         queue.async(flags: .barrier) {
-            guard let index = self.repos.firstIndex(where: { $0.url == old.url }) else { return self.append(new) }
+            guard let index = self.repos.firstIndex(where: { $0.url == old.url }) else { self.append(new); return }
             self.repos[index] = new
             self.save()
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .RepoLoad, object: new)
+            }
         }
     }
     
-    public func remove(_ repo: Repo) {
+    public func remove(_ repo: URL, completion: (() -> ())? = nil) {
         queue.async(flags: .barrier) {
-            self.repos.removeAll(where: { $0.url == repo.url })
+            self.repos.removeAll(where: { $0.url == repo })
             self.save()
+            completion?()
         }
     }
     

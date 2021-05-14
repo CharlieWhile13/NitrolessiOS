@@ -11,4 +11,5 @@ extension NSNotification.Name {
     static let EmoteReload = Notification.Name("EmoteReload")
     static let ReloadEmotes = Notification.Name("ReloadEmotes")
     static let HideKeyboard = Notification.Name("HideKeyboard")
+    static let RepoLoad = Notification.Name("RepoLoad")
 }

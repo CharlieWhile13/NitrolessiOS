@@ -21,17 +21,103 @@ class SourcesViewController: BaseTableViewController {
         tableView.showsHorizontalScrollIndicator = false
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = ThemeManager.backgroundColour
+        NotificationCenter.default.addObserver(self, selector: #selector(updateRepo(_:)), name: .RepoLoad, object: nil)
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRepo))
         self.title = "Sources"
         self.update()
+    }
+    
+    @objc private func addRepo() {
+        func blankAddRepoPrompt() {
+            let controller = UIAlertController(title: "Add Repo", message: "Add Nitroless URL", preferredStyle: .alert)
+            controller.addTextField { textField in
+                textField.text = "https://"
+            }
+            controller.addAction(UIAlertAction(title: "Confirm", style: .default) { _ in
+                let field = controller.textFields![0]
+                guard let text = field.text else { return }
+                let repo = handleString(text)
+                if let url = URL(string: repo) {
+                    add(url)
+                }
+            })
+            controller.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(controller, animated: true)
+        }
+        
+        func withLink(_ url: URL) {
+            let controller = UIAlertController(title: "Add Repo", message: "Do you want to add:\n\n \(url.absoluteString)", preferredStyle: .alert)
+            controller.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
+                add(url)
+            })
+            controller.addAction(UIAlertAction(title: "No", style: .cancel) { _ in
+                blankAddRepoPrompt()
+            })
+            self.present(controller, animated: true)
+        }
+        
+        func add(_ url: URL) {
+            let repo = Repo(url: url)
+            if RepoManager.shared.append(repo) {
+                RepoManager.shared.refresh(repos: [repo])
+                self.update()
+            }
+        }
+        
+        func handleString(_ string: String) -> String {
+            var tmp = string
+            if tmp.last != "/" {
+                tmp += "/"
+            }
+            return tmp
+        }
+
+        if #available(iOS 14.0, *) {
+            UIPasteboard.general.detectPatterns(for: [.probableWebURL]) { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let pattern) where pattern.contains(.probableWebURL):
+                        guard let string = UIPasteboard.general.string,
+                              !string.isEmpty else { return blankAddRepoPrompt() }
+                        let text = handleString(string)
+                        if let repo = URL(string: text) {
+                            withLink(repo)
+                        } else {
+                            blankAddRepoPrompt()
+                        }
+                    case .success, .failure:
+                        blankAddRepoPrompt()
+                    }
+                }
+            }
+        } else {
+            guard let string = UIPasteboard.general.string,
+                  !string.isEmpty else { return blankAddRepoPrompt() }
+            let text = handleString(string)
+            if let repo = URL(string: text) {
+                withLink(repo)
+            } else {
+                blankAddRepoPrompt()
+            }
+        }
+    }
+    
+    @objc private func updateRepo(_ notification: Notification) {
+        guard let repo = notification.object as? Repo else { return }
+        if let index = repos.firstIndex(where: { $0.url == repo.url }) {
+            repos[index] = repo
+        }
+        if let cells = tableView.visibleCells as? [SourcesTableViewCell],
+           let cell = cells.first(where: { $0.repo?.url == repo.url }) {
+            cell.repo = repo
+        }
     }
     
     public func update() {
         self.repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
         tableView.reloadData()
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
@@ -42,52 +128,26 @@ class SourcesViewController: BaseTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        SourcesTableViewCell(repo: repos[indexPath.row])
+        let cell = SourcesTableViewCell(style: .default, reuseIdentifier: "Nitroless.SourceCell")
+        cell.repo = repos[indexPath.row]
+        return cell
     }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let trash = UIContextualAction(style: .destructive, title: "Remove") { [weak self] (action, view, completionHandler) in
+            guard let strong = self else { return }
+            let repo = strong.repos[indexPath.row]
+            RepoManager.shared.remove(repo.url) {
+                DispatchQueue.main.async {
+                    strong.repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
+                    strong.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    completionHandler(true)
+                }
+            }
+        }
+        trash.backgroundColor = .systemRed
+        let configuration = UISwipeActionsConfiguration(actions: [trash])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
