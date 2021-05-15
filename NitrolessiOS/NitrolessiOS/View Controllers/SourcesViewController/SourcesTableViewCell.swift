@@ -26,6 +26,8 @@ class SourcesTableViewCell: UITableViewCell {
                 }
             }) {
                 repoImage.image = image
+            } else {
+                repoImage.image = UIImage(named: "NoSourceIcon")
             }
         }
     }

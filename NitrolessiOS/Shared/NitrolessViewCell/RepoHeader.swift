@@ -27,6 +27,8 @@ class RepoHeader: UICollectionReusableView {
                 }
             }) {
                 sectionImage.image = image
+            } else {
+                sectionImage.image = UIImage(named: "NoSourceIcon")
             }
         }
     }

@@ -15,8 +15,6 @@
 		E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A99425D6AC93003A01EA /* AppIconCell.swift */; };
 		E134A9A025D6D87F003A01EA /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
 		E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */; };
-		E134A9A725D6D8BC003A01EA /* KeyboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E134A9A625D6D8BC003A01EA /* KeyboardView.xib */; };
-		E134A9AB25D6DF08003A01EA /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AA25D6DF08003A01EA /* KeyboardView.swift */; };
 		E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
 		E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
 		E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
@@ -68,8 +66,6 @@
 		E134A98C25D6ABEE003A01EA /* White~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White~ipad@3x.png"; sourceTree = "<group>"; };
 		E134A99325D6AC93003A01EA /* AppIconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppIconCell.xib; sourceTree = "<group>"; };
 		E134A99425D6AC93003A01EA /* AppIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIconCell.swift; sourceTree = "<group>"; };
-		E134A9A625D6D8BC003A01EA /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
-		E134A9AA25D6DF08003A01EA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E1416268264FF81900C5E302 /* RepoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoHeader.swift; sourceTree = "<group>"; };
 		E1416269264FF81900C5E302 /* RepoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoHeader.xib; sourceTree = "<group>"; };
@@ -268,8 +264,6 @@
 				E1967FD325D874FF00561922 /* NitrolessKeyboard.entitlements */,
 				E1A8FA8225D43B8300353A1E /* KeyboardViewController.swift */,
 				E1A8FA8425D43B8300353A1E /* Info.plist */,
-				E134A9A625D6D8BC003A01EA /* KeyboardView.xib */,
-				E134A9AA25D6DF08003A01EA /* KeyboardView.swift */,
 			);
 			path = NitrolessKeyboard;
 			sourceTree = "<group>";
@@ -466,7 +460,6 @@
 			files = (
 				E141626D264FF81900C5E302 /* RepoHeader.xib in Resources */,
 				E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */,
-				E134A9A725D6D8BC003A01EA /* KeyboardView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,7 +502,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E146AB8E264C3B630007BFD0 /* Objects.swift in Sources */,
-				E134A9AB25D6DF08003A01EA /* KeyboardView.swift in Sources */,
 				E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
 				E14162752650262A00C5E302 /* EmoteView.swift in Sources */,
 				E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */,
