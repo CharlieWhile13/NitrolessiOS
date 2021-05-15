@@ -79,7 +79,11 @@ extension EmoteView: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 20)
+        if repoContext != nil {
+            return .zero
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 20)
+        }
     }
 }
 

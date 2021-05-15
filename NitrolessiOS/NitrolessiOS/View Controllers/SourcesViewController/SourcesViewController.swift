@@ -128,7 +128,7 @@ class SourcesViewController: BaseTableViewController {
     }
     
     public func update() {
-        self.repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
+        self.repos = RepoManager.shared.repos.sorted(by: { $0.displayName?.lowercased() ?? "" < $1.displayName?.lowercased() ?? "" })
         tableView.reloadData()
     }
 
@@ -152,7 +152,7 @@ class SourcesViewController: BaseTableViewController {
             let repo = strong.repos[indexPath.row]
             RepoManager.shared.remove(repo.url) {
                 DispatchQueue.main.async {
-                    strong.repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
+                    strong.repos = RepoManager.shared.repos.sorted(by: { $0.displayName?.lowercased() ?? "" < $1.displayName?.lowercased() ?? "" })
                     strong.tableView.deleteRows(at: [indexPath], with: .automatic)
                     completionHandler(true)
                 }
