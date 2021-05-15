@@ -12,13 +12,7 @@ final class RepoManager {
     static let shared = RepoManager()
     let queue = DispatchQueue(label: "group.amywhile.nitroless.repoQueue", attributes: .concurrent)
     
-    var repos = [Repo]() {
-        didSet {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .EmoteReload, object: nil)
-            }
-        }
-    }
+    var repos = [Repo]() 
     
     var defaults: UserDefaults {
         UserDefaults.init(suiteName: "group.amywhile.nitroless") ?? UserDefaults.standard

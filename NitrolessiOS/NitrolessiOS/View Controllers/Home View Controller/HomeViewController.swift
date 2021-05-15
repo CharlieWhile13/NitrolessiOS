@@ -92,8 +92,6 @@ class HomeViewController: UIViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         searchController.searchBar.delegate = self
  
-        weak var weakSelf = self
-        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(updateFilter), name: .EmoteReload, object: nil)
         self.onBoarding()
     }
     

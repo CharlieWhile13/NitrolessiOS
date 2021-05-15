@@ -8,8 +8,7 @@
 import Foundation
 
 extension NSNotification.Name {
-    static let EmoteReload = Notification.Name("EmoteReload")
-    static let ReloadEmotes = Notification.Name("ReloadEmotes")
+    static let RemoveRecentlyUsed = Notification.Name("RemoveRecentlyUsed")
     static let HideKeyboard = Notification.Name("HideKeyboard")
     static let RepoLoad = Notification.Name("RepoLoad")
 }

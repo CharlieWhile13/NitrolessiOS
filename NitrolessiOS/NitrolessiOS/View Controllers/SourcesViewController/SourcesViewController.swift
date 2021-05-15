@@ -21,7 +21,8 @@ class SourcesViewController: BaseTableViewController {
         tableView.showsHorizontalScrollIndicator = false
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = ThemeManager.backgroundColour
-        NotificationCenter.default.addObserver(self, selector: #selector(updateRepo(_:)), name: .RepoLoad, object: nil)
+        weak var weakSelf = self
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(updateRepo(_:)), name: .RepoLoad, object: nil)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addRepo))

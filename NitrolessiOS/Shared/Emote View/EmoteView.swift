@@ -26,6 +26,10 @@ class EmoteView: UICollectionView {
         backgroundColor = .none
         register(UINib(nibName: "NitrolessViewCell", bundle: nil), forCellWithReuseIdentifier: "NitrolessViewCell")
         register(UINib(nibName: "RepoHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Nitroless.RepoHeader")
+        
+        weak var weakSelf = self
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(updateRepo(_:)), name: .RepoLoad, object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(removeRecentlyUsed), name: .RemoveRecentlyUsed, object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -39,15 +43,7 @@ class EmoteView: UICollectionView {
         }
         self.recentlyUsed.removeAll()
         var repos = RepoManager.shared.repos.sorted(by: { $0.displayName?.lowercased() ?? "" < $1.displayName?.lowercased() ?? "" })
-         
-        if let recentlyUsed = RepoManager.shared.defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] {
-            let allEmotes = RepoManager.shared.allEmotes
-            for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {
-                for emote in allEmotes where emote.url.absoluteString == k {
-                    self.recentlyUsed.append(emote)
-                }
-            }
-        }
+        repos = repos.filter({ !$0.emotes.isEmpty })
         
         if let search = string?.lowercased(),
            !search.isEmpty {
@@ -61,9 +57,69 @@ class EmoteView: UICollectionView {
                     repos[index - buffer].emotes = emotes
                 }
             }
+        } else {
+            if let recentlyUsed = RepoManager.shared.defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] {
+                let allEmotes = RepoManager.shared.allEmotes
+                for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {
+                    for emote in allEmotes where emote.url.absoluteString == k {
+                        self.recentlyUsed.append(emote)
+                    }
+                }
+            }
         }
         self.repos = repos
         self.reloadData()
+    }
+    
+    @objc private func updateRepo(_ notification: Notification) {
+        guard let repo = notification.object as? Repo,
+              !repo.emotes.isEmpty else { return }
+        if repoContext != nil {
+            if repoContext?.url != repo.url {
+                return
+            }
+            repoContext = repo
+            reloadSections(IndexSet(integer: 0))
+        }
+        if let index = repos.firstIndex(where: { $0.url == repo.url }) {
+            repos[index] = repo
+            reloadSections(IndexSet(integer: index + (recentlyUsed.isEmpty ? 0 : 1)))
+        } else {
+            repos.append(repo)
+            repos = repos.sorted(by: { $0.displayName?.lowercased() ?? "" < $1.displayName?.lowercased() ?? "" })
+            if let index = repos.firstIndex(where: { $0.url == repo.url }) {
+                insertSections(IndexSet(integer: index + (recentlyUsed.isEmpty ? 0 : 1)))
+            }
+        }
+        reloadRecentlyUsed()
+    }
+    
+    private func reloadRecentlyUsed() {
+        if let recentlyUsed = RepoManager.shared.defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] {
+            var allEmotesTmp = [Emote]()
+            for repo in repos {
+                for emote in repo.emotes { allEmotesTmp.append(emote) }
+            }
+            var recentlyUsedTmp = [Emote]()
+            for (k, _) in (Array(recentlyUsed).sorted {$0.1 > $1.1}) {
+                for emote in allEmotesTmp where emote.url.absoluteString == k {
+                    recentlyUsedTmp.append(emote)
+                }
+            }
+            if self.recentlyUsed.isEmpty {
+                self.recentlyUsed = recentlyUsedTmp
+                insertSections(IndexSet(integer: 0))
+            } else {
+                self.recentlyUsed = recentlyUsedTmp
+                reloadSections(IndexSet(integer: 0))
+            }
+        }
+    }
+    
+    @objc private func removeRecentlyUsed() {
+        guard !recentlyUsed.isEmpty else { return }
+        recentlyUsed.removeAll()
+        deleteSections(IndexSet(integer: 0))
     }
 }
 
@@ -104,6 +160,7 @@ extension EmoteView: UICollectionViewDelegate {
         if emote.type == .gif {
             collectionView.reloadItems(at: [indexPath])
         }
+        reloadRecentlyUsed()
     }
 }
 

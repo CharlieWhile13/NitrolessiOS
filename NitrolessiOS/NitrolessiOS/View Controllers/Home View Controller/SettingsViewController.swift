@@ -13,7 +13,7 @@ class SettingsViewController: UIViewController {
     
     var toShow: [[AmyCellData]] = [
         [
-            AmyCellData(identifier: .Social, data: SocialCellData(image: SettingsViewController.staticImage("AppIcon60x60"), title: "Visit the website", link: URL(string: "https://thealphastream.github.io/nitroless/")!)),
+            AmyCellData(identifier: .Social, data: SocialCellData(image: UIImage(named: "Nitroless"), title: "Visit the website", link: URL(string: "https://thealphastream.github.io/nitroless/")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(image: UIImage(named: "Discord"), title: "Join the Discord", link: URL(string: "https://discord.gg/4UMZcspzBy")!)),
             AmyCellData(identifier: .Social, data: SocialCellData(image: UIImage(named: "Github"), title: "View on Github", link: URL(string: "https://github.com/CharlieWhile13/NitrolessiOS")!)),
         ],
@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController {
             AmyCellData(identifier: .Button, data: ButtonCellData(title: "Reset Recently Used", notificationName: "ResetRecentlyUsed"))
         ],
         [
-            AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "Black", isDefault: true, image: SettingsViewController.staticImage("AppIcon60x60"))),
+            AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "Black", isDefault: true, image: UIImage(named: "Nitroless"))),
             AmyCellData(identifier: .AppIcon, data: AppIconCellData(title: "White", isDefault: false, image: SettingsViewController.staticImage("White")))
         ]
     ]
@@ -89,7 +89,7 @@ class SettingsViewController: UIViewController {
     
     @objc private func reset() {
         RepoManager.shared.defaults.removeObject(forKey: "Nitroless.RecentlyUsed")
-        NotificationCenter.default.post(name: .EmoteReload, object: nil)
+        NotificationCenter.default.post(name: .RemoveRecentlyUsed, object: nil)
     }
 
     @objc private func pop() {
