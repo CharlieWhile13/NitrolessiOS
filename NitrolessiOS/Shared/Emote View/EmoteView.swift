@@ -38,7 +38,7 @@ class EmoteView: UICollectionView {
             return
         }
         self.recentlyUsed.removeAll()
-        var repos = RepoManager.shared.repos.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
+        var repos = RepoManager.shared.repos.sorted(by: { $0.displayName?.lowercased() ?? "" < $1.displayName?.lowercased() ?? "" })
          
         if let recentlyUsed = RepoManager.shared.defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] {
             let allEmotes = RepoManager.shared.allEmotes
@@ -158,7 +158,7 @@ extension EmoteView: UICollectionViewDataSource {
                 header.repoLink = repo.url
             case .recentlyUsed:
                 header.sectionLabel.text = "Recently Used"
-                header.sectionImage.image = UIImage(systemNameOrNil: "test")
+                header.sectionImage.image = UIImage(named: "RecentlyUsed")
             }
             return header
         default:  fatalError("Unexpected element kind")

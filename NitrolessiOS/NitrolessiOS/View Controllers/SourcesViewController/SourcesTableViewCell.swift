@@ -12,6 +12,7 @@ class SourcesTableViewCell: UITableViewCell {
     var repo: Repo? {
         didSet {
             guard let repo = repo else { return }
+            repoImage.image = nil
             repoName.text = repo.displayName ?? "Untitled Repo"
             repoLink.text = repo.url.absoluteString
             let repoURL = repo.url

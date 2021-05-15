@@ -73,7 +73,7 @@ class HomeViewController: UIViewController {
         emotesView?.parentController = self.navigationController
         if repoContext == nil {
             self.title = "Nitroless"
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemNameOrNil: "info.circle"), style: .done, target: self, action: #selector(settings))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info"), style: .done, target: self, action: #selector(settings))
         } else {
             self.title = repoContext?.displayName
             emotesView?.repoContext = repoContext
