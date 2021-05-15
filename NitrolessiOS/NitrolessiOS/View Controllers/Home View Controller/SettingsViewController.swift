@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController {
         ],
         [
             AmyCellData(identifier: .Github, data: GithubCellData(githubProfile: "elihwyma", author: "Amy", role: "iOS Developer", twitter: URL(string: "https://twitter.com/elihwyma")!)),
-            AmyCellData(identifier: .Github, data: GithubCellData(githubProfile: "althiometer", author: "Evelyn", role: "macOS Developer", twitter: URL(string: "https://twitter.com/a1thio")!)),
+            AmyCellData(identifier: .Github, data: GithubCellData(githubProfile: "althiometer", author: "Althio", role: "macOS Developer", twitter: URL(string: "https://twitter.com/a1thio")!)),
             AmyCellData(identifier: .Github, data: GithubCellData(githubProfile: "paraskcd1315", author: "Paras", role: "Website Developer", twitter: URL(string: "https://twitter.com/paraskcd")!)),
             AmyCellData(identifier: .Github, data: GithubCellData(githubProfile: "TheAlphaStream", author: "Alpha", role: "Website Developer", twitter: URL(string: "https://twitter.com/Kutarin_")!)),
         ],
