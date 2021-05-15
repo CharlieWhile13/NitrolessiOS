@@ -75,10 +75,10 @@ class HomeViewController: UIViewController {
         self.emotesView = collectionView
         view.addSubview(emotesView!)
         emotesView?.translatesAutoresizingMaskIntoConstraints = false
-        emotesView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        emotesView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        emotesView?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17.5).isActive = true
-        emotesView?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17.5).isActive = true
+        emotesView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        emotesView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        emotesView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -7.5).isActive = true
+        emotesView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 7.5).isActive = true
         emotesView?.isPrefetchingEnabled = false
     
         if repoContext == nil {

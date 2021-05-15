@@ -73,11 +73,14 @@ class SettingsViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = .clear
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showAlert), name: .KeyboardHelp, object: nil)
-        NotificationCenter.default.addObserver(forName: .ResetRecentlyUsed, object: nil, queue: nil) { notification in
-            RepoManager.shared.defaults.removeObject(forKey: "Nitroless.RecentlyUsed")
-            NotificationCenter.default.post(name: .EmoteReload, object: nil)
-        }
+        weak var weakSelf = self
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(showAlert), name: .KeyboardHelp, object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(reset), name: .ResetRecentlyUsed, object: nil)
+    }
+    
+    @objc private func reset() {
+        RepoManager.shared.defaults.removeObject(forKey: "Nitroless.RecentlyUsed")
+        NotificationCenter.default.post(name: .EmoteReload, object: nil)
     }
 
     @objc private func pop() {
