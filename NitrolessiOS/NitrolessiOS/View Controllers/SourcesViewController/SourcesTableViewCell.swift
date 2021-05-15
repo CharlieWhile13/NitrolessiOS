@@ -16,12 +16,12 @@ class SourcesTableViewCell: UITableViewCell {
             repoLink.text = repo.url.absoluteString
             let repoURL = repo.url
             let imageURL = repoURL.appendingPathComponent("RepoImage").appendingPathExtension("png")
-            if let image = AmyNetworkResolver.shared.image(imageURL, cache: true, type: .png, { (success, image) in
+            if let image = AmyNetworkResolver.shared.image(imageURL, cache: true, type: .png, { [weak self] (success, image) in
                 if success,
                       let image = image,
-                      self.repo?.url == repoURL {
+                      self?.repo?.url == repoURL {
                     DispatchQueue.main.async {
-                        self.repoImage.image = image
+                        self?.repoImage.image = image
                     }
                 }
             }) {
@@ -68,6 +68,8 @@ class SourcesTableViewCell: UITableViewCell {
         repoImage.layer.cornerRadius = 7.5
         repoName.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         repoLink.font = UIFont.systemFont(ofSize: 13, weight: .thin)
+        repoName.textColor = .white
+        repoLink.textColor = ThemeManager.headerColor
         backgroundColor = ThemeManager.imageBackground
         accessoryType = .disclosureIndicator
     }

@@ -20,28 +20,28 @@ class NitrolessViewCell: UICollectionViewCell {
             let url = emote.url
             switch emote.type {
             case .png:
-                if let image = AmyNetworkResolver.shared.image(url, cache: true, type: .png, { (refresh, image) in
+                if let image = AmyNetworkResolver.shared.image(url, cache: true, type: .png, { [weak self] (refresh, image) in
                     if refresh,
                           let image = image,
-                          self.emote?.url == url {
+                          self?.emote?.url == url {
                         DispatchQueue.main.async {
-                            self.imageView?.image = image
+                            self?.imageView?.image = image
                         }
                     }
                 }) {
                     imageView?.image = image
                 }
             case .gif:
-                if let gif = AmyNetworkResolver.shared.image(url, cache: true, type: .gif, { (refresh, image) in
+                if let gif = AmyNetworkResolver.shared.image(url, cache: true, type: .gif, { [weak self] (refresh, image) in
                     if refresh,
                           let image = image,
                           let amyGif = image as? Gif,
-                          self.emote?.url == url {
+                          self?.emote?.url == url {
                         DispatchQueue.main.async {
-                            self.imageView?.animationImages = amyGif.animatedImages ?? [UIImage]()
-                            self.imageView.animationRepeatCount = .max
-                            self.imageView.animationDuration = amyGif.calculatedDuration ?? 0
-                            self.imageView.startAnimating()
+                            self?.imageView?.animationImages = amyGif.animatedImages ?? [UIImage]()
+                            self?.imageView.animationRepeatCount = .max
+                            self?.imageView.animationDuration = amyGif.calculatedDuration ?? 0
+                            self?.imageView.startAnimating()
                         }
                     }
                 }) {
@@ -62,7 +62,7 @@ class NitrolessViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.containerView.backgroundColor = ThemeManager.imageBackground
-        self.containerView.layer.cornerRadius = 10
+        self.containerView.layer.cornerRadius = 7.5
         self.containerView.layer.masksToBounds = true
     }
 }

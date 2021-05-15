@@ -107,9 +107,10 @@ class HomeViewController: UIViewController {
         emotesView?.showsHorizontalScrollIndicator = false
         emotesView?.backgroundColor = .none
         emotesView?.register(UINib(nibName: "NitrolessViewCell", bundle: nil), forCellWithReuseIdentifier: "NitrolessViewCell")
-        NotificationCenter.default.addObserver(forName: .EmoteReload, object: nil, queue: nil, using: {_ in
-            self.updateFilter()
-        })
+        emotesView?.register(UINib(nibName: "RepoHeader", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Nitroless.RepoHeader")
+        
+        weak var weakSelf = self
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(updateFilter), name: .EmoteReload, object: nil)
         self.onBoarding()
     }
     
@@ -130,6 +131,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
         return CGSize(width: size, height: size)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 20)
+    }
 }
 
 extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
@@ -137,7 +142,7 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
         self.updateFilter()
     }
     
-    private func updateFilter() {
+    @objc private func updateFilter() {
         if let repoContext = self.repoContext {
             self.repos = [repoContext]
             return
@@ -230,5 +235,19 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NitrolessViewCell", for: indexPath) as! NitrolessViewCell
         cell.emote = emote
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Nitroless.RepoHeader", for: indexPath) as! RepoHeader
+            let repo = repos[indexPath.section]
+            header.sectionLabel.text = repo.displayName
+            header.repoLink = repo.url
+            return header
+
+
+        default:  fatalError("Unexpected element kind")
+        }
     }
 }

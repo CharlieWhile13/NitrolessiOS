@@ -20,6 +20,10 @@
 		E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
 		E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
 		E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
+		E141626A264FF81900C5E302 /* RepoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1416268264FF81900C5E302 /* RepoHeader.swift */; };
+		E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1416268264FF81900C5E302 /* RepoHeader.swift */; };
+		E141626C264FF81900C5E302 /* RepoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1416269264FF81900C5E302 /* RepoHeader.xib */; };
+		E141626D264FF81900C5E302 /* RepoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1416269264FF81900C5E302 /* RepoHeader.xib */; };
 		E146AB7A264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
 		E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
 		E146AB7F264C36440007BFD0 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB7E264C36440007BFD0 /* SourcesViewController.swift */; };
@@ -64,6 +68,8 @@
 		E134A9A625D6D8BC003A01EA /* KeyboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboardView.xib; sourceTree = "<group>"; };
 		E134A9AA25D6DF08003A01EA /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		E1416268264FF81900C5E302 /* RepoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoHeader.swift; sourceTree = "<group>"; };
+		E1416269264FF81900C5E302 /* RepoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoHeader.xib; sourceTree = "<group>"; };
 		E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E146AB7E264C36440007BFD0 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
 		E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +243,8 @@
 			children = (
 				E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */,
 				E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */,
+				E1416268264FF81900C5E302 /* RepoHeader.swift */,
+				E1416269264FF81900C5E302 /* RepoHeader.xib */,
 			);
 			path = NitrolessViewCell;
 			sourceTree = "<group>";
@@ -422,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E134A98D25D6ABEF003A01EA /* White~ipad@3x.png in Resources */,
+				E141626C264FF81900C5E302 /* RepoHeader.xib in Resources */,
 				E1A8FA7525D4348F00353A1E /* NitrolessViewCell.xib in Resources */,
 				E1A8FA5D25D42B1F00353A1E /* LaunchScreen.storyboard in Resources */,
 				E1AD855625D5966E003DA2DC /* ButtonCell.xib in Resources */,
@@ -440,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E141626D264FF81900C5E302 /* RepoHeader.xib in Resources */,
 				E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */,
 				E134A9A725D6D8BC003A01EA /* KeyboardView.xib in Resources */,
 			);
@@ -466,6 +476,7 @@
 				E1A8FA5525D42B1D00353A1E /* HomeViewController.swift in Sources */,
 				E1A8FA7425D4348F00353A1E /* NitrolessViewCell.swift in Sources */,
 				E1AD855925D5966E003DA2DC /* SocialCell.swift in Sources */,
+				E141626A264FF81900C5E302 /* RepoHeader.swift in Sources */,
 				E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */,
 				E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */,
 				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
@@ -483,6 +494,7 @@
 				E146AB8E264C3B630007BFD0 /* Objects.swift in Sources */,
 				E134A9AB25D6DF08003A01EA /* KeyboardView.swift in Sources */,
 				E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
+				E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */,
 				E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */,
 				E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */,

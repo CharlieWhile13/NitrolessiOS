@@ -19,4 +19,8 @@ final class ThemeManager {
     static var tintColor: UIColor {
         UIColor(red: 0.45, green: 0.54, blue: 0.85, alpha: 1.00)
     }
+    
+    static var headerColor: UIColor {
+        UIColor(red: 0.73, green: 0.73, blue: 0.75, alpha: 1.00)
+    }
 }

@@ -9,22 +9,30 @@ import UIKit
 
 class NitrolessNC: UINavigationController {
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.tintColor = ThemeManager.tintColor
+        view.tintColor = ThemeManager.tintColor
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .dark
+        }
     }
 }
 
 class NitrolessTabBarController: UITabBarController {
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.tintColor = ThemeManager.tintColor
         
         self.viewControllers = [homeController, sourcesController]
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .dark
+        }
     }
     
     public init() {

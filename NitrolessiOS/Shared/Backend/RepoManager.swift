@@ -109,16 +109,17 @@ final class RepoManager {
         for tmp in list {
             let index = tmp.url.appendingPathComponent("index").appendingPathExtension("json")
             var new = tmp
-            AmyNetworkResolver.dict(url: index, cache: !force) { success, dict in
+            AmyNetworkResolver.dict(url: index, cache: !force) { [weak self] success, dict in
                 if success,
+                   let strong = self,
                    let dict = dict,
                    let name = dict["name"] as? String,
                    let emotes = dict["emotes"] as? [[String: String]],
                    let path = dict["path"] as? String {
                     new.displayName = name
                     new.path = path
-                    new.emotes = self.emotes(emotes, new.url, new.path ?? "")
-                    self.update(tmp, new)
+                    new.emotes = strong.emotes(emotes, new.url, new.path ?? "")
+                    strong.update(tmp, new)
                 }
             }
         }
