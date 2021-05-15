@@ -24,6 +24,9 @@
 		E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1416268264FF81900C5E302 /* RepoHeader.swift */; };
 		E141626C264FF81900C5E302 /* RepoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1416269264FF81900C5E302 /* RepoHeader.xib */; };
 		E141626D264FF81900C5E302 /* RepoHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1416269264FF81900C5E302 /* RepoHeader.xib */; };
+		E14162742650262A00C5E302 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14162732650262A00C5E302 /* EmoteView.swift */; };
+		E14162752650262A00C5E302 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14162732650262A00C5E302 /* EmoteView.swift */; };
+		E141627926503B1000C5E302 /* GithubSocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141627826503B1000C5E302 /* GithubSocialCell.swift */; };
 		E146AB7A264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
 		E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
 		E146AB7F264C36440007BFD0 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB7E264C36440007BFD0 /* SourcesViewController.swift */; };
@@ -70,6 +73,8 @@
 		E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E1416268264FF81900C5E302 /* RepoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoHeader.swift; sourceTree = "<group>"; };
 		E1416269264FF81900C5E302 /* RepoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoHeader.xib; sourceTree = "<group>"; };
+		E14162732650262A00C5E302 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
+		E141627826503B1000C5E302 /* GithubSocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubSocialCell.swift; sourceTree = "<group>"; };
 		E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E146AB7E264C36440007BFD0 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
 		E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +154,14 @@
 				E134A99425D6AC93003A01EA /* AppIconCell.swift */,
 			);
 			path = "App Icon Cell";
+			sourceTree = "<group>";
+		};
+		E1416272265025C900C5E302 /* Emote View */ = {
+			isa = PBXGroup;
+			children = (
+				E14162732650262A00C5E302 /* EmoteView.swift */,
+			);
+			path = "Emote View";
 			sourceTree = "<group>";
 		};
 		E146AB78264C330C0007BFD0 /* AmyCommon */ = {
@@ -287,6 +300,7 @@
 		E1AD855025D5966E003DA2DC /* Social Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E141627826503B1000C5E302 /* GithubSocialCell.swift */,
 				E1AD855125D5966E003DA2DC /* SocialCell.xib */,
 				E1AD855225D5966E003DA2DC /* SocialCell.swift */,
 			);
@@ -315,6 +329,7 @@
 		E1AFD85925DC2B8100C1DDAE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E1416272265025C900C5E302 /* Emote View */,
 				E1A8FA7725D434A300353A1E /* NitrolessViewCell */,
 				E1AD854C25D59644003DA2DC /* libAmy */,
 				E1A8FA6625D42C1D00353A1E /* Backend */,
@@ -469,6 +484,7 @@
 				E146AB83264C366A0007BFD0 /* BaseTableViewController.swift in Sources */,
 				E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1C655CE25E425220032C4E1 /* ToastView.swift in Sources */,
+				E141627926503B1000C5E302 /* GithubSocialCell.swift in Sources */,
 				E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */,
 				E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */,
@@ -478,6 +494,7 @@
 				E1AD855925D5966E003DA2DC /* SocialCell.swift in Sources */,
 				E141626A264FF81900C5E302 /* RepoHeader.swift in Sources */,
 				E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */,
+				E14162742650262A00C5E302 /* EmoteView.swift in Sources */,
 				E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */,
 				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
 				E1D9CF41264D974400200DF1 /* SourcesTableViewCell.swift in Sources */,
@@ -494,6 +511,7 @@
 				E146AB8E264C3B630007BFD0 /* Objects.swift in Sources */,
 				E134A9AB25D6DF08003A01EA /* KeyboardView.swift in Sources */,
 				E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
+				E14162752650262A00C5E302 /* EmoteView.swift in Sources */,
 				E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */,
 				E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */,

@@ -14,6 +14,7 @@ enum AmyCellType {
     case Switch
     case Social
     case AppIcon
+    case Github
 }
 
 protocol CellData {}
@@ -30,9 +31,24 @@ struct SettingsSwitchData: CellData {
 }
 
 struct SocialCellData: CellData {
-    var imageName: String!
+    var image: UIImage!
     var title: String!
     var link: URL!
+}
+
+struct GithubCellData: CellData {
+    
+    init(githubProfile: String, author: String, role: String, twitter: URL) {
+        self.githubProfile = githubProfile
+        self.author = author
+        self.role = role
+        self.twitter = twitter
+    }
+    
+    var githubProfile: String
+    var author: String
+    var role: String
+    var twitter: URL
 }
 
 struct ButtonCellData: CellData {
@@ -43,5 +59,5 @@ struct ButtonCellData: CellData {
 struct AppIconCellData: CellData {
     var title: String!
     var isDefault: Bool!
-    var image: String!
+    var image: UIImage!
 }

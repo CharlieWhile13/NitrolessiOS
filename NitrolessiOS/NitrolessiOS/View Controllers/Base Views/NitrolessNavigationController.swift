@@ -47,7 +47,7 @@ class NitrolessTabBarController: UITabBarController {
         let vc = HomeViewController()
         let navController = NitrolessNC(rootViewController: vc)
         navController.navigationBar.prefersLargeTitles = true
-        let tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemNameOrNil: "house.circle"), selectedImage: UIImage(systemNameOrNil: "house.circle.fill"))
+        let tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "Home"), selectedImage: UIImage(named: "Home"))
         navController.tabBarItem = tabBarItem
         return navController
     }
@@ -61,7 +61,7 @@ class NitrolessTabBarController: UITabBarController {
         }
         let navController = NitrolessNC(rootViewController: vc)
         navController.navigationBar.prefersLargeTitles = true
-        let tabBarItem = UITabBarItem(title: "Sources", image: UIImage(systemNameOrNil: "magnifyingglass"), selectedImage: UIImage(systemNameOrNil: "magnifyingglass"))
+        let tabBarItem = UITabBarItem(title: "Sources", image: UIImage(named: "Sources"), selectedImage: UIImage(named: "Sources"))
         navController.tabBarItem = tabBarItem
         return navController
     }

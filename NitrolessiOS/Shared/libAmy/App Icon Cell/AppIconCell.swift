@@ -11,17 +11,17 @@ class AppIconCell: AmyCell {
     
     var data: AppIconCellData! {
         didSet {
-            self.iconImage.image = UIImage(named: data.image)
+            self.iconImage.image = data.image
             self.iconName.text = data.title
             self.refreshView()
         }
     }
-   
+    
     @objc private func pressed() {
         if data.isDefault {
             UIApplication.shared.setAlternateIconName(nil)
         } else {
-            UIApplication.shared.setAlternateIconName(data.image)
+            UIApplication.shared.setAlternateIconName(data.title)
         }
         NotificationCenter.default.post(name: .AppIconChanged, object: nil)
     }
@@ -41,7 +41,7 @@ class AppIconCell: AmyCell {
     }
     
     @objc private func refreshView() {
-        if data.isDefault && UIApplication.shared.alternateIconName == nil || data.image == UIApplication.shared.alternateIconName {
+        if data.isDefault && UIApplication.shared.alternateIconName == nil || data.title == UIApplication.shared.alternateIconName {
             self.isCurrentIcon.backgroundColor = ThemeManager.tintColor
         } else {
             self.isCurrentIcon.backgroundColor = .clear

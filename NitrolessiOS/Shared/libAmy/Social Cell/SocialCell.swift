@@ -12,35 +12,8 @@ class SocialCell: AmyCell {
     
     var data: SocialCellData! {
         didSet {
-            /*
             self.label.text = data.title
-            if let image = UIImage(named: data.imageName) {
-                self.imageViewView.image = image
-            } else {
-                if let url = URL(string: "https://github.com/\(data.imageName ?? "error").png") {
-                    if let image = AmyNetworkResolver.shared.image(url, cache: true, type: .png, { (success, image) in
-                        if success,
-                              let image = image,
-                              self.emote?.url == url {
-                            self.imageView?.image = image
-                        }
-                    }) {
-                        imageView?.image = image
-                    }
-                    NetworkManager.getData(url: url, completion: { (success, data) -> Void in
-                        if let data = data {
-                            if success {
-                                if let image = UIImage(data: data) {
-                                    DispatchQueue.main.async {
-                                        self.imageViewView.image = image
-                                    }
-                                }
-                            }
-                        }
-                    }
-                )}
- */
-            //}
+            self.imageViewView.image = data.image
         }
     }
     
