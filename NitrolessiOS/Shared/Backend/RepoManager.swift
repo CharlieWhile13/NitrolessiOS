@@ -61,7 +61,7 @@ final class RepoManager {
     }
     
     public func use(_ emote: Emote) {
-        guard var recentlyUsed = defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] else { return }
+        var recentlyUsed = defaults.dictionary(forKey: "Nitroless.RecentlyUsed") as? [String: Int] ?? [String: Int]()
         recentlyUsed[emote.url.absoluteString] = (recentlyUsed[emote.url.absoluteString] ?? 0) + 1
         defaults.setValue(recentlyUsed, forKey: "Nitroless.RecentlyUsed")
     }

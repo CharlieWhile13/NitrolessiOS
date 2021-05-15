@@ -79,7 +79,7 @@ class HomeViewController: UIViewController {
         emotesView?.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         emotesView?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17.5).isActive = true
         emotesView?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17.5).isActive = true
-        emotesView?.isPrefetchingEnabled = true
+        emotesView?.isPrefetchingEnabled = false
     
         if repoContext == nil {
             self.title = "Nitroless"
@@ -182,7 +182,7 @@ extension HomeViewController: UICollectionViewDelegate {
         let emote: Emote = { () -> Emote in
             switch section(indexPath.section) {
             case .recentlyUsed: return recentlyUsed[indexPath.row]
-            case .repo: return repos[indexPath.section].emotes[indexPath.row]
+            case .repo: return repos[indexPath.section - (recentlyUsed.isEmpty ? 0 : 1)].emotes[indexPath.row]
             }
         }()
         UIPasteboard.general.string = emote.url.absoluteString
@@ -221,7 +221,7 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch self.section(section) {
         case .recentlyUsed: return recentlyUsed.count
-        case .repo: return repos[section].emotes.count
+        case .repo: return repos[section - (recentlyUsed.isEmpty ? 0 : 1)].emotes.count
         }
     }
 
@@ -229,7 +229,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let emote: Emote = { () -> Emote in
             switch section(indexPath.section) {
             case .recentlyUsed: return recentlyUsed[indexPath.row]
-            case .repo: return repos[indexPath.section].emotes[indexPath.row]
+            case .repo: return repos[indexPath.section - (recentlyUsed.isEmpty ? 0 : 1)].emotes[indexPath.row]
             }
         }()
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NitrolessViewCell", for: indexPath) as! NitrolessViewCell
@@ -241,12 +241,16 @@ extension HomeViewController: UICollectionViewDataSource {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Nitroless.RepoHeader", for: indexPath) as! RepoHeader
-            let repo = repos[indexPath.section]
-            header.sectionLabel.text = repo.displayName
-            header.repoLink = repo.url
+            switch section(indexPath.section) {
+            case .repo:
+                let repo = repos[indexPath.section - (recentlyUsed.isEmpty ? 0 : 1)]
+                header.sectionLabel.text = repo.displayName
+                header.repoLink = repo.url
+            case .recentlyUsed:
+                header.sectionLabel.text = "Recently Used"
+                header.sectionImage.image = UIImage(systemNameOrNil: "test")
+            }
             return header
-
-
         default:  fatalError("Unexpected element kind")
         }
     }
