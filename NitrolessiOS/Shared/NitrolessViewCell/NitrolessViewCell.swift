@@ -16,7 +16,6 @@ class NitrolessViewCell: UICollectionViewCell {
         didSet {
             self.imageView.image = nil
             self.imageView.animationImages = nil
-            self.imageView.stopAnimating()
             guard let emote = emote else { return }
             let url = emote.url
             switch emote.type {

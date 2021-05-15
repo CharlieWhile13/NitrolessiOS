@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
+        emotesView?.reloadData()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -185,6 +186,9 @@ extension HomeViewController: UICollectionViewDelegate {
             self.toastView.showText(nc, "Copied \(emote.name)")
         }
         collectionView.deselectItem(at: indexPath, animated: true)
+        if emote.type == .gif {
+            collectionView.reloadItems(at: [indexPath])
+        }
     }
 }
 

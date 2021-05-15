@@ -110,8 +110,16 @@ class SourcesViewController: BaseTableViewController {
     
     @objc private func updateRepo(_ notification: Notification) {
         guard let repo = notification.object as? Repo else { return }
+        var shouldRefresh = false
         if let index = repos.firstIndex(where: { $0.url == repo.url }) {
+            if repos[index].displayName != repo.displayName {
+                shouldRefresh = true
+            }
             repos[index] = repo
+        }
+        if shouldRefresh {
+            tableView.reloadData()
+            return
         }
         if let cells = tableView.visibleCells as? [SourcesTableViewCell],
            let cell = cells.first(where: { $0.repo?.url == repo.url }) {
