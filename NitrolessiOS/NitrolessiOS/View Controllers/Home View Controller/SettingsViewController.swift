@@ -53,6 +53,11 @@ class SettingsViewController: UIViewController {
     }
     
     private func meta() {
+        
+        if #available(iOS 13.0, *) {
+            overrideUserInterfaceStyle = .dark
+        }
+        
         self.view.backgroundColor = ThemeManager.backgroundColour
         self.navigationController?.navigationBar.barTintColor = ThemeManager.imageBackground
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]

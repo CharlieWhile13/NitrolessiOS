@@ -106,6 +106,7 @@ class EmoteView: UICollectionView {
                     recentlyUsedTmp.append(emote)
                 }
             }
+            if recentlyUsedTmp.isEmpty { return }
             if self.recentlyUsed.isEmpty {
                 self.recentlyUsed = recentlyUsedTmp
                 insertSections(IndexSet(integer: 0))
