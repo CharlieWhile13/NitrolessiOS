@@ -56,9 +56,8 @@ class SourcesTableViewCell: UITableViewCell {
         
         repoImage.heightAnchor.constraint(equalToConstant: 40).isActive = true
         repoImage.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        repoImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
+        repoImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         repoImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5).isActive = true
-        repoImage.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
         contentView.bottomAnchor.constraint(equalTo: repoLink.bottomAnchor, constant: 5).isActive = true
         contentView.trailingAnchor.constraint(equalTo: repoLink.trailingAnchor, constant: 2.5).isActive = true
         repoName.leadingAnchor.constraint(equalTo: repoImage.trailingAnchor, constant: 5).isActive = true

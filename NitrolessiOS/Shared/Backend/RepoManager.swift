@@ -99,6 +99,9 @@ final class RepoManager {
     }
         
     public func refresh(repos: [Repo]? = nil, force: Bool = false) {
+        #if DEBUG
+        NSLog("[Nitroless] Started Refresh")
+        #endif
         let list = repos ?? self.repos
         for tmp in list {
             let index = tmp.url.appendingPathComponent("index").appendingPathExtension("json")
@@ -114,6 +117,9 @@ final class RepoManager {
                     new.path = path
                     new.emotes = strong.emotes(emotes, new.url, new.path ?? "")
                     strong.update(tmp, new)
+                    #if DEBUG
+                    NSLog("[Nitroless] Finished Refreshing \(new.url)")
+                    #endif
                 }
             }
         }
