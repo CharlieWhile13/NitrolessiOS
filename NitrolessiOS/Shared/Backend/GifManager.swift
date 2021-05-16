@@ -20,11 +20,29 @@ final class Gif: UIImage {
         let imageCount = CGImageSourceGetCount(source)
         for i in 0 ..< imageCount {
             if let image = CGImageSourceCreateImageAtIndex(source, i, nil) {
-                images.append(UIImage(cgImage: image))
+                let tmpImage = UIImage(cgImage: image)
+                if let downscaled = Gif.downsample(image: tmpImage, to: CGSize(width: 48, height: 48)) {
+                    images.append(downscaled)
+                } else {
+                    images.append(tmpImage)
+                }
             }
         }
         let calculatedDuration = Double(imageCount) * delayTime
         self.animatedImages = images
         self.calculatedDuration = calculatedDuration
+    }
+    
+    public class func downsample(image: UIImage, to pointSize: CGSize) -> UIImage? {
+        let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
+        guard let data = image.pngData() as CFData?,
+              let imageSource = CGImageSourceCreateWithData(data, imageSourceOptions) else { return nil }
+        let maxDimentionInPixels = max(pointSize.width, pointSize.height) * UIScreen.main.scale
+        let downsampledOptions = [kCGImageSourceCreateThumbnailFromImageAlways: true,
+          kCGImageSourceShouldCacheImmediately: true,
+          kCGImageSourceCreateThumbnailWithTransform: true,
+          kCGImageSourceThumbnailMaxPixelSize: maxDimentionInPixels] as CFDictionary
+        guard let downScaledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampledOptions) else { return nil }
+        return UIImage(cgImage: downScaledImage)
     }
 }

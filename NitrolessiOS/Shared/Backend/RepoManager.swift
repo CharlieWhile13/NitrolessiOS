@@ -51,6 +51,9 @@ final class RepoManager {
             self.repos.removeAll(where: { $0.url == repo })
             self.save()
             completion?()
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .RepoRemove, object: repo)
+            }
         }
     }
     

@@ -30,10 +30,19 @@ class EmoteView: UICollectionView {
         weak var weakSelf = self
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(updateRepo(_:)), name: .RepoLoad, object: nil)
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(removeRecentlyUsed), name: .RemoveRecentlyUsed, object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(removeRepo), name: .RepoRemove, object: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func removeRepo(_ notification: Notification) {
+        guard let url = notification.object as? URL else { return }
+        if let index = repos.firstIndex(where: { $0.url == url }) {
+            repos.remove(at: index)
+            deleteSections(IndexSet(integer: index + (recentlyUsed.isEmpty ? 0 : 1)))
+        }
     }
     
     @objc public func updateFilter(_ string: String? = nil) {
@@ -80,6 +89,7 @@ class EmoteView: UICollectionView {
             }
             repoContext = repo
             reloadSections(IndexSet(integer: 0))
+            return
         }
         if let index = repos.firstIndex(where: { $0.url == repo.url }) {
             repos[index] = repo
@@ -161,7 +171,9 @@ extension EmoteView: UICollectionViewDelegate {
         if emote.type == .gif {
             collectionView.reloadItems(at: [indexPath])
         }
-        reloadRecentlyUsed()
+        if repoContext == nil {
+            reloadRecentlyUsed()
+        }
     }
 }
 

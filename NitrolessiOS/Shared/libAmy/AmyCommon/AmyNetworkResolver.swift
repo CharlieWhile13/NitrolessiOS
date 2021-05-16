@@ -20,6 +20,8 @@ final class AmyNetworkResolver {
         (FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.amywhile.nitroless")?.appendingPathComponent("AmyCache").appendingPathComponent("DownloadCache"))!
     }
     
+    var imageCache = [String: UIImage]()
+    
     public func clearCache() {
         if cacheDirectory.dirExists {
             try? FileManager.default.removeItem(at: cacheDirectory)
@@ -346,17 +348,33 @@ final class AmyNetworkResolver {
         }
         var pastData: Data?
         let encoded = url.absoluteString.toBase64
+        switch type {
+        case .png:
+            if let image = imageCache[encoded] {
+                completion(false, nil)
+                return image
+            }
+        case .gif:
+            if let gif = imageCache[encoded] as? Gif {
+                completion(false, nil)
+                return gif
+            }
+        }
         let path = cacheDirectory.appendingPathComponent("\(encoded).\(type.rawValue)")
         if path.exists {
             if let data = try? Data(contentsOf: path) {
                 switch type {
                 case .png:
-                    if let image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                    if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                        if let downsampled = Gif.downsample(image: image, to: CGSize(width: 48, height: 48)) {
+                            image = downsampled
+                        }
                         if cache {
                             pastData = data
                             if AmyNetworkResolver.skipNetwork(path) {
-                                completion(false, image)
+                                completion(false, nil)
                             }
+                            imageCache[encoded] = image
                         }
                         return image
                     }
@@ -365,8 +383,9 @@ final class AmyNetworkResolver {
                         if cache {
                             pastData = data
                             if AmyNetworkResolver.skipNetwork(path) {
-                                completion(false, gif)
+                                completion(false, nil)
                             }
+                            imageCache[encoded] = gif
                         }
                         return gif
                     }
@@ -378,7 +397,7 @@ final class AmyNetworkResolver {
         for (key, value) in headers {
             request.setValue(value, forHTTPHeaderField: key)
         }
-        let task = URLSession.shared.dataTask(with: request) { data, _, _ -> Void in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, _ -> Void in
             if let data = data {
                 if cache {
                     do {
@@ -389,11 +408,20 @@ final class AmyNetworkResolver {
                 }
                 switch type {
                 case .png:
-                    if let image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                    if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
+                        if let downsampled = Gif.downsample(image: image, to: CGSize(width: 48, height: 48)) {
+                            image = downsampled
+                        }
+                        if let strong = self {
+                            strong.imageCache[encoded] = image
+                        }
                         return completion(pastData != data, image)
                     }
                 case .gif:
                     if let gif = Gif.init(data: data) {
+                        if let strong = self {
+                            strong.imageCache[encoded] = gif
+                        }
                         return completion(pastData != data, gif)
                     }
                 }

@@ -11,4 +11,5 @@ extension NSNotification.Name {
     static let RemoveRecentlyUsed = Notification.Name("RemoveRecentlyUsed")
     static let HideKeyboard = Notification.Name("HideKeyboard")
     static let RepoLoad = Notification.Name("RepoLoad")
+    static let RepoRemove = Notification.Name("RepoRemove")
 }
