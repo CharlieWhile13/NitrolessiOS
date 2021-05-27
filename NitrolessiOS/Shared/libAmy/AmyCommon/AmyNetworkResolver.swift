@@ -346,52 +346,41 @@ final class AmyNetworkResolver {
             completion(false, nil)
             return nil
         }
-        var pastData: Data?
-        let encoded = url.absoluteString.toBase64
+        let encoded = URL(string: url.absoluteString.toBase64)?.appendingPathExtension("png") ?? url
         switch type {
         case .png:
-            if let image = imageCache[encoded] {
+            if let image = imageCache[encoded.absoluteString] {
                 completion(false, nil)
                 return image
             }
+            let checkPath = cacheDirectory.appendingPathComponent(encoded.absoluteString)
+            if FileManager.default.fileExists(atPath: checkPath.path) {
+                if let cached = ImageProcessing.retrieveDownsample(from: encoded) {
+                    let image = UIImage(cgImage: cached)
+                    if AmyNetworkResolver.skipNetwork(encoded) {
+                        completion(false, nil)
+                    }
+                    imageCache[encoded.absoluteString] = image
+                    return image
+                }
+            }
         case .gif:
-            if let gif = imageCache[encoded] as? Gif {
+            if let gif = imageCache[encoded.absoluteString] as? Gif {
                 completion(false, nil)
                 return gif
             }
-        }
-        let path = cacheDirectory.appendingPathComponent("\(encoded).\(type.rawValue)")
-        if path.exists {
-            if let data = try? Data(contentsOf: path) {
-                switch type {
-                case .png:
-                    if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
-                        if let downsampled = Gif.downsample(image: image, to: CGSize(width: 48, height: 48)) {
-                            image = downsampled
-                        }
-                        if cache {
-                            pastData = data
-                            if AmyNetworkResolver.skipNetwork(path) {
-                                completion(false, nil)
-                            }
-                            imageCache[encoded] = image
-                        }
-                        return image
+            let checkPath = cacheDirectory.appendingPathComponent("0_" + (encoded.absoluteString))
+            if FileManager.default.fileExists(atPath: checkPath.path) {
+                if let cached = ImageProcessing.retrieveGif(from: encoded) {
+                    if AmyNetworkResolver.skipNetwork(checkPath) {
+                        completion(false, nil)
                     }
-                case .gif:
-                    if let gif = Gif.init(data: data) {
-                        if cache {
-                            pastData = data
-                            if AmyNetworkResolver.skipNetwork(path) {
-                                completion(false, nil)
-                            }
-                            imageCache[encoded] = gif
-                        }
-                        return gif
-                    }
+                    imageCache[encoded.absoluteString] = cached
+                    return cached
                 }
             }
         }
+        NSLog("[Nitroless] Network is being relied on for \(url)")
         var request = URLRequest(url: url, timeoutInterval: 30)
         request.httpMethod = method
         for (key, value) in headers {
@@ -399,30 +388,25 @@ final class AmyNetworkResolver {
         }
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, _ -> Void in
             if let data = data {
-                if cache {
-                    do {
-                        try data.write(to: path, options: .atomic)
-                    } catch {
-                        print("Error saving to \(path.absoluteString) with error: \(error.localizedDescription)")
-                    }
-                }
                 switch type {
                 case .png:
                     if var image = (scale != nil) ? UIImage(data: data, scale: scale!) : UIImage(data: data) {
-                        if let downsampled = Gif.downsample(image: image, to: CGSize(width: 48, height: 48)) {
-                            image = downsampled
+                        if let downsampled = ImageProcessing.downsample(image: image, to: CGSize(width: 48, height: 48)) {
+                            image = UIImage(cgImage: downsampled)
+                            ImageProcessing.saveDownsample(cgImage: downsampled, to: encoded)
                         }
                         if let strong = self {
-                            strong.imageCache[encoded] = image
+                            strong.imageCache[encoded.absoluteString] = image
                         }
-                        return completion(pastData != data, image)
+                        return completion(true, image)
                     }
                 case .gif:
-                    if let gif = Gif.init(data: data) {
+                    let gif = Gif()
+                    if let downsampledGif = gif.gif(data: data, destination: encoded) {
                         if let strong = self {
-                            strong.imageCache[encoded] = gif
+                            strong.imageCache[encoded.absoluteString] = downsampledGif
                         }
-                        return completion(pastData != data, gif)
+                        return completion(true, downsampledGif)
                     }
                 }
                 
