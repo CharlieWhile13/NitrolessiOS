@@ -20,6 +20,20 @@
                ReferencedContainer = "container:NitrolessiOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E1A8FA7F25D43B8300353A1E"
+               BuildableName = "NitrolessKeyboard.appex"
+               BlueprintName = "NitrolessKeyboard"
+               ReferencedContainer = "container:NitrolessiOS.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
