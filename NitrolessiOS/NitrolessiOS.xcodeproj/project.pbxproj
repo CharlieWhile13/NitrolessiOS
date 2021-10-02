@@ -33,6 +33,7 @@
 		E146AB8E264C3B630007BFD0 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB8C264C3B630007BFD0 /* Objects.swift */; };
 		E146AB94264C4FA80007BFD0 /* RepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB93264C4FA80007BFD0 /* RepoManager.swift */; };
 		E146AB95264C4FA80007BFD0 /* RepoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB93264C4FA80007BFD0 /* RepoManager.swift */; };
+		E160573226F0E31E006F1E54 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C655CC25E425220032C4E1 /* ToastView.swift */; };
 		E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */; };
 		E1A8FA5125D42B1D00353A1E /* LaunchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA5025D42B1D00353A1E /* LaunchDelegate.swift */; };
@@ -505,6 +506,7 @@
 				E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
 				E14162752650262A00C5E302 /* EmoteView.swift in Sources */,
 				E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */,
+				E160573226F0E31E006F1E54 /* ToastView.swift in Sources */,
 				E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */,
 				E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */,
@@ -595,7 +597,7 @@
 				CURRENT_PROJECT_VERSION = 300;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -617,7 +619,7 @@
 				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -759,7 +761,7 @@
 				CURRENT_PROJECT_VERSION = 300;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -784,7 +786,7 @@
 				CURRENT_PROJECT_VERSION = 300;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = "NitrolessiOS//Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -806,7 +808,7 @@
 				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -830,7 +832,7 @@
 				CURRENT_PROJECT_VERSION = 73;
 				DEVELOPMENT_TEAM = 7J8FJX4SRX;
 				INFOPLIST_FILE = NitrolessKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
