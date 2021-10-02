@@ -150,13 +150,10 @@ class SourcesViewController: BaseTableViewController {
         let trash = UIContextualAction(style: .destructive, title: "Remove") { [weak self] (action, view, completionHandler) in
             guard let strong = self else { return }
             let repo = strong.repos[indexPath.row]
-            RepoManager.shared.remove(repo.url) {
-                DispatchQueue.main.async {
-                    strong.repos = RepoManager.shared.repos.sorted(by: { $0.displayName?.lowercased() ?? "" < $1.displayName?.lowercased() ?? "" })
-                    strong.tableView.deleteRows(at: [indexPath], with: .automatic)
-                    completionHandler(true)
-                }
-            }
+            RepoManager.shared.remove(repo.url)
+            self?.repos = RepoManager.shared.repos.sorted(by: { $0.displayName?.lowercased() ?? "" < $1.displayName?.lowercased() ?? "" })
+            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completionHandler(true)
         }
         trash.backgroundColor = .systemRed
         let configuration = UISwipeActionsConfiguration(actions: [trash])

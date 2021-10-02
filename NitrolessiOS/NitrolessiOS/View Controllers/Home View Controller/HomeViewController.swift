@@ -15,8 +15,42 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        self.meta()
+        
+        view.backgroundColor = ThemeManager.backgroundColour
+        navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        let tmp = EmoteView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        self.emotesView = tmp
+        view.addSubview(emotesView!)
+        emotesView?.translatesAutoresizingMaskIntoConstraints = false
+        emotesView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        emotesView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        emotesView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -7.5).isActive = true
+        emotesView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 7.5).isActive = true
+        emotesView?.parentController = self.navigationController
+        if repoContext == nil {
+            self.title = "Nitroless"
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info"), style: .done, target: self, action: #selector(settings))
+        } else {
+            self.title = repoContext?.displayName
+            emotesView?.repoContext = repoContext
+            emotesView?.updateFilter(nil)
+        }
+        
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        searchController.searchBar.barStyle = .black
+        searchController.searchBar.placeholder = "Emote Name"
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
+ 
+        onBoarding()
     }
   
     override func viewWillAppear(_ animated: Bool) {
@@ -55,44 +89,6 @@ class HomeViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func meta() {
-        self.view.backgroundColor = ThemeManager.backgroundColour
-        self.navigationController?.navigationBar.barTintColor = ThemeManager.backgroundColour
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        let tmp = EmoteView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        self.emotesView = tmp
-        view.addSubview(emotesView!)
-        emotesView?.translatesAutoresizingMaskIntoConstraints = false
-        emotesView?.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        emotesView?.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        emotesView?.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -7.5).isActive = true
-        emotesView?.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 7.5).isActive = true
-        emotesView?.parentController = self.navigationController
-        if repoContext == nil {
-            self.title = "Nitroless"
-            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Info"), style: .done, target: self, action: #selector(settings))
-        } else {
-            self.title = repoContext?.displayName
-            emotesView?.repoContext = repoContext
-            emotesView?.updateFilter(nil)
-        }
-        
-        searchController.loadViewIfNeeded()
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.done
-        searchController.searchBar.barStyle = .black
-        self.searchController.searchBar.placeholder = "Emote Name"
-        definesPresentationContext = true
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        searchController.searchBar.delegate = self
- 
-        self.onBoarding()
     }
     
     @objc private func settings() {

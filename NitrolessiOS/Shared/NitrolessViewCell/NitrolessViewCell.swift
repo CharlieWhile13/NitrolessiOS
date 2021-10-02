@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Evander
 
 class NitrolessViewCell: UICollectionViewCell {
     
@@ -20,7 +21,7 @@ class NitrolessViewCell: UICollectionViewCell {
             let url = emote.url
             switch emote.type {
             case .png:
-                if let image = AmyNetworkResolver.shared.image(url, cache: true, type: .png, { [weak self] (refresh, image) in
+                if let image = EvanderNetworking.shared.image(url, cache: true, size: CGSize(width: 48, height: 48), { [weak self] refresh, image in
                     if refresh,
                           let image = image,
                           self?.emote?.url == url {
@@ -32,26 +33,24 @@ class NitrolessViewCell: UICollectionViewCell {
                     imageView?.image = image
                 }
             case .gif:
-                if let gif = AmyNetworkResolver.shared.image(url, cache: true, type: .gif, { [weak self] (refresh, image) in
+                func block(_ gif: EvanderGIF) {
+                    DispatchQueue.main.async {
+                        self.imageView?.animationImages = gif.animatedImages ?? [UIImage]()
+                        self.imageView.animationRepeatCount = .max
+                        self.imageView.animationDuration = gif.calculatedDuration ?? 0
+                        self.imageView.startAnimating()
+                    }
+                }
+                if let gif = EvanderNetworking.shared.gif(url, cache: true, size: CGSize(width: 48, height: 48), { [weak self] refresh, image in
                     if refresh,
                           let image = image,
-                          let amyGif = image as? Gif,
+                          let gif = image as? EvanderGIF,
                           self?.emote?.url == url {
-                        DispatchQueue.main.async {
-                            self?.imageView?.animationImages = amyGif.animatedImages ?? [UIImage]()
-                            self?.imageView.animationRepeatCount = .max
-                            self?.imageView.animationDuration = amyGif.calculatedDuration ?? 0
-                            self?.imageView.startAnimating()
-                        }
+                        block(gif)
                     }
                 }) {
-                    if let amyGif = gif as? Gif {
-                        DispatchQueue.main.async {
-                            self.imageView?.animationImages = amyGif.animatedImages ?? [UIImage]()
-                            self.imageView.animationRepeatCount = .max
-                            self.imageView.animationDuration = amyGif.calculatedDuration ?? 0
-                            self.imageView.startAnimating()
-                        }
+                    if let gif = gif as? EvanderGIF {
+                        block(gif)
                     }
                 }
             }
@@ -60,9 +59,9 @@ class NitrolessViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        self.containerView.backgroundColor = ThemeManager.imageBackground
-        self.containerView.layer.cornerRadius = 7.5
-        self.containerView.layer.masksToBounds = true
+        
+        containerView.backgroundColor = ThemeManager.imageBackground
+        containerView.layer.cornerRadius = 7.5
+        containerView.layer.masksToBounds = true
     }
 }

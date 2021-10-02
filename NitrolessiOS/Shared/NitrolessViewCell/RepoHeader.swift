@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Evander
 
 class RepoHeader: UICollectionReusableView {
 
@@ -17,7 +18,7 @@ class RepoHeader: UICollectionReusableView {
             sectionImage.image = nil
             guard let tmp = repoLink else { return }
             let imageURL = tmp.appendingPathComponent("RepoImage").appendingPathExtension("png")
-            if let image = AmyNetworkResolver.shared.image(imageURL, cache: true, type: .png, { [weak self] (success, image) in
+            if let image = EvanderNetworking.shared.image(imageURL, cache: true, { [weak self] success, image in
                 if success,
                       let image = image,
                       self?.repoLink == tmp {

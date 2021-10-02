@@ -1,4 +1,5 @@
 import UIKit
+import Evander
 
 class GithubSocialCell: AmyCell {
     
@@ -16,7 +17,7 @@ class GithubSocialCell: AmyCell {
     
     private func pullImage() {
         guard let url = social?.url else { return }
-        self.profilePicture.image = AmyNetworkResolver.shared.image(url, type: .png) { [weak self] refresh, image in
+        self.profilePicture.image = EvanderNetworking.shared.image(url) { [weak self] refresh, image in
             if refresh,
                let strong = self,
                let image = image,

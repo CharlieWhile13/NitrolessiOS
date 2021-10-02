@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10C5462270872C2008BD0AA /* Evander in Frameworks */ = {isa = PBXBuildFile; productRef = E10C5461270872C2008BD0AA /* Evander */; };
+		E10C546527087669008BD0AA /* Evander in Frameworks */ = {isa = PBXBuildFile; productRef = E10C546427087669008BD0AA /* Evander */; };
+		E10C546627088EB7008BD0AA /* NitrolessKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E1A8FA8025D43B8300353A1E /* NitrolessKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E10C546A27089056008BD0AA /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C655CB25E425220032C4E1 /* ToastView.xib */; };
 		E134A98125D6AB8F003A01EA /* White@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98025D6AB8F003A01EA /* White@2x.png */; };
 		E134A98525D6ABA1003A01EA /* White@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98425D6ABA1003A01EA /* White@3x.png */; };
 		E134A98925D6ABC0003A01EA /* White~ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E134A98825D6ABC0003A01EA /* White~ipad@2x.png */; };
@@ -15,8 +19,6 @@
 		E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A99425D6AC93003A01EA /* AppIconCell.swift */; };
 		E134A9A025D6D87F003A01EA /* NSNotification+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */; };
 		E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A8FA7225D4348F00353A1E /* NitrolessViewCell.swift */; };
-		E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
-		E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */; };
 		E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A8FA7325D4348F00353A1E /* NitrolessViewCell.xib */; };
 		E141626A264FF81900C5E302 /* RepoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1416268264FF81900C5E302 /* RepoHeader.swift */; };
 		E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1416268264FF81900C5E302 /* RepoHeader.swift */; };
@@ -25,8 +27,6 @@
 		E14162742650262A00C5E302 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14162732650262A00C5E302 /* EmoteView.swift */; };
 		E14162752650262A00C5E302 /* EmoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14162732650262A00C5E302 /* EmoteView.swift */; };
 		E141627926503B1000C5E302 /* GithubSocialCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141627826503B1000C5E302 /* GithubSocialCell.swift */; };
-		E146AB7A264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
-		E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */; };
 		E146AB7F264C36440007BFD0 /* SourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB7E264C36440007BFD0 /* SourcesViewController.swift */; };
 		E146AB83264C366A0007BFD0 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */; };
 		E146AB8D264C3B630007BFD0 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E146AB8C264C3B630007BFD0 /* Objects.swift */; };
@@ -53,12 +53,34 @@
 		E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */; };
 		E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD856325D5999E003DA2DC /* BridgingStubs.swift */; };
 		E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */; };
-		E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */; };
-		E1AFD86425DC2E6E00C1DDAE /* GifManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */; };
 		E1C655CD25E425220032C4E1 /* ToastView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1C655CB25E425220032C4E1 /* ToastView.xib */; };
 		E1C655CE25E425220032C4E1 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C655CC25E425220032C4E1 /* ToastView.swift */; };
 		E1D9CF41264D974400200DF1 /* SourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D9CF40264D974400200DF1 /* SourcesTableViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E10C546727088EB7008BD0AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1A8FA4525D42B1D00353A1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1A8FA7F25D43B8300353A1E;
+			remoteInfo = NitrolessKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E10C546927088EB7008BD0AA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E10C546627088EB7008BD0AA /* NitrolessKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E134A98025D6AB8F003A01EA /* White@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White@2x.png"; sourceTree = "<group>"; };
@@ -67,12 +89,10 @@
 		E134A98C25D6ABEE003A01EA /* White~ipad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "White~ipad@3x.png"; sourceTree = "<group>"; };
 		E134A99325D6AC93003A01EA /* AppIconCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppIconCell.xib; sourceTree = "<group>"; };
 		E134A99425D6AC93003A01EA /* AppIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIconCell.swift; sourceTree = "<group>"; };
-		E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		E1416268264FF81900C5E302 /* RepoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoHeader.swift; sourceTree = "<group>"; };
 		E1416269264FF81900C5E302 /* RepoHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepoHeader.xib; sourceTree = "<group>"; };
 		E14162732650262A00C5E302 /* EmoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoteView.swift; sourceTree = "<group>"; };
 		E141627826503B1000C5E302 /* GithubSocialCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubSocialCell.swift; sourceTree = "<group>"; };
-		E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmyNetworkResolver.swift; sourceTree = "<group>"; };
 		E146AB7E264C36440007BFD0 /* SourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesViewController.swift; sourceTree = "<group>"; };
 		E146AB82264C366A0007BFD0 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		E146AB8C264C3B630007BFD0 /* Objects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
@@ -101,7 +121,6 @@
 		E1AD855F25D596EB003DA2DC /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1AD856325D5999E003DA2DC /* BridgingStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingStubs.swift; sourceTree = "<group>"; };
 		E1AFD85525DC254F00C1DDAE /* NitrolessNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NitrolessNavigationController.swift; sourceTree = "<group>"; };
-		E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifManager.swift; sourceTree = "<group>"; };
 		E1C655CB25E425220032C4E1 /* ToastView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToastView.xib; sourceTree = "<group>"; };
 		E1C655CC25E425220032C4E1 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		E1D9CF40264D974400200DF1 /* SourcesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesTableViewCell.swift; sourceTree = "<group>"; };
@@ -112,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10C5462270872C2008BD0AA /* Evander in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,12 +139,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10C546527087669008BD0AA /* Evander in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E10C546327087669008BD0AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E134A97E25D6AAF1003A01EA /* Alternative Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,19 +189,10 @@
 			path = "Emote View";
 			sourceTree = "<group>";
 		};
-		E146AB78264C330C0007BFD0 /* AmyCommon */ = {
-			isa = PBXGroup;
-			children = (
-				E146AB79264C334C0007BFD0 /* AmyNetworkResolver.swift */,
-			);
-			path = AmyCommon;
-			sourceTree = "<group>";
-		};
 		E146AB86264C36AB0007BFD0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				E1A8FA7925D4369E00353A1E /* NSNotification+Extension.swift */,
-				E134A9AE25D6DFD5003A01EA /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -212,6 +231,7 @@
 				E1A8FA4F25D42B1D00353A1E /* NitrolessiOS */,
 				E1A8FA8125D43B8300353A1E /* NitrolessKeyboard */,
 				E1A8FA4E25D42B1D00353A1E /* Products */,
+				E10C546327087669008BD0AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -241,7 +261,6 @@
 			children = (
 				E146AB86264C36AB0007BFD0 /* Extensions */,
 				E174ABDD25D5AA7B0028CDFF /* ThemeManager.swift */,
-				E1AFD86225DC2E6E00C1DDAE /* GifManager.swift */,
 				E146AB8C264C3B630007BFD0 /* Objects.swift */,
 				E146AB93264C4FA80007BFD0 /* RepoManager.swift */,
 			);
@@ -272,7 +291,6 @@
 		E1AD854C25D59644003DA2DC /* libAmy */ = {
 			isa = PBXGroup;
 			children = (
-				E146AB78264C330C0007BFD0 /* AmyCommon */,
 				E1C655CA25E425220032C4E1 /* Toast View */,
 				E134A99225D6AC93003A01EA /* App Icon Cell */,
 				E1AD854D25D5966E003DA2DC /* Button Cell */,
@@ -369,12 +387,17 @@
 				E1A8FA4925D42B1D00353A1E /* Sources */,
 				E1A8FA4A25D42B1D00353A1E /* Frameworks */,
 				E1A8FA4B25D42B1D00353A1E /* Resources */,
+				E10C546927088EB7008BD0AA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E10C546827088EB7008BD0AA /* PBXTargetDependency */,
 			);
 			name = NitrolessiOS;
+			packageProductDependencies = (
+				E10C5461270872C2008BD0AA /* Evander */,
+			);
 			productName = NitrolessiOS;
 			productReference = E1A8FA4D25D42B1D00353A1E /* NitrolessiOS.app */;
 			productType = "com.apple.product-type.application";
@@ -392,6 +415,9 @@
 			dependencies = (
 			);
 			name = NitrolessKeyboard;
+			packageProductDependencies = (
+				E10C546427087669008BD0AA /* Evander */,
+			);
 			productName = NitrolessKeyboard;
 			productReference = E1A8FA8025D43B8300353A1E /* NitrolessKeyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -424,6 +450,9 @@
 				Base,
 			);
 			mainGroup = E1A8FA4425D42B1D00353A1E;
+			packageReferences = (
+				E10C5460270872C2008BD0AA /* XCRemoteSwiftPackageReference "Evander" */,
+			);
 			productRefGroup = E1A8FA4E25D42B1D00353A1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -459,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10C546A27089056008BD0AA /* ToastView.xib in Resources */,
 				E141626D264FF81900C5E302 /* RepoHeader.xib in Resources */,
 				E134A9B325D6E2AF003A01EA /* NitrolessViewCell.xib in Resources */,
 			);
@@ -476,10 +506,8 @@
 				E1A8FA7A25D4369E00353A1E /* NSNotification+Extension.swift in Sources */,
 				E1AD856025D596EB003DA2DC /* SettingsViewController.swift in Sources */,
 				E146AB83264C366A0007BFD0 /* BaseTableViewController.swift in Sources */,
-				E134A9AF25D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1C655CE25E425220032C4E1 /* ToastView.swift in Sources */,
 				E141627926503B1000C5E302 /* GithubSocialCell.swift in Sources */,
-				E1AFD86325DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E1AD856425D5999E003DA2DC /* BridgingStubs.swift in Sources */,
 				E134A99625D6AC93003A01EA /* AppIconCell.swift in Sources */,
 				E174ABDE25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
@@ -492,7 +520,6 @@
 				E1AFD85625DC254F00C1DDAE /* NitrolessNavigationController.swift in Sources */,
 				E1AD855A25D5966E003DA2DC /* SettingsSwitchCell.swift in Sources */,
 				E1D9CF41264D974400200DF1 /* SourcesTableViewCell.swift in Sources */,
-				E146AB7A264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
 				E1AD855725D5966E003DA2DC /* ButtonCell.swift in Sources */,
 				E146AB7F264C36440007BFD0 /* SourcesViewController.swift in Sources */,
 			);
@@ -503,21 +530,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				E146AB8E264C3B630007BFD0 /* Objects.swift in Sources */,
-				E146AB7B264C334C0007BFD0 /* AmyNetworkResolver.swift in Sources */,
 				E14162752650262A00C5E302 /* EmoteView.swift in Sources */,
 				E141626B264FF81900C5E302 /* RepoHeader.swift in Sources */,
 				E160573226F0E31E006F1E54 /* ToastView.swift in Sources */,
-				E134A9B025D6DFD5003A01EA /* UIView+Extension.swift in Sources */,
 				E1A8FA8325D43B8300353A1E /* KeyboardViewController.swift in Sources */,
 				E134A9A325D6D886003A01EA /* NitrolessViewCell.swift in Sources */,
 				E174ABDF25D5AA7B0028CDFF /* ThemeManager.swift in Sources */,
 				E146AB95264C4FA80007BFD0 /* RepoManager.swift in Sources */,
-				E1AFD86425DC2E6E00C1DDAE /* GifManager.swift in Sources */,
 				E134A9A025D6D87F003A01EA /* NSNotification+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E10C546827088EB7008BD0AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1A8FA7F25D43B8300353A1E /* NitrolessKeyboard */;
+			targetProxy = E10C546727088EB7008BD0AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E1A8FA5B25D42B1F00353A1E /* LaunchScreen.storyboard */ = {
@@ -880,6 +912,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E10C5460270872C2008BD0AA /* XCRemoteSwiftPackageReference "Evander" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elihwyma/Evander";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E10C5461270872C2008BD0AA /* Evander */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10C5460270872C2008BD0AA /* XCRemoteSwiftPackageReference "Evander" */;
+			productName = Evander;
+		};
+		E10C546427087669008BD0AA /* Evander */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E10C5460270872C2008BD0AA /* XCRemoteSwiftPackageReference "Evander" */;
+			productName = Evander;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E1A8FA4525D42B1D00353A1E /* Project object */;
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Evander
 
 class EmoteView: UICollectionView {
 
@@ -13,11 +14,18 @@ class EmoteView: UICollectionView {
     var repos = [Repo]()
     var toastView: ToastView = .fromNib()
     var repoContext: Repo?
-    weak var parentController: UINavigationController?
+    weak var parentController: UIViewController?
+    private var filter: String? = nil
+    
+    let loadingIndicator = UIActivityIndicatorView(style: .large)
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
         
+        addSubview(loadingIndicator)
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.center(in: self)
+        loadingIndicator.startAnimating()
         isPrefetchingEnabled = false
         delegate = self
         dataSource = self
@@ -31,10 +39,30 @@ class EmoteView: UICollectionView {
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(updateRepo(_:)), name: .RepoLoad, object: nil)
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(removeRecentlyUsed), name: .RemoveRecentlyUsed, object: nil)
         NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(removeRepo), name: .RepoRemove, object: nil)
+        NotificationCenter.default.addObserver(weakSelf as Any, selector: #selector(updateFilter), name: .RepoRemove, object: nil)
+        
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            RepoManager.shared.initWait()
+            DispatchQueue.main.async {
+                guard let `self` = self else { return }
+                self.loadingIndicator.removeFromSuperview()
+                self.updateFilter(self.filter)
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func repoReload() {
+        if !Thread.isMainThread {
+            DispatchQueue.main.async {
+                self.repoReload()
+            }
+            return
+        }
+        updateFilter(filter)
     }
     
     @objc private func removeRepo(_ notification: Notification) {
@@ -46,6 +74,8 @@ class EmoteView: UICollectionView {
     }
     
     @objc public func updateFilter(_ string: String? = nil) {
+        self.filter = string
+        if !RepoManager.shared.isLoaded { return }
         if let repoContext = self.repoContext {
             self.repos = [repoContext]
             return
@@ -76,6 +106,7 @@ class EmoteView: UICollectionView {
                 }
             }
         }
+        NSLog("[Nitroless] Repos = \(repos.map { $0.emotes })")
         self.repos = repos
         self.reloadData()
     }
@@ -168,8 +199,15 @@ extension EmoteView: UICollectionViewDelegate {
             self.toastView.showText(nc, "Copied \(emote.name)")
         }
         collectionView.deselectItem(at: indexPath, animated: true)
+        /*
         if emote.type == .gif {
             collectionView.reloadItems(at: [indexPath])
+        }
+        */
+        if let cell = collectionView.cellForItem(at: indexPath) as? NitrolessViewCell {
+            NSLog("[Nitroless] Cell = \(cell) \(cell.emote) \(cell.imageView.animationImages) \(cell.imageView.image)")
+            
+            NSLog("[Nitroless] BReakpoint pls")
         }
         if repoContext == nil {
             reloadRecentlyUsed()

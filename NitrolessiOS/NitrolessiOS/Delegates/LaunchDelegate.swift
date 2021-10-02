@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.tintColor = ThemeManager.tintColor
         window?.makeKeyAndVisible()
         
-        
         return true
     }
 }

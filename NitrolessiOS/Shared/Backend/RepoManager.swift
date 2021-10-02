@@ -6,11 +6,15 @@
 //
 
 import Foundation
+import Evander
+import CoreGraphics
 
 final class RepoManager {
     
     static let shared = RepoManager()
     let queue = DispatchQueue(label: "group.amywhile.nitroless.repoQueue", attributes: .concurrent)
+    private let initSemphaore = DispatchSemaphore(value: 0)
+    public var isLoaded = false
     
     var repos = [Repo]() 
     
@@ -35,25 +39,11 @@ final class RepoManager {
         return false
     }
     
-    private func update(_ old: Repo, _ new: Repo) {
-        queue.async(flags: .barrier) {
-            guard let index = self.repos.firstIndex(where: { $0.url == old.url }) else { self.append(new); return }
-            self.repos[index] = new
-            self.save()
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .RepoLoad, object: new)
-            }
-        }
-    }
-    
-    public func remove(_ repo: URL, completion: (() -> ())? = nil) {
-        queue.async(flags: .barrier) {
-            self.repos.removeAll(where: { $0.url == repo })
-            self.save()
-            completion?()
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .RepoRemove, object: repo)
-            }
+    public func remove(_ repo: URL) {
+        self.repos.removeAll(where: { $0.url == repo })
+        self.save()
+        DispatchQueue.main.async {
+            NotificationCenter.default.post(name: .RepoRemove, object: repo)
         }
     }
     
@@ -88,7 +78,15 @@ final class RepoManager {
         }
         let repo = Repo(url: URL(string: "https://nitroless.github.io/ExampleNitrolessRepo/")!)
         self.append(repo)
-        self.refresh()
+        for repo in repos {
+            let index = repo.url.appendingPathComponent("index").appendingPathExtension("json")
+            if let localDict = EvanderNetworking.localDict(url: index) {
+                if let emotes = localDict["emotes"] as? [[String: String]] {
+                    repo.emotes = self.emotes(emotes, repo.url, repo.path ?? "")
+                }
+            }
+        }
+        self.batchGroupLoad(repos: repos)
     }
     
     private func emotes(_ tmp: [[String: String]], _ repoURL: URL, _ path: String) -> [Emote] {
@@ -102,29 +100,104 @@ final class RepoManager {
     }
         
     public func refresh(repos: [Repo]? = nil, force: Bool = false) {
-        #if DEBUG
-        NSLog("[Nitroless] Started Refresh")
-        #endif
-        let list = repos ?? self.repos
-        for tmp in list {
-            let index = tmp.url.appendingPathComponent("index").appendingPathExtension("json")
-            var new = tmp
-            AmyNetworkResolver.dict(url: index, cache: !force) { [weak self] success, dict in
-                if success,
-                   let strong = self,
-                   let dict = dict,
-                   let name = dict["name"] as? String,
-                   let emotes = dict["emotes"] as? [[String: String]],
-                   let path = dict["path"] as? String {
-                    new.displayName = name
-                    new.path = path
-                    new.emotes = strong.emotes(emotes, new.url, new.path ?? "")
-                    strong.update(tmp, new)
-                    #if DEBUG
-                    NSLog("[Nitroless] Finished Refreshing \(new.url)")
-                    #endif
+        var list = repos ?? self.repos
+        DispatchQueue.global(qos: .userInitiated).async {
+            let threadCount = ((ProcessInfo.processInfo.processorCount * 2) > list.count) ? list.count : (ProcessInfo.processInfo.processorCount * 2)
+            let loadGroup = DispatchGroup()
+            let loadLock = NSLock()
+            
+            for threadID in 0..<(threadCount) {
+                loadGroup.enter()
+                let emoteQueue = DispatchQueue(label: "repo-refresh-queue-\(threadID)")
+                emoteQueue.async {
+                    while true {
+                        loadLock.lock()
+                        guard !list.isEmpty else {
+                            loadLock.unlock()
+                             break
+                        }
+                        let repo = list.removeFirst()
+                        loadLock.unlock()
+                        let semaphore = DispatchSemaphore(value: 0)
+                        let index = repo.url.appendingPathComponent("index").appendingPathExtension("json")
+                        EvanderNetworking.dict(url: index, cache: !force) { [self] success, dict in
+                            if success,
+                               let dict = dict,
+                               let name = dict["name"] as? String,
+                               let emotes = dict["emotes"] as? [[String: String]],
+                               let path = dict["path"] as? String {
+                                repo.displayName = name
+                                repo.path = path
+                                let emotes = self.emotes(emotes, repo.url, repo.path ?? "")
+                                if emotes != repo.emotes {
+                                    repo.emotes = emotes
+                                    batchGroupLoad(repos: [repo])
+                                } else {
+                                    repo.emotes = emotes
+                                }
+                            }
+                            semaphore.signal()
+                        }
+                        semaphore.wait()
+                    }
+                    loadGroup.leave()
+                }
+            }
+            loadGroup.notify(queue: .main) {
+                NotificationCenter.default.post(name: .RepoReload, object: nil)
+            }
+        }
+    }
+    
+    public func batchGroupLoad(repos: [Repo]) {
+        var emotes = [Emote]()
+        repos.forEach { emotes += $0.emotes }
+        DispatchQueue.global(qos: .userInitiated).async {
+            let threadCount = ((ProcessInfo.processInfo.processorCount * 2) > emotes.count) ? emotes.count : (ProcessInfo.processInfo.processorCount * 2)
+            let loadGroup = DispatchGroup()
+            let loadLock = NSLock()
+            
+            for threadID in 0..<(threadCount) {
+                loadGroup.enter()
+                let emoteQueue = DispatchQueue(label: "emote-init-queue-\(threadID)")
+                emoteQueue.async {
+                    while true {
+                        loadLock.lock()
+                        guard !emotes.isEmpty else {
+                            loadLock.unlock()
+                             break
+                        }
+                        let emote = emotes.removeFirst()
+                        loadLock.unlock()
+                        switch emote.type {
+                        case .png:
+                            _ = EvanderNetworking.shared.image(emote.url, cache: true, size: CGSize(width: 48, height: 48), nil)
+                        case .gif:
+                            _ = EvanderNetworking.shared.gif(emote.url, cache: true, size: CGSize(width: 48, height: 48), nil)
+                        }
+                    }
+                    loadGroup.leave()
+                }
+            }
+            loadGroup.notify(queue: .main) {
+                if !self.isLoaded {
+                    self.isLoaded = true
+                    while true {
+                        if self.initSemphaore.signal() == 0 {
+                            break
+                        }
+                    }
+                    self.refresh()
                 }
             }
         }
+    }
+    
+    public func initWait() {
+        if Thread.isMainThread {
+            fatalError("\(Thread.current.threadName) cannot be used to hold backend")
+        }
+        if isLoaded { return }
+        initSemphaore.wait()
     }
 }

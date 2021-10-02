@@ -17,7 +17,7 @@ enum Sender {
     case keyboard
 }
 
-struct Emote {
+struct Emote: Equatable {
     var type: EmoteType
     var name: String
     var url: URL
@@ -36,7 +36,11 @@ struct Emote {
     }
 }
 
-struct Repo {
+func == (lhs: Emote, rhs: Emote) -> Bool {
+    lhs.url == rhs.url
+}
+
+class Repo {
     var displayName: String?
     var url: URL
     var emotes = [Emote]()

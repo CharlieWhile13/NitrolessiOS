@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Evander
 
 class SourcesTableViewCell: UITableViewCell {
     
@@ -17,7 +18,7 @@ class SourcesTableViewCell: UITableViewCell {
             repoLink.text = repo.url.absoluteString
             let repoURL = repo.url
             let imageURL = repoURL.appendingPathComponent("RepoImage").appendingPathExtension("png")
-            if let image = AmyNetworkResolver.shared.image(imageURL, cache: true, type: .png, { [weak self] (success, image) in
+            if let image = EvanderNetworking.shared.image(imageURL, cache: true, { [weak self] (success, image) in
                 if success,
                       let image = image,
                       self?.repo?.url == repoURL {
